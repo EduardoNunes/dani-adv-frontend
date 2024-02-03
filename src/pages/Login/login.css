@@ -1,0 +1,147 @@
+.login {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - 40px);
+}
+
+.login .background {
+  display: flex;
+  justify-content: center;
+
+  height: calc(100vh - 40px);
+  width: 100%;
+
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.login .background-light {
+  border-top: 1px solid rgba(var(--cor-roxo), 1);
+}
+
+.login .background-dark {
+  border-top: 1px solid rgba(var(--cor-rosa), 1);
+}
+
+.login .formulario {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - 40px);
+  width: 100vw;
+
+  background-color: rgba(var(--cor-preto), 0.6);
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 450px;
+  width: 30%;
+  min-width: 400px;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--cor-roxo), 1);
+  background-color: rgba(var(--cor-branco), 0.9);
+}
+
+.login-dark form {
+  border: 1px solid rgba(var(--cor-rosa), 1);
+  background-color: rgba(var(--cor-preto), 0.95);
+}
+
+.login form h2 {
+  margin: 12px;
+  margin-bottom: 20px;
+
+  font-family: "fonte";
+  color: rgba(var(--cor-preto), 1);
+}
+
+.login-dark form h2 {
+  color: rgba(var(--cor-branco), 0.8);
+}
+
+.login form .chart {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.login form .chart label {
+  margin-bottom: 5px;
+  font-family: "fonte";
+}
+
+.login-dark form .chart label {
+  color: rgba(var(--cor-branco), 0.8);
+}
+
+.login form .chart input {
+  min-height: 26px;
+  width: 100%;
+  padding-left: 6px;
+  margin-bottom: 14px;
+}
+
+.login form .chart .input2 {
+  position: relative;
+}
+
+.login form .chart .olho-password {
+  position: absolute;
+  top: 3px;
+  right: 4%;
+}
+
+.login form .chart .olho-password img {  
+  cursor: pointer;
+}
+
+.login form span {
+  color: red;
+}
+
+.login-dark form span {
+  color: yellow;
+}
+
+.login form button {
+  height: 30px;
+
+  margin: 10px 8px 12px;
+  border: 1px solid black;
+  border-radius: 4px;
+
+  font-family: "fonte";
+  transition: ease-in-out 0.1s;
+  cursor: pointer;
+}
+
+.login form button:hover {
+  background-color: rgba(var(--cor-branco), 0.7);
+}
+
+.login form .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+
+  font-family: "fonte";
+}
+
+.login-dark form .bottom {
+  color: rgba(var(--cor-branco), 0.8);
+}
+
+.login-dark form a {
+  color: rgba(var(--cor-rosa), 1);
+}

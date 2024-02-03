@@ -1,0 +1,36 @@
+.tipo-cadastro {
+  display: flex;
+  flex-direction: column;
+  margin: 16px;
+}
+
+.tipo-cadastro h4 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.tipo-cadastro-dark h4 {
+  color: rgba(var(--cor-branco), 0.9);
+}
+
+.tipo-cadastro input {
+  width: 50px;
+  margin-bottom: 6px;
+  min-height: 10px;
+}
+
+.tipo-cadastro label {
+  display: flex;
+  align-items: center;
+}
+
+.tipo-cadastro-dark label {
+  color: rgba(var(--cor-branco), 0.9);
+}
+
+.tipo-cadastro .cliente,
+.tipo-cadastro .estudante,
+.tipo-cadastro .escritorio {
+  display: flex;
+}

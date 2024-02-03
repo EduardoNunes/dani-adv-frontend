@@ -1,0 +1,86 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home .whatsApp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+
+    width: 100px;
+    height: 100px;
+    
+    top: 83%;
+    right: 2%;    
+}
+
+.home .whatsApp img {
+    width: 70px;
+    transition: ease-in-out .2s;
+}
+
+.home .whatsApp img:hover {
+    width: 60px;
+}
+
+.home .banner {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 40px);
+    width: 100%;   
+    margin-bottom: 50px;
+}
+
+.home .banner img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+.home .banner-light {
+    border-bottom: 1px solid rgba(var(--cor-roxo), .4);
+}
+
+.home .banner-dark {
+    border-bottom: 1px solid rgba(var(--cor-rosa), .6);
+}
+
+.home .banner .frase {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    position: absolute;
+
+    width: 520px;
+    height: calc(100vh - 170px);
+    margin: 130px 60px 0 0;
+    padding: 60px;
+    right: 10%;
+
+    font-family: 'fonte';
+    font-size: 26px;
+
+    
+}
+
+.home .banner .frase h1:last-child {
+    margin-top: 30px;
+    text-align: end;
+}
+
+.home .banner .frase-light {
+    color: rgba(var(--cor-preto), .9);
+    background-color: rgba(var(--cor-branco), .3);
+    text-shadow: 2px 2px 1px rgba(var(--cor-branco), 1);
+}
+
+.home .banner .frase-dark {
+    color: rgba(var(--cor-branco), .7);
+    background-color: rgba(var(--cor-branco), .1);
+    text-shadow: 3px 3px 1px black;
+    
+}

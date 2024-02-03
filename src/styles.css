@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-geral {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.body-geral-light {
+  background-image: url(assets/textura-marmore.jpg);
+  transition: ease-in-out .2s;
+}
+
+.body-geral-dark {
+  background-image: url(assets/marmore-preto-roxo.jpg);
+  transition: ease-in-out .2s;
+}
+

@@ -1,0 +1,152 @@
+.register {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - 40px);
+}
+
+.register .background {
+  display: flex;
+  justify-content: center;
+
+  height: calc(100vh - 40px);
+  width: 100%;
+
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.register .background-light {
+  border-top: 1px solid rgba(var(--cor-roxo), 1);
+}
+
+.register .background-dark {
+  border-top: 1px solid rgba(var(--cor-rosa), 1);
+}
+
+.register .formulario {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - 40px);
+  width: 100vw;
+
+  background-color: rgba(var(--cor-preto), 0.6);
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 600px;
+  width: 30%;
+  min-width: 400px;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--cor-roxo), 1);
+  background-color: rgba(var(--cor-branco), 0.9);
+}
+
+.register-dark form {
+  border: 1px solid rgba(var(--cor-rosa), 1);
+  background-color: rgba(var(--cor-preto), 0.95);
+}
+
+.register form h2 {
+  margin: 12px;
+  margin-bottom: 20px;
+
+  font-family: "fonte";
+  color: rgba(var(--cor-preto), 1);
+}
+
+.register-dark form h2 {
+  color: rgba(var(--cor-branco), 0.8);
+}
+
+.register form .chart {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.register form .chart label {
+  margin-bottom: 5px;
+  font-family: "fonte";
+}
+
+.register-dark form .chart label {
+  color: rgba(var(--cor-branco), 0.8);
+}
+
+.register form .chart input {
+  min-height: 26px;
+  width: 100%;
+  padding-left: 6px;
+  margin-bottom: 14px;
+}
+
+.register form .chart .input2 {
+  position: relative;
+}
+
+.register form .chart .olho-password {
+  position: absolute;
+  top: 3px;
+  right: 4%;
+}
+
+.register form .chart .olho-password img {
+  cursor: pointer;
+}
+
+.register form span {
+  color: red;
+}
+
+.register-dark form span {
+  color: yellow;
+}
+
+.register form button {
+  height: 30px;
+
+  margin: 10px 8px 12px;
+  border: 1px solid black;
+  border-radius: 4px;
+
+  font-family: "fonte";
+  transition: ease-in-out 0.1s;
+  cursor: pointer;
+}
+
+.register-dark form button {
+  border: 2px solid rgba(var(--cor-rosa), 1);
+}
+
+.register form button:hover {
+  background-color: rgba(var(--cor-branco), 1);
+  border: 2px solid rgba(var(--cor-preto), 0.6);
+}
+
+.register form .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+
+  font-family: "fonte";
+}
+
+.register-dark form .bottom {
+  color: rgba(var(--cor-branco), 0.8);
+}
+
+.register-dark form a {
+  color: rgba(var(--cor-rosa), 1);
+}

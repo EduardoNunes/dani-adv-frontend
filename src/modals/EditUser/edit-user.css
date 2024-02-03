@@ -1,0 +1,129 @@
+.edit-user {
+    display: flex;
+    position: absolute;
+  
+    width: 100vw;
+    height: calc(100vh - 40px);
+
+    background-color: rgba(var(--cor-preto), 0.8);
+  
+    z-index: 2;
+  }
+  
+  .edit-user .container-edit-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    width: 100%;
+    height: calc(100% - 50px);
+
+    margin-top: 50px;
+  }
+  
+  .edit-user .container-edit-user .chart-edit-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  
+    height: 400px;
+    width: 40%;
+    min-width: 600px;
+  
+    padding: 40px;
+    border-radius: 10px;
+  
+    background-color: white;
+  }
+  
+  .edit-user .container-edit-user .chart-edit-user img {
+    position: absolute;
+    width: 25px;
+    top: 14px;
+    right: 14px;
+    cursor: pointer;
+  }
+  
+  .edit-user .container-edit-user .chart-edit-user h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+  
+    background-color: rgba(var(--cor-roxo), 0.6);
+  }
+  
+  .edit-user .container-edit-user .chart-edit-user form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    height: 96%;
+    width: 80%;
+    border-radius: 5px;
+  
+    list-style: none;
+    background-color: rgba(var(--cor-roxo), 0.2);
+  }
+  
+  .edit-user .container-edit-user .chart-edit-user form label {
+    width: 80%;
+    height: 20px;
+    margin-top: 10px;
+  
+    font-weight: 600;
+    font-family: "fonte";
+  }
+  
+  .edit-user .container-edit-user .chart-edit-user form input,
+  .edit-user .container-edit-user .chart-edit-user form p {
+    display: flex;
+    align-items: center;
+  
+    width: 80%;
+    height: 24px;
+  
+    padding-left: 10px;
+    border-radius: 5px;
+  
+    background-color: rgba(var(--cor-branco), 0.8);
+  }
+
+  .edit-user .container-edit-user .chart-edit-user form .input-senha {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+  .edit-user .container-edit-user .chart-edit-user form .input-senha .olho-password {
+    position: relative;
+    top: -12px;
+    right: -4px;
+  }
+  
+  .edit-user .container-edit-user .chart-edit-user form .infos {
+    height: 90px;
+  
+    text-overflow: ellipsis;
+    overflow-y: scroll;
+  }
+
+  .edit-user .container-edit-user .chart-edit-user form .edit-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 80%;
+  }
+
+  .edit-user .container-edit-user .chart-edit-user form .edit-buttons button {
+    height: 30px;
+    width: 140px;
+    cursor: pointer;
+  }
+  

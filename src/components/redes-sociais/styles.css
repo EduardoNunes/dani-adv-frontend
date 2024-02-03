@@ -1,0 +1,7 @@
+.instagram,
+.linkedin,
+.whats-app,
+.email {
+    display: flex;
+    align-items: center;
+}

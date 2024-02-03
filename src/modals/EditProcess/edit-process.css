@@ -1,0 +1,141 @@
+.edit-process {
+  display: flex;
+  position: absolute;
+
+  width: 100vw;
+  height: calc(100vh - 40px);
+  background-color: rgba(var(--cor-preto), 0.8);
+
+  z-index: 1;
+}
+
+.edit-process .container-process {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.edit-process .container-process .chart-process {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  height: 80%;
+  min-height: 650px;
+  width: 40%;
+  min-width: 600px;
+
+  padding: 40px;
+  border-radius: 10px;
+
+  background-color: rgba(var(--cor-branco), 0.9);
+}
+
+.edit-process-dark .container-process .chart-process {
+  background-color: rgba(var(--cor-preto), 1);
+  border: 1px solid rgba(var(--cor-roxo), 0.5);
+}
+
+.edit-process .container-process .chart-process img {
+  position: absolute;
+  width: 25px;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.edit-process .container-process .chart-process h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-roxo), 0.6);
+}
+
+.edit-process-dark .container-process .chart-process h3 {
+  background-color: rgba(var(--cor-rosa), 0.6);
+  color: rgba(var(--cor-branco), 0.9);
+  font-weight: 300;
+}
+
+.edit-process .container-process .chart-process form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 96%;
+  min-width: 90%;
+  border-radius: 5px;
+
+  list-style: none;
+  background-color: rgba(var(--cor-roxo), 0.2);
+}
+
+.edit-process-dark .container-process .chart-process form {
+  background-color: rgba(var(--cor-rosa), 0.2);
+}
+
+.edit-process .container-process .chart-process form label {
+  width: 80%;
+  height: 20px;
+  margin-top: 10px;
+
+  font-weight: 600;
+  font-family: "fonte";
+}
+
+.edit-process-dark .container-process .chart-process form label {
+  color: rgba(var(--cor-branco), 0.9);
+  font-weight: 300;
+}
+
+.edit-process .container-process .chart-process form input {
+  display: flex;
+  align-items: center;
+
+  width: 80%;
+  height: 24px;
+
+  padding-left: 10px;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-branco), 0.8);
+}
+
+.edit-process .container-process .chart-process form textarea {    
+    display: flex;
+    align-items: center;
+  
+    width: 80%;
+    height: 80px;
+  
+    border: 1px solid rgba(var(--cor-preto), 1);
+    padding: 4px 10px;
+    border-radius: 5px;
+  
+    background-color: rgba(var(--cor-branco), 0.8);
+}
+
+.edit-process .container-process .chart-process form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 80%;
+  margin-top: 10px;
+}
+
+.edit-process .container-process .chart-process form button {
+  height: 30px;
+  width: 140px;
+  cursor: pointer;
+}

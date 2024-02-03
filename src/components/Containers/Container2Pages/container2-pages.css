@@ -1,0 +1,19 @@
+.geral .container .left ul li {
+    width: 100%;
+}
+
+.geral .container .right .moldura-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 90%;
+    width: 90%;    
+}
+
+.geral .container .right .moldura-2 img {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}

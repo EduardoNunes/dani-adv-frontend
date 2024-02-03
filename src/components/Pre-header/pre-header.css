@@ -1,0 +1,135 @@
+.pre-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 40px;
+
+    transition: ease-in-out .3s;
+}
+
+.pre-header-light {
+    border-top: 1px solid rgba(var(--cor-roxo), 1);
+    background-color: rgba(var(--cor-branco), .7);
+}
+
+.pre-header-dark {
+    border-top: 1px solid rgba(var(--cor-rosa), 1);
+    background-color: rgba(var(--cor-preto), 1);
+}
+
+.pre-header-hidden {
+    height: 0;
+    border: 0;
+}
+
+.pre-header .container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 80%;
+}
+
+.pre-header .container .icones-theme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+    width: 50px;
+}
+
+.pre-header .container .icones-theme img {
+    width: 35px;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+.pre-header .container .icones-theme img:hover {
+    width: 30px;
+}
+
+.pre-header .container .icones-font-size {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 50px;
+
+    height: 40px;
+    width: 250px;
+    margin-right: 10px;
+
+    transition: ease-in-out .3s;
+}
+
+.pre-header .container .icones-font-size-light {
+    color: rgba(var(--cor-preto), 1);
+}
+
+.pre-header .container .icones-font-size-dark {
+    color: rgba(var(--cor-branco), .7);
+}
+
+.pre-header .container .icones-font-size h5 {
+    margin-right: 10px;
+
+    font-family: 'fonte';
+    font-size: 19px;
+}
+
+.pre-header .container .icones-font-size img {
+    width: 25px;
+}
+
+.pre-header .container .icones-font-size .icone-img-light {
+    width: 25px;
+}
+
+.pre-header .container .icones-font-size .change-font {
+    display: flex;
+}
+
+.pre-header .container .icones-font-size .change-font p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 25px;
+    width: 25px;
+    padding: 2px;
+    margin-left: 8px;
+    border-radius: 4px;
+
+    font-size: 25px;
+    font-family: 'fonte';
+    font-weight: 600;
+    
+    transition: ease-in-out .3s;
+}
+
+.pre-header .container .icones-font-size .change-font-light p {
+    border: 1px solid rgba(var(--cor-preto), 1);
+    color: rgba(var(--cor-roxo), 1);
+}
+
+.pre-header .container .icones-font-size .change-font-light p:hover:first-child,
+.pre-header .container .icones-font-size .change-font-light p:hover:last-child {
+    background-color: rgba(var(--cor-roxo), .5);
+    cursor: pointer;    
+}
+
+.pre-header .container .icones-font-size .change-font-dark p {
+    border: 1px solid rgba(var(--cor-branco), .8);
+    color: rgba(var(--cor-branco), .8);
+}
+
+.pre-header .container .icones-font-size .change-font-dark p:hover:first-child,
+.pre-header .container .icones-font-size .change-font-dark p:hover:last-child {
+    background-color: rgba(var(--cor-rosa), .5);
+    cursor: pointer;
+}
+
+.container-pre-header .outlet {
+    height: calc(100vh - 40px);
+}

@@ -1,0 +1,68 @@
+.geral {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 80px 0;
+}
+
+.geral .container {
+    display: flex;
+    align-items: center;
+    width: 73%;
+
+    border-radius: 10px;
+}
+
+.geral .container .left {
+    width: 50%;
+    margin: 50px 0;
+    padding: 30px 50px;
+
+    font-family: 'fonte';
+    text-align: justify;
+    font-weight: 600;
+    line-height: 1.3;
+
+    opacity: .9;
+}
+
+.geral .container .left-light {
+    border: 20px solid rgba(var(--cor-roxo), .3);
+    background-color: rgba(var(--cor-branco), .8);
+}
+
+.geral .container .left-dark {
+    border: 20px solid rgba(var(--cor-rosa), .5);
+    background-color: rgba(var(--cor-preto), 1);
+    color: rgba(var(--cor-branco), 1);
+    font-weight: 300;
+}
+
+.geral .container .left h2 {
+    margin-bottom: 15px;
+}
+
+.geral .container .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 600px;
+    width: 50%;
+}
+
+.geral .container .right-light {
+    background-color: rgba(var(--cor-roxo), .6);
+}
+
+.geral .container .right-dark {
+    background-color: rgba(var(--cor-rosa), .6);
+}
+
+.geral .container .right .moldura-light {
+    background-color: rgba(var(--cor-preto), .6);
+}
+
+.geral .container .right .moldura-dark {
+    background-color: rgba(var(--cor-preto), .96);
+}
