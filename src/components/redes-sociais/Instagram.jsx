@@ -8,7 +8,7 @@ function Instagram({ instagram }) {
 
     return (
         <div className='instagram'>
-            <a href="https://www.instagram.com/danielalordelloadv/" target="_blank" alt="instagram">
+            <a href="https://www.instagram.com/danielalordelloadv/" target="_blank" rel="noopener noreferrer" alt="instagram">
                 <p>{instagram}</p>
                 <img src={theme === 'light' ? IconeInstagramPreto : IconeInstagramBranco} alt='Icone Instagram' />
             </a>

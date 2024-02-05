@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ea630b81.css",
+    "main.js": "/static/js/main.f2069394.js",
+    "static/media/balanca-rosa.jpg": "/static/media/balanca-rosa.77a89cd3b422a2172cf5.jpg",
+    "static/media/marmore-preto-roxo.jpg": "/static/media/marmore-preto-roxo.c3286150b483caee5e2c.jpg",
+    "static/media/AbhayaLibre-Regular.ttf": "/static/media/AbhayaLibre-Regular.9aebe13b2dda1ed63653.ttf",
+    "static/media/AbhayaLibre-Medium.ttf": "/static/media/AbhayaLibre-Medium.4b4dfbab5d47da02309b.ttf",
+    "static/media/AbhayaLibre-SemiBold.ttf": "/static/media/AbhayaLibre-SemiBold.e6081c24d30136900fe3.ttf",
+    "static/media/dani-foto1.png": "/static/media/dani-foto1.6ecdd014be2b3c932f24.png",
+    "static/media/companheiro.jpg": "/static/media/companheiro.36ddd49be3fbf4a5bb0d.jpg",
+    "static/media/martelo-ouro.jpg": "/static/media/martelo-ouro.8fec19ea6e63504099ba.jpg",
+    "static/media/textura-marmore.jpg": "/static/media/textura-marmore.ebeea64b12936098d27c.jpg",
+    "static/media/logo-completo.png": "/static/media/logo-completo.8f9f77d306028966bead.png",
+    "static/media/logo-reduzida-branco.png": "/static/media/logo-reduzida-branco.25a7ae158e770288908f.png",
+    "static/media/logo-completo-branco.png": "/static/media/logo-completo-branco.b924fc90a4c4800b6e0b.png",
+    "static/media/whats-verde.png": "/static/media/whats-verde.d026940870fb334920b7.png",
+    "static/media/logo-reduzida-color-120px.png": "/static/media/logo-reduzida-color-120px.64293e55c25b96ea1d83.png",
+    "index.html": "/index.html",
+    "main.ea630b81.css.map": "/static/css/main.ea630b81.css.map",
+    "main.f2069394.js.map": "/static/js/main.f2069394.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea630b81.css",
+    "static/js/main.f2069394.js"
+  ]
+}

@@ -8,7 +8,7 @@ function Linkedin({ nomeLinkedin }) {
 
     return (
         <div className='linkedin'>
-            <a href="https://www.linkedin.com/in/daniela-lordello-2b9358138/" target="_blank" alt="linkedin" >
+            <a href="https://www.linkedin.com/in/daniela-lordello-2b9358138/" target="_blank" rel="noopener noreferrer" alt="linkedin" >
                 <p>{nomeLinkedin}</p>
                 <img src={theme === 'light' ? IconeLinkedinPreto : IconeLinkedinBranco} alt="ícone linkedin" />
             </a>

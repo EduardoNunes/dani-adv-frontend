@@ -12,7 +12,7 @@ function WhatsApp({ numWhatsApp, icone }) {
 
     return (
         <div className='whats-app'>
-            <a href='https://api.whatsapp.com/send?phone=${+5571993259187}&text=Olá, Dra. Daniela, preciso de u m auxílio jurídico, vamos conversar?'
+            <a href={`https://api.whatsapp.com/send?phone=${+5571993259187}&text=Olá, Dra. Daniela, preciso de um auxílio jurídico, vamos conversar?`}
                 target="_blank"
                 rel="noopener noreferrer">
                 <p>{numWhatsApp}</p>
