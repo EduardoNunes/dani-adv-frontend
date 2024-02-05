@@ -14,21 +14,9 @@ function ClientPage() {
     useModal();
   const [dataProcess, setDataProcess] = useState();
 
-  /*   async function clientProcess() {
-    try {
-      const response = await api.get("/processosClientes", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      setDataProcess(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  } */
-
   useEffect(() => {
     const token = getItem("token");
-    const fetchData = async () => {
+    const clientProcess = async () => {
       try {
         const response = await api.get("/processosClientes", {
           headers: { Authorization: `Bearer ${token}` },
@@ -40,7 +28,7 @@ function ClientPage() {
       }
     };
 
-    fetchData()
+    clientProcess();
   }, []);
 
   return (
