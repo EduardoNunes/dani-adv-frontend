@@ -75,13 +75,13 @@ function Header() {
                 <Link to="/home">Início </Link>
               </li>
               <li>
-                <a href="#">Sobre Drª. Daniela</a>
+                <a href="/home">Sobre Drª. Daniela</a>
               </li>
               <li>
-                <a href="#">Missão visão e valores</a>
+                <a href="/home">Missão visão e valores</a>
               </li>
               <li>
-                <a href="#">Contato</a>
+                <a href="/home">Contato</a>
               </li>
             </ul>
           </nav>
