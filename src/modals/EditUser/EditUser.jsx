@@ -19,25 +19,26 @@ function EditUser() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const token = getItem("token");
-  const id = getItem("id");  
+  const id = getItem("id");
+
+  async function EditUserData() {
+    try {
+      const response = await api.get(`/obterCliente/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const user = response.data[0];
+      if(!user) return
+      setUserData(user);
+      setNome(user.nome);
+      setEmail(user.email);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-    async function EditUserData() {
-      try {
-        const response = await api.get(`/obterCliente/${id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-  
-        const user = response.data[0];
-        setUserData(user);
-        setNome(user.nome);
-        setEmail(user.email);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    EditUserData()
+    EditUserData();
   }, []);
 
   async function handleSubmit(event) {
