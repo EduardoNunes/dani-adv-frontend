@@ -46,7 +46,7 @@ function RegisterPage() {
         return;
       }
 
-      await api.post("/usuario", {
+      await api.post("/cadastrarUsuario", {
         nome: name,
         email: email,
         senha: password,
