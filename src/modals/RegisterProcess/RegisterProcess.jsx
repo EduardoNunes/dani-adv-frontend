@@ -54,19 +54,21 @@ function RegisterProcess({ updateList }) {
     }
   }
 
-  async function showClients() {
-    try {
-      const response = await api.get("/listarClientes", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      setClientes(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
+    const token = getItem("token");
+    
+    async function showClients() {
+      try {
+        const response = await api.get("/listarClientes", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        setClientes(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     showClients();
   }, []);
 

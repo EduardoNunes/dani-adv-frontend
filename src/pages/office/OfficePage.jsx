@@ -32,6 +32,7 @@ function OfficePage() {
   const token = getItem("token");
 
   async function clientProcess() {
+    const token = getItem("token");
     try {
       const response = await api.get("/processosEscritorio", {
         headers: { Authorization: `Bearer ${token}` },
