@@ -65,7 +65,7 @@ function Login() {
       }
     } catch (error) {
       console.error("Erro na solicitação:", error.message);
-      setError("Erro ao processar a solicitação");
+      setError(error.response.data.mensagem);
     }
 
     setEmail("");
