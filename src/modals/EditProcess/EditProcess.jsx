@@ -7,9 +7,13 @@ import { useState } from "react";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 
-function EditProcess() {
+function EditProcess({ updateList }) {
   const { theme } = useTheme();
-  const { handleClickOpenEditProcess, selectedEditProcess } = useModal();
+  const {
+    handleClickOpenEditProcess,
+    selectedEditProcess,
+    handleClickOpenMessageToast,
+  } = useModal();
   const [autor, setAutor] = useState(selectedEditProcess.autor);
   const [reu, setReu] = useState(selectedEditProcess.reu);
   const [numero, setNumero] = useState(selectedEditProcess.numero);
@@ -46,6 +50,8 @@ function EditProcess() {
         }
       );
       handleClickOpenEditProcess(false);
+      updateList();
+      handleClickOpenMessageToast(true, "Processo atualizado com sucesso!");
       console.log("Processo atualizado com sucesso!", response.data);
     } catch (error) {
       console.error(error);

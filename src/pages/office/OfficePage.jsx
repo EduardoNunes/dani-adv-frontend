@@ -104,7 +104,7 @@ function OfficePage() {
   return (
     <div className={`office-page office-page-${theme}`}>
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
-      {openEditProcess && <EditProcess />}
+      {openEditProcess && <EditProcess updateList={clientProcess}/>}
       {openRegisterProcess && <RegisterProcess updateList={clientProcess}/>}
       <img
         className={`background background-${theme}`}
