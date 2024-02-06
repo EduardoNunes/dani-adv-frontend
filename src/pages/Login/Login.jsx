@@ -12,13 +12,14 @@ import "./login.css";
 import { useTipoCadastroContext } from "../../context/TipoCadastroContext";
 import { getItem, setItem } from "../../utils/storage";
 import { useShowPassword } from "../../context/showPasswordContext";
+import { useValidationsContext } from "../../context/ValidationsContext";
 
 function Login() {
   const { theme } = useTheme();
   const { selectedOption } = useTipoCadastroContext();
   const { fontSizeModify } = useFontSize();
-  const { handleClickShowPassword, showPassword } =
-    useShowPassword();
+  const { handleClickShowPassword, showPassword } = useShowPassword();
+  const { validationEmail, validationPassword} = useValidationsContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -30,14 +31,22 @@ function Login() {
     setError("");
 
     try {
-      if (!email) {
-        setError("O campo e-mail está vazio");
+      let mensagemError = await validationEmail(email);
+
+      if (mensagemError) {
+        setError(mensagemError);
         return;
-      } else if (!password) {
-        setError("O campo senha está vazio");
+      }
+
+      mensagemError = await validationPassword(password);
+
+      if (mensagemError) {
+        setError(mensagemError);
         return;
-      } else if (password.length < 8) {
-        setError("A senha deve ter no mínimo 8 caracteres");
+      }
+
+      if (!selectedOption) {
+        setError("Escolha um tipo de cadastro");
         return;
       }
 
