@@ -8,6 +8,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { TipoCadastroProvider } from "./context/TipoCadastroContext";
 import MainRoutes from "./routes";
 import { ShowPasswordProvider } from "./context/showPasswordContext";
+import { ValidationsProvider } from "./context/ValidationsContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,6 +16,7 @@ root.render(
     <ThemeProvider>
       <FontSizeProvider>
         <ScrollProvider>
+          <ValidationsProvider>
           <TipoCadastroProvider>
             <BrowserRouter>
               <ShowPasswordProvider>
@@ -24,6 +26,7 @@ root.render(
               </ShowPasswordProvider>
             </BrowserRouter>
           </TipoCadastroProvider>
+          </ValidationsProvider>
         </ScrollProvider>
       </FontSizeProvider>
     </ThemeProvider>

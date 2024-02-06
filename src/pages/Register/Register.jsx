@@ -11,10 +11,12 @@ import "./register.css";
 import TipoCadastro from "../../components/TipoCadastro/TipoCadastro";
 import { useTipoCadastroContext } from "../../context/TipoCadastroContext";
 import { getItem } from "../../utils/storage";
+import { useValidationsContext } from "../../context/ValidationsContext";
 
 function RegisterPage() {
   const { theme } = useTheme();
   const { selectedOption, setSlecetedOption } = useTipoCadastroContext();
+  const { validationPassword, mensagemError } = useValidationsContext()
   const { fontSizeModify } = useFontSize();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,33 +27,22 @@ function RegisterPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    
     setError("");
-
+    
     try {
+      const mensagemError = await validationPassword(password)
+
+      if(mensagemError) {
+        setError(mensagemError)
+        return;
+      }
+
       if (!name) {
         setError("O campo nome é obrigatório");
         return;
       } else if (!email) {
         setError("O campo e-mail é obrigatório");
-        return;
-      } else if (!password) {
-        setError("O campo senha é obrigatório");
-        return;
-      } else if (!/(?=.*[a-z])/.test(password)) {
-        setError("A senha deve ter no mínimo 1 letra minúscula");
-        return;
-      } else if (!/^(?=.*[A-Z])/.test(password)) {
-        setError("A senha deve ter no mínimo 1 letra maiúscula");
-        return;
-      } else if (!/^(?=.*\d)/.test(password)) {
-        setError("A senha deve ter no mínimo um número");
-        return;
-      } else if (!/(?=.*[@$!%^&*()-_=+'[{\]};:'<,>.?/\\])/g.test(password)) {
-        setError("A senha deve ter no mínimo 1 caractere especial.");
-        return;
-      } else if (password.length < 8) {
-        setError("A senha deve ter no mínimo 8 caracteres");
         return;
       } else if (!selectedOption) {
         setError("Escolha um tipo de cadastro");
@@ -67,9 +58,8 @@ function RegisterPage() {
 
       navigate("/login");
     } catch (error) {
-      console.log(error.response.data.mensagem);
       console.error("Erro na solicitação:", error.message);
-      setError(error.response.data.mensagem);
+      setError(mensagemError);
     }
   }
 
