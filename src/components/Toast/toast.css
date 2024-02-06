@@ -7,8 +7,8 @@
   height: 90px;
   width: 300px;
 
-  top: calc(50% - 90px);
-  left: calc(50% - 300px);
+  top: calc(50% - 45px);
+  left: calc(50% - 150px);
 
   border-radius: 10px;
   background-color: rgba(var(--cor-branco), 0.9);
