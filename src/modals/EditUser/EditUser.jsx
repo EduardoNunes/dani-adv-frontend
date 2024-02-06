@@ -9,8 +9,10 @@ import { useShowPassword } from "../../context/showPasswordContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./edit-user.css";
+import { useValidationsContext } from "../../context/ValidationsContext";
 
 function EditUser() {
+  const { validationPassword, mensagemError } = useValidationsContext()
   const { handleClickShowPassword, showPassword } = useShowPassword();
   const { theme } = useTheme();
   const { handleClickOpenSettings } = useModal();
@@ -18,6 +20,7 @@ function EditUser() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [error, setError] = useState("")
   const token = getItem("token");
   const id = getItem("id");
 
@@ -49,6 +52,13 @@ function EditUser() {
     event.preventDefault();
 
     try {
+      const mensagemError = await validationPassword(senha)
+      console.log("mensagem", mensagemError)
+      if(mensagemError) {
+        setError(mensagemError)
+        return;
+      }
+
       const response = await api.put(
         `/atualizarUsuario/${id}`,
         {
@@ -63,7 +73,8 @@ function EditUser() {
 
       console.log("Usuário atualizado com sucesso!", response.data);
     } catch (error) {
-      console.error(error);
+      console.error("Erro na solicitação:", error.message);
+      setError(mensagemError);
     }
   }
 
@@ -110,7 +121,7 @@ function EditUser() {
               </div>
               <label>Tipo de cadastro</label>
               <p>{userData.cadastro}</p>
-
+              {error && <span>{error}</span>}
               <div className="edit-buttons">
                 <button>Enviar</button>
               </div>

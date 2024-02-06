@@ -113,6 +113,11 @@
     overflow-y: scroll;
   }
 
+  .edit-user .container-edit-user .chart-edit-user form span {
+    margin-top: 8px;
+    color: red;
+  }
+
   .edit-user .container-edit-user .chart-edit-user form .edit-buttons {
     display: flex;
     justify-content: center;
