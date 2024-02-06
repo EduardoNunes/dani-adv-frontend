@@ -39,7 +39,7 @@ export function ValidationsProvider({ children }) {
     } else if (name.length < 5) {
       return "Nome inválido.";
     } else if (!/\s/.test(name)) {
-      return "Nome inválido.";
+      return "Digite seu nome completo.";
     }
   }
 

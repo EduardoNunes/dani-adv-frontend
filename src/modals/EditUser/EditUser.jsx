@@ -12,7 +12,7 @@ import "./edit-user.css";
 import { useValidationsContext } from "../../context/ValidationsContext";
 
 function EditUser() {
-  const { validationPassword, mensagemError } = useValidationsContext();
+  const { validationPassword, mensagemError, validationName, validationEmail } = useValidationsContext();
   const { handleClickShowPassword, showPassword } = useShowPassword();
   const { theme } = useTheme();
   const { handleClickOpenSettings, handleClickOpenMessageToast } = useModal();
@@ -52,8 +52,22 @@ function EditUser() {
     event.preventDefault();
 
     try {
-      const mensagemError = await validationPassword(senha);
-      console.log("mensagem", mensagemError);
+      let mensagemError = await validationName(nome);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationEmail(email)
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationPassword(senha);
+
       if (mensagemError) {
         setError(mensagemError);
         return;
