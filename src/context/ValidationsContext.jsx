@@ -23,8 +23,30 @@ export function ValidationsProvider({ children }) {
     }
   }
 
+  function validationEmail(email) {
+    if (!email) {
+      return "O campo e-mail é obrigatório";
+    } else if (email.indexOf("@") === -1) {
+      return "Email inválido.";
+    } else if (email.indexOf(".") === -1) {
+      return "Email inválido";
+    }
+  }
+
+  function validationName(name) {
+    if (!name) {
+      return "O campo nome é obrigatório";
+    } else if (name.length < 5) {
+      return "Nome inválido.";
+    } else if (!/\s/.test(name)) {
+      return "Nome inválido.";
+    }
+  }
+
   return (
-    <ValidationsContext.Provider value={{ validationPassword }}>
+    <ValidationsContext.Provider
+      value={{ validationPassword, validationEmail, validationName }}
+    >
       {children}
     </ValidationsContext.Provider>
   );

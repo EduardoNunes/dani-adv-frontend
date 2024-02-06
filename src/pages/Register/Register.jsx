@@ -17,7 +17,7 @@ import "./register.css";
 function RegisterPage() {
   const { theme } = useTheme();
   const { selectedOption, setSlecetedOption } = useTipoCadastroContext();
-  const { validationPassword, mensagemError } = useValidationsContext();
+  const { validationPassword, mensagemError, validationEmail, validationName } = useValidationsContext();
   const { handleClickOpenMessageToast } = useModal();
   const { fontSizeModify } = useFontSize();
   const [name, setName] = useState("");
@@ -33,20 +33,28 @@ function RegisterPage() {
     setError("");
 
     try {
-      const mensagemError = await validationPassword(password);
+      let mensagemError = await validationName(name)
 
       if (mensagemError) {
         setError(mensagemError);
         return;
       }
 
-      if (!name) {
-        setError("O campo nome é obrigatório");
+      mensagemError = await validationEmail(email)
+
+      if (mensagemError) {
+        setError(mensagemError);
         return;
-      } else if (!email) {
-        setError("O campo e-mail é obrigatório");
+      }
+
+      mensagemError = await validationPassword(password);
+
+      if (mensagemError) {
+        setError(mensagemError);
         return;
-      } else if (!selectedOption) {
+      }      
+
+      if (!selectedOption) {
         setError("Escolha um tipo de cadastro");
         return;
       }
@@ -62,7 +70,7 @@ function RegisterPage() {
       handleClickOpenMessageToast(true, "Usuário cadastrado com sucesso!");
     } catch (error) {
       console.error("Erro na solicitação:", error.message);
-      setError(mensagemError);
+      setError(mensagemError || error.response.data.mensagem);
     }
   }
 
