@@ -1,0 +1,30 @@
+.toast {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 90px;
+  width: 300px;
+
+  bottom: 5%;
+  right: 0;
+
+  border-radius: 10px;
+  background-color: rgba(var(--cor-branco), 0.9);
+  border: 1px solid green;
+  color: green;
+
+  z-index: 1;
+}
+
+.toast-dark {
+  background-color: rgba(var(--cor-preto), 0.8);
+  color: rgb(128, 207, 128);
+}
+
+.toast p {
+  font-family: "fonte";
+  font-weight: 600;
+  font-size: 18px;
+}

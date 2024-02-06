@@ -4,19 +4,21 @@ import BalancaRosaFoto from "../../assets/balanca-rosa.jpg";
 import JusticaRoxoFoto from "../../assets/martelo-ouro.jpg";
 import olhoAberto from "../../assets/olho-aberto.png";
 import olhoFechado from "../../assets/olho-fechado.png";
-import { useFontSize } from "../../context/FontSizeContext";
-import { useTheme } from "../../context/ThemeContext";
-import api from "../../services/api";
-import "./register.css";
 import TipoCadastro from "../../components/TipoCadastro/TipoCadastro";
+import { useFontSize } from "../../context/FontSizeContext";
+import { useModal } from "../../context/ModalsContext";
+import { useTheme } from "../../context/ThemeContext";
 import { useTipoCadastroContext } from "../../context/TipoCadastroContext";
-import { getItem } from "../../utils/storage";
 import { useValidationsContext } from "../../context/ValidationsContext";
+import api from "../../services/api";
+import { getItem } from "../../utils/storage";
+import "./register.css";
 
 function RegisterPage() {
   const { theme } = useTheme();
   const { selectedOption, setSlecetedOption } = useTipoCadastroContext();
-  const { validationPassword, mensagemError } = useValidationsContext()
+  const { validationPassword, mensagemError } = useValidationsContext();
+  const { handleClickOpenMessageToast } = useModal();
   const { fontSizeModify } = useFontSize();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,14 +29,14 @@ function RegisterPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    
-    setError("");
-    
-    try {
-      const mensagemError = await validationPassword(password)
 
-      if(mensagemError) {
-        setError(mensagemError)
+    setError("");
+
+    try {
+      const mensagemError = await validationPassword(password);
+
+      if (mensagemError) {
+        setError(mensagemError);
         return;
       }
 
@@ -57,6 +59,7 @@ function RegisterPage() {
       });
 
       navigate("/login");
+      handleClickOpenMessageToast(true, "Usuário cadastrado com sucesso!");
     } catch (error) {
       console.error("Erro na solicitação:", error.message);
       setError(mensagemError);

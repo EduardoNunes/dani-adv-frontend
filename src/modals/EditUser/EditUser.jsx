@@ -12,15 +12,15 @@ import "./edit-user.css";
 import { useValidationsContext } from "../../context/ValidationsContext";
 
 function EditUser() {
-  const { validationPassword, mensagemError } = useValidationsContext()
+  const { validationPassword, mensagemError } = useValidationsContext();
   const { handleClickShowPassword, showPassword } = useShowPassword();
   const { theme } = useTheme();
-  const { handleClickOpenSettings } = useModal();
+  const { handleClickOpenSettings, handleClickOpenMessageToast } = useModal();
   const [userData, setUserData] = useState({});
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
   const token = getItem("token");
   const id = getItem("id");
 
@@ -52,10 +52,10 @@ function EditUser() {
     event.preventDefault();
 
     try {
-      const mensagemError = await validationPassword(senha)
-      console.log("mensagem", mensagemError)
-      if(mensagemError) {
-        setError(mensagemError)
+      const mensagemError = await validationPassword(senha);
+      console.log("mensagem", mensagemError);
+      if (mensagemError) {
+        setError(mensagemError);
         return;
       }
 
@@ -72,6 +72,8 @@ function EditUser() {
       );
 
       console.log("Usuário atualizado com sucesso!", response.data);
+      handleClickOpenMessageToast(true, "Usuário atualizado com sucesso!");
+      handleClickOpenSettings(false);
     } catch (error) {
       console.error("Erro na solicitação:", error.message);
       setError(mensagemError);

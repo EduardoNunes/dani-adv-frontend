@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ea630b81.css",
-    "main.js": "/static/js/main.71666e3c.js",
+    "main.css": "/static/css/main.b8d06f86.css",
+    "main.js": "/static/js/main.84c6deb8.js",
     "static/media/balanca-rosa.jpg": "/static/media/balanca-rosa.77a89cd3b422a2172cf5.jpg",
     "static/media/marmore-preto-roxo.jpg": "/static/media/marmore-preto-roxo.c3286150b483caee5e2c.jpg",
     "static/media/AbhayaLibre-Regular.ttf": "/static/media/AbhayaLibre-Regular.9aebe13b2dda1ed63653.ttf",
@@ -17,11 +17,11 @@
     "static/media/whats-verde.png": "/static/media/whats-verde.d026940870fb334920b7.png",
     "static/media/logo-reduzida-color-120px.png": "/static/media/logo-reduzida-color-120px.64293e55c25b96ea1d83.png",
     "index.html": "/index.html",
-    "main.ea630b81.css.map": "/static/css/main.ea630b81.css.map",
-    "main.71666e3c.js.map": "/static/js/main.71666e3c.js.map"
+    "main.b8d06f86.css.map": "/static/css/main.b8d06f86.css.map",
+    "main.84c6deb8.js.map": "/static/js/main.84c6deb8.js.map"
   },
   "entrypoints": [
-    "static/css/main.ea630b81.css",
-    "static/js/main.71666e3c.js"
+    "static/css/main.b8d06f86.css",
+    "static/js/main.84c6deb8.js"
   ]
 }

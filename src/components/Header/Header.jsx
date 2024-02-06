@@ -12,9 +12,10 @@ import sairBranco from "../../assets/sair-branco.png";
 import sairPreto from "../../assets/sair-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import EditUser from "../../modals/EditUser/EditUser";
+import Toast from "../Toast/Toast";
 
 function Header() {
-  const { handleClickOpenSettings, openUserEdit } = useModal();
+  const { handleClickOpenSettings, openUserEdit, openToast } = useModal();
   const { theme } = useTheme();
   const { scroll } = useScroll();
   const { fontSizeModify } = useFontSize();
@@ -54,6 +55,7 @@ function Header() {
 
   return (
     <div className="container-header">
+      {openToast && <Toast />}
       {openUserEdit && <EditUser />}
       <div className={`header header-${theme} ${headerMove}`}>
         <div className="container">
