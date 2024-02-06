@@ -30,13 +30,25 @@ function RegisterPage() {
 
     try {
       if (!name) {
-        setError("O campo nome está vazio");
+        setError("O campo nome é obrigatório");
         return;
       } else if (!email) {
-        setError("O campo e-mail está vazio");
+        setError("O campo e-mail é obrigatório");
         return;
       } else if (!password) {
-        setError("O campo senha está vazio");
+        setError("O campo senha é obrigatório");
+        return;
+      } else if (!/(?=.*[a-z])/.test(password)) {
+        setError("A senha deve ter no mínimo 1 letra minúscula");
+        return;
+      } else if (!/^(?=.*[A-Z])/.test(password)) {
+        setError("A senha deve ter no mínimo 1 letra maiúscula");
+        return;
+      } else if (!/^(?=.*\d)/.test(password)) {
+        setError("A senha deve ter no mínimo um número");
+        return;
+      } else if (!/(?=.*[@$!%^&*()-_=+'[{\]};:'<,>.?/\\])/g.test(password)) {
+        setError("A senha deve ter no mínimo 1 caractere especial.");
         return;
       } else if (password.length < 8) {
         setError("A senha deve ter no mínimo 8 caracteres");
@@ -55,8 +67,9 @@ function RegisterPage() {
 
       navigate("/login");
     } catch (error) {
+      console.log(error.response.data.mensagem);
       console.error("Erro na solicitação:", error.message);
-      setError("Ocorreu um erro ao processar a solicitação");
+      setError(error.response.data.mensagem);
     }
   }
 
@@ -74,9 +87,9 @@ function RegisterPage() {
 
   useEffect(() => {
     if (getItem("token")) {
-      navigate("/client")
+      navigate("/client");
     }
-  }, )
+  });
 
   return (
     <div className={`register register-${theme}`}>
@@ -148,9 +161,7 @@ function RegisterPage() {
             </div>
           </div>
 
-          <TipoCadastro 
-            titulo = "Quero me cadastrar como:"
-          />
+          <TipoCadastro titulo="Quero me cadastrar como:" />
 
           {error && <span>{error}</span>}
           <div>
