@@ -55,7 +55,7 @@ function Login() {
         senha: password,
         tipoCadastro: selectedOption,
       });
-
+      console.log("response", response)
       if (response.status > 204) {
         return;
       }
