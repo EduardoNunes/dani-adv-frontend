@@ -12,7 +12,13 @@ import "./edit-user.css";
 import { useValidationsContext } from "../../context/ValidationsContext";
 
 function EditUser() {
-  const { validationPassword, mensagemError, validationName, validationEmail } = useValidationsContext();
+  const {
+    validationPassword,
+    mensagemError,
+    validationName,
+    validationEmail,
+    validationConfirmPassword,
+  } = useValidationsContext();
   const { handleClickShowPassword, showPassword } = useShowPassword();
   const { theme } = useTheme();
   const { handleClickOpenSettings, handleClickOpenMessageToast } = useModal();
@@ -20,6 +26,7 @@ function EditUser() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmSenha, setConfirmSenha] = useState("");
   const [error, setError] = useState("");
   const token = getItem("token");
   const id = getItem("id");
@@ -59,7 +66,7 @@ function EditUser() {
         return;
       }
 
-      mensagemError = await validationEmail(email)
+      mensagemError = await validationEmail(email);
 
       if (mensagemError) {
         setError(mensagemError);
@@ -67,6 +74,13 @@ function EditUser() {
       }
 
       mensagemError = await validationPassword(senha);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationConfirmPassword(senha, confirmSenha);
 
       if (mensagemError) {
         setError(mensagemError);
@@ -93,6 +107,8 @@ function EditUser() {
       setError(mensagemError);
     }
   }
+
+  const senhasSaoIguais = senha === confirmSenha;
 
   return (
     <div className={`edit-user edit-user-${theme}`}>
@@ -135,9 +151,30 @@ function EditUser() {
                   />
                 </div>
               </div>
+              <label>Confirmar senha</label>
+              <div className="input-senha">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Repita a nova senha."
+                  onChange={(e) => setConfirmSenha(e.target.value)}
+                  value={confirmSenha}
+                />
+                <div className="olho-password">
+                  <img
+                    src={showPassword ? olhoAberto : olhoFechado}
+                    alt="Mostrar senha"
+                    style={{
+                      width: `calc(20px)`,
+                    }}
+                    onClick={handleClickShowPassword}
+                  />
+                </div>
+              </div>
               <label>Tipo de cadastro</label>
               <p>{userData.cadastro}</p>
+
               {error && <span>{error}</span>}
+              
               <div className="edit-buttons">
                 <button>Enviar</button>
               </div>

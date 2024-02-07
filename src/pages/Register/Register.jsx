@@ -17,12 +17,14 @@ import "./register.css";
 function RegisterPage() {
   const { theme } = useTheme();
   const { selectedOption, setSlecetedOption } = useTipoCadastroContext();
-  const { validationPassword, mensagemError, validationEmail, validationName } = useValidationsContext();
+  const { validationPassword, mensagemError, validationEmail, validationName, validationConfirmPassword } =
+    useValidationsContext();
   const { handleClickOpenMessageToast } = useModal();
   const { fontSizeModify } = useFontSize();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(olhoFechado);
   const navigate = useNavigate();
@@ -33,14 +35,14 @@ function RegisterPage() {
     setError("");
 
     try {
-      let mensagemError = await validationName(name)
+      let mensagemError = await validationName(name);
 
       if (mensagemError) {
         setError(mensagemError);
         return;
       }
 
-      mensagemError = await validationEmail(email)
+      mensagemError = await validationEmail(email);
 
       if (mensagemError) {
         setError(mensagemError);
@@ -52,7 +54,14 @@ function RegisterPage() {
       if (mensagemError) {
         setError(mensagemError);
         return;
-      }      
+      }
+
+      mensagemError = await validationConfirmPassword(password, confirmPassword);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
 
       if (!selectedOption) {
         setError("Escolha um tipo de cadastro");
@@ -148,6 +157,29 @@ function RegisterPage() {
                   fontSize: `calc(14px + ${fontSizeModify}px)`,
                 }}
                 onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="olho-password">
+                <img
+                  src={showPassword}
+                  alt=""
+                  style={{
+                    width: `calc(20px + ${fontSizeModify * 2}px)`,
+                  }}
+                  onClick={() => handleClickShowPassword()}
+                />
+              </div>
+            </div>
+            <label>Confirmar senha:</label>
+            <div className="input2">
+              <input
+                type={showPassword === olhoAberto ? "text" : "password"}
+                value={confirmPassword}
+                placeholder="Digite sua senha."
+                style={{
+                  height: `calc(26px + ${fontSizeModify * 2}px)`,
+                  fontSize: `calc(14px + ${fontSizeModify}px)`,
+                }}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <div className="olho-password">
                 <img

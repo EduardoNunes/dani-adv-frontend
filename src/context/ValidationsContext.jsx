@@ -43,9 +43,20 @@ export function ValidationsProvider({ children }) {
     }
   }
 
+  function validationConfirmPassword(senha, confirmSenha) {
+    if (senha !== confirmSenha) {
+      return "Os campos 'Senha' e 'Confirmar senha' não coincidem."
+    }
+  }
+
   return (
     <ValidationsContext.Provider
-      value={{ validationPassword, validationEmail, validationName }}
+      value={{
+        validationPassword,
+        validationEmail,
+        validationName,
+        validationConfirmPassword,
+      }}
     >
       {children}
     </ValidationsContext.Provider>
