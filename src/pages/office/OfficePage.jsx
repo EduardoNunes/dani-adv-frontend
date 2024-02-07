@@ -14,6 +14,7 @@ import { getItem } from "../../utils/storage";
 import "./office-page.css";
 import EditProcess from "../../modals/EditProcess/EditProcess";
 import RegisterProcess from "../../modals/RegisterProcess/RegisterProcess";
+import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
 
 function OfficePage() {
   const { theme } = useTheme();
@@ -25,6 +26,9 @@ function OfficePage() {
     handleClickOpenEditProcess,
     handleClickOpenRegisterProcess,
     openRegisterProcess,
+    handleClickOpenConfirm,
+    openConfirm,
+    handleClickOpenMessageToast,
   } = useModal();
   const [dataProcess, setDataProcess] = useState();
   const [newDataProcess, setNewDataProcess] = useState();
@@ -99,13 +103,17 @@ function OfficePage() {
     } catch (error) {
       console.error(error);
     }
+
+    handleClickOpenConfirm(false);
+    handleClickOpenMessageToast(true, "Processo excluído!");
   }
 
   return (
     <div className={`office-page office-page-${theme}`}>
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
-      {openEditProcess && <EditProcess updateList={clientProcess}/>}
-      {openRegisterProcess && <RegisterProcess updateList={clientProcess}/>}
+      {openEditProcess && <EditProcess updateList={clientProcess} />}
+      {openRegisterProcess && <RegisterProcess updateList={clientProcess} />}
+      {openConfirm && <ConfirmComponent excluirProcesso={excluirProcesso} />}
       <img
         className={`background background-${theme}`}
         src={theme === "light" ? MarmoreBranco : MarmoreRoxo}
@@ -179,7 +187,13 @@ function OfficePage() {
                         <img
                           src={theme === "light" ? TrashBlack : TrashWhite}
                           alt="Trash Icon"
-                          onClick={() => excluirProcesso(processo.id)}
+                          onClick={() =>
+                            handleClickOpenConfirm(
+                              true,
+                              "Tem certeza que deseja excluir este processo?",
+                              processo.id
+                            )
+                          }
                         />
                       </li>
                     </ul>
