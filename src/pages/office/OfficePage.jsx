@@ -15,6 +15,7 @@ import "./office-page.css";
 import EditProcess from "../../modals/EditProcess/EditProcess";
 import RegisterProcess from "../../modals/RegisterProcess/RegisterProcess";
 import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
+import RegisterClient from "../../modals/RegisterClient/RegisterClient";
 
 function OfficePage() {
   const { theme } = useTheme();
@@ -25,6 +26,8 @@ function OfficePage() {
     openEditProcess,
     handleClickOpenEditProcess,
     handleClickOpenRegisterProcess,
+    handleClickOpenRegisterClient,
+    openRegisterClient,
     openRegisterProcess,
     handleClickOpenConfirm,
     openConfirm,
@@ -113,6 +116,7 @@ function OfficePage() {
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
       {openEditProcess && <EditProcess updateList={clientProcess} />}
       {openRegisterProcess && <RegisterProcess updateList={clientProcess} />}
+      {openRegisterClient && <RegisterClient />}
       {openConfirm && <ConfirmComponent excluirProcesso={excluirProcesso} />}
       <img
         className={`background background-${theme}`}
@@ -125,6 +129,11 @@ function OfficePage() {
             <div className="button-cadastrar">
               <button onClick={() => handleClickOpenRegisterProcess(true)}>
                 Cadastrar Processo
+              </button>
+            </div>
+            <div className="button-cadastrar">
+              <button onClick={() => handleClickOpenRegisterClient(true)}>
+                Cadastrar Cliente
               </button>
             </div>
             <div className="input">

@@ -1,0 +1,40 @@
+<div className="financeiro">
+                <h4>Financeiro:</h4>
+                <select
+                  value={selectedProcess}
+                  onChange={(e) => setSelectedProcess(e.target.value)}
+                >
+                  <option value="">Selecione um processo</option>
+                  {process &&
+                    process.map((processo) => (
+                      <option key={processo.id} value={processo.id}>
+                        {processo.nome}
+                      </option>
+                    ))}
+                </select>
+                <label>Valor de entrada:</label>
+                <input
+                  value={startValue}
+                  onChange={(e) => setStartValue(e.target.value)}
+                />
+                <label>Total de parcelas:</label>
+                <input
+                  value={numberInstallments}
+                  onChange={(e) => setNumberInstallments(e.target.value)}
+                />
+                <label>Valor das Parcelas:</label>
+                <input
+                  value={installmentsValue}
+                  onChange={(e) => setInstallmentsValue(e.target.value)}
+                />
+                <label>Valor total:</label>
+                <input
+                  value={totalValue}
+                  onChange={(e) => setTotalValue(e.target.value)}
+                />
+                <label>Porcentagem final:</label>
+                <input
+                  value={finalPercent}
+                  onChange={(e) => setFinalPercent(e.target.value)}
+                />
+              </div>

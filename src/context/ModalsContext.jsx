@@ -13,6 +13,7 @@ export function ModalProvider({ children }) {
   const [openEditProcess, setOpenEditProcess] = useState(false);
   const [selectedEditProcess, setSelectedEditProcess] = useState(null);
   const [openRegisterProcess, setOpenRegisterProcess] = useState(false);
+  const [openRegisterClient, setOpenRegisterClient] = useState(false)
   const [openToast, setOpenToast] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const [mensagem, setMensagem] = useState("");
@@ -34,6 +35,10 @@ export function ModalProvider({ children }) {
 
   function handleClickOpenRegisterProcess(openClose) {
     setOpenRegisterProcess(openClose);
+  }
+
+  function handleClickOpenRegisterClient(openClose) {
+    setOpenRegisterClient(openClose);
   }
 
   function handleClickOpenMessageToast(openClose, mensagem) {
@@ -61,13 +66,14 @@ export function ModalProvider({ children }) {
         handleClickOpenEditProcess,
         openEditProcess,
         selectedEditProcess,
+        handleClickOpenRegisterClient,
+        openRegisterClient,
         handleClickOpenRegisterProcess,
         openRegisterProcess,
         handleClickOpenMessageToast,
         openToast,
         handleClickOpenConfirm,
-        mensagem,
-        
+        mensagem,        
         openConfirm,
         processoId
       }}
