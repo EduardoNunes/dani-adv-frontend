@@ -41,7 +41,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="footer-bot">
+      <div className="footer-bot" id="contato">
         <div className="container">
           <p style={{ fontSize: `calc(16px + ${fontSizeModify}px)` }} >© 2023 copiryght by Lakke_Dev</p>
         </div>
