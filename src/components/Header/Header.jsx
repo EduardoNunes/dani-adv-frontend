@@ -54,7 +54,7 @@ function Header() {
   }
 
   return (
-    <div className="container-header">
+    <div className="container-header" id="inicio">
       {openToast && <Toast />}
       {openUserEdit && <EditUser />}
       <div className={`header header-${theme} ${headerMove}`}>

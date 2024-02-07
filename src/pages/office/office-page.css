@@ -120,7 +120,7 @@
 
 .office-page .container .table .content {
   height: 100%;
-  width: 100%;
+  width: 100%;  
 }
 
 .office-page .container .table .content .title {
@@ -135,7 +135,7 @@
   height: 100%;
   border: 1px solid rgba(var(--cor-preto), 0.9);
   border-radius: 10px;
-
+  
   list-style: none;
   background-color: rgba(var(--cor-roxo), 0.5);
 }
@@ -164,7 +164,7 @@
 .office-page .container .table .content .body {
   height: 90%;
   border-radius: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .office-page .container .table .content .body .line {
