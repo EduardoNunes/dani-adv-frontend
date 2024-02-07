@@ -1,41 +1,47 @@
-.confirm {
-  position: absolute;
+.full-screen {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 40px);
+    background-color: rgba(var(--cor-preto), 0.4);
+    z-index: 1;
+}
+
+.full-screen .confirm {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  min-height: 140px;
+  height: 230px;
   width: 300px;
   padding: 20px;
 
-  top: calc(50% - 45px);
-  left: calc(50% - 150px);
-
   border-radius: 10px;
-  background-color: rgba(var(--cor-preto), 0.5);
+  background-color: rgba(var(--cor-preto), 0.8);
   border: 1px solid rgba(var(--cor-preto), 0.8);
-
-  z-index: 1;
 }
 
-.confirm-dark {
+.full-screen .confirm-dark {
   background-color: rgba(var(--cor-preto), 0.8);
   color: rgb(128, 207, 128);
 }
 
-.confirm img {
+.full-screen .confirm img {
     width: 50px;
 }
 
-.confirm p {
+.full-screen .confirm p {
   margin: 20px 0;
+
   font-family: "fonte";
-  font-weight: 600;
   font-size: 18px;
-  text-shadow: 1px 1px 1px rgb(197, 197, 12);
+  color: rgb(238, 238, 112);
+  text-shadow: 1px 1px 1px black;
 }
 
-.confirm .buttons {
+.full-screen .confirm .buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +49,7 @@
   width: 240px;
 }
 
-.confirm .buttons button {
+.full-screen .confirm .buttons button {
     height: 33px;
     width: 110px;
 
@@ -55,6 +61,6 @@
     cursor: pointer;
 }
 
-.confirm .buttons button:hover {
-    background-color: rgba(var(--cor-preto), 0.15);
+.full-screen .confirm .buttons button:hover {
+    background-color: rgba(var(--cor-branco), .5);
 }
