@@ -25,7 +25,7 @@
   align-items: center;
   position: relative;
 
-  height: 560px;
+  height: 760px;
   width: 70%;
   min-width: 1000px;
 
@@ -102,7 +102,8 @@
 .register-client .container-client .chart-client form .formulario .pessoal,
 .register-client .container-client .chart-client form .formulario .contato,
 .register-client .container-client .chart-client form .formulario .dados-pessoais,
-.register-client .container-client .chart-client form .formulario .social {
+.register-client .container-client .chart-client form .formulario .social,
+.register-client .container-client .chart-client form .formulario .address {
   width: 90%;
   margin-bottom: 20px;
 }
@@ -118,20 +119,24 @@
 .register-client .container-client .chart-client form .formulario .dados-pessoais .dados-pessoais-container,
 .register-client .container-client .chart-client form .formulario .pessoal-container1,
 .register-client .container-client .chart-client form .formulario .contato-container,
-.register-client .container-client .chart-client form .formulario .social .social-container2 {
+.register-client .container-client .chart-client form .formulario .social .social-container2, 
+.register-client .container-client .chart-client form .formulario .address .container0 {
   display: flex;
   margin-top: 5px;
 }
 
 .register-client .container-client .chart-client form .formulario .pessoal .pessoal-container0,
-.register-client .container-client .chart-client form .formulario .social .social-container1 {
+.register-client .container-client .chart-client form .formulario .social .social-container1,
+.register-client .container-client .chart-client form .formulario .address .container3 {
   padding: 0 10px 0 0;
 }
 
 .register-client .container-client .chart-client form .formulario .dados-pessoais .dados-pessoais-container div,
 .register-client .container-client .chart-client form .formulario .pessoal-container1 div,
 .register-client .container-client .chart-client form .formulario .contato-container div,
-.register-client .container-client .chart-client form .formulario .social .social-container2 div {
+.register-client .container-client .chart-client form .formulario .social .social-container2 div,
+.register-client .container-client .chart-client form .formulario .address .container1,
+.register-client .container-client .chart-client form .formulario .address .container2 {
   width: 50%;
   padding: 0 10px 0 0;
 }

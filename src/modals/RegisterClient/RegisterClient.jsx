@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import XBranco from "../../assets/x-branco.png";
 import XPreto from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
+import axios from "axios";
 import "./register-client.css";
 
 function RegisterClient() {
   const { theme } = useTheme();
   const { handleClickOpenRegisterClient, handleClickOpenMessageToast } =
     useModal();
-  const [clients, setClients] = useState("");
-  const [process, setProcess] = useState("");
-  const [selectedProcess, setSelectedProcess] = useState("");
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
   const [phone, setPhone] = useState("");
-  const [adress, setAdress] = useState("");
+  const [cep, setCep] = useState("");
+  const [publicPlace, setPublicPlace] = useState("");
+  const [complement, setComplement] = useState("");
+  const [neighborhood, setNeighborhood] = useState("");
+  const [city, setCity] = useState("");
+  const [uf, setUf] = useState("");
   const [email, setEmail] = useState("");
   const [socialMedia, setSocialMedia] = useState("");
   const [rg, setRg] = useState("");
@@ -27,11 +30,6 @@ function RegisterClient() {
   const [profession, setProfession] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
   const [education, setEducation] = useState("");
-  const [startValue, setStartValue] = useState("");
-  const [numberInstallments, setNumberInstallments] = useState("");
-  const [installmentsValue, setInstallmentsValue] = useState("");
-  const [totalValue, setTotalValue] = useState("");
-  const [finalPercent, setFinalPercent] = useState("");
   const [infos, setInfos] = useState("");
   const token = getItem("token");
 
@@ -40,18 +38,27 @@ function RegisterClient() {
 
     try {
       const response = await api.post(
-        `/cadastrarCliente`,
+        `/cadastrarClienteEscritorio`,
         {
-          /*           autor,
-          reu,
-          numero,
-          vara,
-          juiz,
-          comarca,
-          data_entrada,
-          atualizado,
-          infos, */
-          /* usuarios_id: selectedClient, */
+          nome: name,
+          nascimento: birth,
+          genero: gender,
+          nacionalidade: country,
+          celular: phone,
+          email,
+          redes_sociais: socialMedia,
+          rg,
+          cpf,
+          profissao: profession,
+          estado_civil: maritalStatus,
+          formacao_academica: education,
+          cep,
+          cidade: city,
+          bairro: neighborhood,
+          uf,
+          logradouro: publicPlace,
+          complemento: complement,
+          infos,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -66,24 +73,19 @@ function RegisterClient() {
     }
   }
 
-  /*   useEffect(() => {
-    const token = getItem("token");
-
-    async function showProcess() {
-      try {
-        const response = await api.get("/listarProcessosDeUmCliente/", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-
-        setProcess(response.data);
-        console.log(response.data)
-      } catch (error) {
-        console.error(error);
-      }
+  async function handleAddressBlur() {
+    if (cep.length === 8) {
+      //setCep(cep.replaceAll(/\D/g, ""))
+      console.log("cep 8", cep);
+      const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+      console.log(data);
+      setCity(data.localidade);
+      setNeighborhood(data.bairro);
+      setUf(data.uf);
+      setPublicPlace(data.logradouro);
+      setComplement(data.complemento);
     }
-
-    showProcess();
-  }, []); */
+  }
 
   return (
     <div className={`register-client register-client-${theme}`}>
@@ -151,6 +153,48 @@ function RegisterClient() {
                     </div>
                   </div>
                 </div>
+                <div className="address">
+                  <h4>Endereço</h4>
+                  <div className="container0">
+                    <div className="container1">
+                      <label>CEP:</label>
+                      <input
+                        value={cep}
+                        onChange={(e) => setCep(e.target.value)}
+                        onBlur={handleAddressBlur}
+                      />
+                      <label>Bairro:</label>
+                      <input
+                        value={neighborhood}
+                        onChange={(e) => setNeighborhood(e.target.value)}
+                      />
+                    </div>
+                    <div className="container2">
+                      <label>Cidade:</label>
+                      <input
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                      />
+                      <label>UF:</label>
+                      <input
+                        value={uf}
+                        onChange={(e) => setUf(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="container3">
+                    <label>Logradouro:</label>
+                    <input
+                      value={publicPlace}
+                      onChange={(e) => setPublicPlace(e.target.value)}
+                    />
+                    <label>Complemento:</label>
+                    <input
+                      value={complement}
+                      onChange={(e) => setComplement(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
               <div className="container2">
                 <div className="contato">
@@ -162,11 +206,6 @@ function RegisterClient() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                       />
-                      <label>Endereço:</label>
-                      <input
-                        value={adress}
-                        onChange={(e) => setAdress(e.target.value)}
-                      />
                     </div>
                     <div>
                       <label>Email:</label>
@@ -174,7 +213,7 @@ function RegisterClient() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
-                      <label>Nacionalidade:</label>
+                      <label>Redes sociais:</label>
                       <input
                         value={socialMedia}
                         onChange={(e) => setSocialMedia(e.target.value)}
