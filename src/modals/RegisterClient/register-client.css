@@ -183,6 +183,11 @@
   background-color: rgba(var(--cor-branco), 0.8);
 }
 
+.register-client .container-client .chart-client form span {
+  margin-bottom: 5px;
+  color: red;
+}
+
 .register-client .container-client .chart-client form button {
   display: flex;
   justify-content: center;

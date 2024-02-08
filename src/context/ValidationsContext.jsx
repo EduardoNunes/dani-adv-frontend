@@ -49,6 +49,18 @@ export function ValidationsProvider({ children }) {
     }
   }
 
+  function validationBirth(birth) {
+    if (birth.length > 0 && birth.length < 8) {
+      return "A data de nascimento está incompleta"
+    }
+  }
+
+  function validationPhone(phone) {
+    if (!phone) {
+      return "O campo celular deve ser preenchido"
+    }
+  }
+
   return (
     <ValidationsContext.Provider
       value={{
@@ -56,6 +68,8 @@ export function ValidationsProvider({ children }) {
         validationEmail,
         validationName,
         validationConfirmPassword,
+        validationBirth,
+        validationPhone
       }}
     >
       {children}

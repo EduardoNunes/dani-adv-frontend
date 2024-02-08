@@ -7,11 +7,17 @@ import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import axios from "axios";
 import "./register-client.css";
+import { useValidationsContext } from "../../context/ValidationsContext";
 
 function RegisterClient() {
   const { theme } = useTheme();
   const { handleClickOpenRegisterClient, handleClickOpenMessageToast } =
     useModal();
+  const {
+    validationName,
+    validationBirth,
+    validationPhone,
+  } = useValidationsContext();
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
   const [gender, setGender] = useState("");
@@ -31,12 +37,34 @@ function RegisterClient() {
   const [maritalStatus, setMaritalStatus] = useState("");
   const [education, setEducation] = useState("");
   const [infos, setInfos] = useState("");
+  const [error, setError] = useState("");
   const token = getItem("token");
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     try {
+      let mensagemError = await validationName(name);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationBirth(birth);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationPhone(phone);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
       const response = await api.post(
         `/cadastrarClienteEscritorio`,
         {
@@ -104,7 +132,7 @@ function RegisterClient() {
                 <div className="pessoal">
                   <h4>Informações pessoais:</h4>
                   <div className="pessoal-container0">
-                    <label>Nome:</label>
+                    <label>Nome*:</label>
                     <input
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -138,14 +166,14 @@ function RegisterClient() {
                   <h4>Dados pessoais:</h4>
                   <div className="dados-pessoais-container">
                     <div>
-                      <label>RG:</label>
+                      <label>RG*:</label>
                       <input
                         value={rg}
                         onChange={(e) => setRg(e.target.value)}
                       />
                     </div>
                     <div>
-                      <label>CPF:</label>
+                      <label>CPF*:</label>
                       <input
                         value={cpf}
                         onChange={(e) => setCpf(e.target.value)}
@@ -157,25 +185,25 @@ function RegisterClient() {
                   <h4>Endereço</h4>
                   <div className="container0">
                     <div className="container1">
-                      <label>CEP:</label>
+                      <label>CEP*:</label>
                       <input
                         value={cep}
                         onChange={(e) => setCep(e.target.value)}
                         onBlur={handleAddressBlur}
                       />
-                      <label>Bairro:</label>
+                      <label>Bairro*:</label>
                       <input
                         value={neighborhood}
                         onChange={(e) => setNeighborhood(e.target.value)}
                       />
                     </div>
                     <div className="container2">
-                      <label>Cidade:</label>
+                      <label>Cidade*:</label>
                       <input
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                       />
-                      <label>UF:</label>
+                      <label>UF*:</label>
                       <input
                         value={uf}
                         onChange={(e) => setUf(e.target.value)}
@@ -183,7 +211,7 @@ function RegisterClient() {
                     </div>
                   </div>
                   <div className="container3">
-                    <label>Logradouro:</label>
+                    <label>Logradouro*:</label>
                     <input
                       value={publicPlace}
                       onChange={(e) => setPublicPlace(e.target.value)}
@@ -201,14 +229,14 @@ function RegisterClient() {
                   <h4>Contato:</h4>
                   <div className="contato-container">
                     <div>
-                      <label>Celular:</label>
+                      <label>Celular*:</label>
                       <input
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                       />
                     </div>
                     <div>
-                      <label>Email:</label>
+                      <label>Email*:</label>
                       <input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -256,6 +284,7 @@ function RegisterClient() {
                 onChange={(e) => setInfos(e.target.value)}
               />
             </div>
+            {error && <span>{error}</span>}
             <button>Enviar</button>
           </form>
         </div>
