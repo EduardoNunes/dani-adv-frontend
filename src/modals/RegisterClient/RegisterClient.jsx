@@ -16,7 +16,6 @@ function RegisterClient() {
   const {
     validationName,
     validationBirth,
-    validationCountry,
     validationPhone,
     validationEmail,
     validationRg,
@@ -64,13 +63,6 @@ function RegisterClient() {
       }
 
       mensagemError = await validationBirth(birth);
-
-      if (mensagemError) {
-        setError(mensagemError);
-        return;
-      }
-
-      mensagemError = await validationCountry(country);
 
       if (mensagemError) {
         setError(mensagemError);
@@ -214,6 +206,11 @@ function RegisterClient() {
   function formatPhone(phone) {
     let digitos = phone.replace(/\D/g, "");
     let formatted = "";
+
+    if (phone.length > 16) {
+      digitos = digitos.substring(0, 11);
+        setError("Quantidade máxima de dígitos atingida.");
+    }
 
     if (digitos.length > 2) {
       formatted += `(${digitos.substring(0, 2)})`;

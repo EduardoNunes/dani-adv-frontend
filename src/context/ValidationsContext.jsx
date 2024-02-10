@@ -63,7 +63,7 @@ export function ValidationsProvider({ children }) {
   function validationPhone(phone) {
     if (!phone) {
       return "O campo celular deve ser preenchido";
-    } else if (phone.length < 9) {
+    } else if (phone.length < 16) {
       return "Número de telefone incompleto";
     }
   }
