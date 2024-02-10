@@ -347,7 +347,7 @@ function RegisterClient() {
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                       />
-                      <label>UF*:</label>
+                      <label>Estado*:</label>
                       <input
                         value={uf}
                         onChange={(e) => setUf(e.target.value)}
