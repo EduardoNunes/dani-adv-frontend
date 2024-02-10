@@ -45,19 +45,26 @@ export function ValidationsProvider({ children }) {
 
   function validationConfirmPassword(senha, confirmSenha) {
     if (senha !== confirmSenha) {
-      return "Os campos 'Senha' e 'Confirmar senha' não coincidem."
+      return "Os campos 'Senha' e 'Confirmar senha' não coincidem.";
     }
   }
 
   function validationBirth(birth) {
+    const year = parseInt(birth.substring(0, 4));
+    const currentYear = new Date().getFullYear();
     if (birth.length > 0 && birth.length < 8) {
-      return "A data de nascimento está incompleta"
+      return "A data de nascimento está incompleta";
+    } else if (year < 1800 || year > currentYear) {
+      return "Ano de nascimento inválido";
     }
+    console.log(birth);
   }
 
   function validationPhone(phone) {
     if (!phone) {
-      return "O campo celular deve ser preenchido"
+      return "O campo celular deve ser preenchido";
+    } else if (phone.length < 9) {
+      return "Número de telefone incompleto";
     }
   }
 
@@ -69,7 +76,7 @@ export function ValidationsProvider({ children }) {
         validationName,
         validationConfirmPassword,
         validationBirth,
-        validationPhone
+        validationPhone,
       }}
     >
       {children}

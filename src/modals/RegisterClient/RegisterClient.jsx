@@ -16,7 +16,19 @@ function RegisterClient() {
   const {
     validationName,
     validationBirth,
+    validationCountry,
     validationPhone,
+    validationEmail,
+    validationRg,
+    validationCpf,
+    validationProfession,
+    validationMaritalStatus,
+    validationEducation,
+    validationCep,
+    validationCity,
+    validationUf,
+    validationPublicPlace,
+    validationComplement,
   } = useValidationsContext();
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
@@ -58,7 +70,91 @@ function RegisterClient() {
         return;
       }
 
+      mensagemError = await validationCountry(country);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
       mensagemError = await validationPhone(phone);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationEmail(email);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationRg(rg);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationCpf(cpf);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationProfession(profession);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationMaritalStatus(maritalStatus);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationEducation(education);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationCep(cep);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationCity(city);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationUf(uf);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationPublicPlace(publicPlace);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
+      mensagemError = await validationComplement(complement);
 
       if (mensagemError) {
         setError(mensagemError);
@@ -103,7 +199,7 @@ function RegisterClient() {
 
   async function handleAddressBlur() {
     if (cep.length === 8) {
-      //setCep(cep.replaceAll(/\D/g, ""))
+      setCep(cep.replaceAll(/\D/g, ""));
       console.log("cep 8", cep);
       const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
       console.log(data);
@@ -113,6 +209,29 @@ function RegisterClient() {
       setPublicPlace(data.logradouro);
       setComplement(data.complemento);
     }
+  }
+
+  function formatPhone(phone) {
+    let digitos = phone.replace(/\D/g, "");
+    let formatted = "";
+
+    if (digitos.length > 2) {
+      formatted += `(${digitos.substring(0, 2)})`;
+
+      if (digitos.length > 6) {
+        formatted += ` ${digitos.substring(2, 3)} ${digitos.substring(3, 7)}`;
+
+        if (digitos.length > 7) {
+          formatted += `-${digitos.substring(7)}`;
+        }
+      } else {
+        formatted += ` ${digitos.substring(2)}`;
+      }
+    } else {
+      formatted = digitos;
+    }
+
+    setPhone(formatted);
   }
 
   return (
@@ -142,6 +261,7 @@ function RegisterClient() {
                     <div>
                       <label>Nascimento:</label>
                       <input
+                        type="date"
                         value={birth}
                         onChange={(e) => setBirth(e.target.value)}
                       />
@@ -231,8 +351,9 @@ function RegisterClient() {
                     <div>
                       <label>Celular*:</label>
                       <input
+                        type="text"
                         value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                        onChange={(e) => formatPhone(e.target.value)}
                       />
                     </div>
                     <div>
