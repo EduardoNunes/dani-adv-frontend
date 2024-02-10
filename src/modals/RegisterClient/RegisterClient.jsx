@@ -209,7 +209,7 @@ function RegisterClient() {
 
     if (phone.length > 16) {
       digitos = digitos.substring(0, 11);
-        setError("Quantidade máxima de dígitos atingida.");
+      setError("Quantidade máxima de dígitos atingida.");
     }
 
     if (digitos.length > 2) {
@@ -229,6 +229,33 @@ function RegisterClient() {
     }
 
     setPhone(formatted);
+  }
+
+  function formatRg(rg) {
+    let digitos = rg.replace(/\D/g, "");
+    let formatted = "";
+
+    if (rg.length > 13) {
+      digitos = digitos.substring(0, 10);
+      setError("Quantidade máxima de dígitos atingida.");
+    }
+
+    if (digitos.length > 2) {
+      formatted += `${digitos.substring(0, 2)}.`;
+
+      if (digitos.length > 5) {
+        formatted += `${digitos.substring(2, 5)}.${digitos.substring(5, 8)}`;
+
+        if (digitos.length > 7) {
+          formatted += `-${digitos.substring(8)}`;
+        }
+      } else {
+        formatted += `${digitos.substring(2)}`;
+      }
+    } else {
+      formatted = digitos;
+    }
+    setRg(formatted);
   }
 
   return (
@@ -286,7 +313,7 @@ function RegisterClient() {
                       <label>RG*:</label>
                       <input
                         value={rg}
-                        onChange={(e) => setRg(e.target.value)}
+                        onChange={(e) => formatRg(e.target.value)}
                       />
                     </div>
                     <div>
@@ -356,6 +383,7 @@ function RegisterClient() {
                     <div>
                       <label>Email*:</label>
                       <input
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />

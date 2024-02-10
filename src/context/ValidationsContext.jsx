@@ -68,6 +68,14 @@ export function ValidationsProvider({ children }) {
     }
   }
 
+  function validationRg(rg) {
+    if (!rg) {
+      return "O campo RG deve ser preenchido";
+    } else if (rg.length < 13) {
+      return "RG incompleto";
+    }
+  }
+
   return (
     <ValidationsContext.Provider
       value={{
@@ -77,6 +85,7 @@ export function ValidationsProvider({ children }) {
         validationConfirmPassword,
         validationBirth,
         validationPhone,
+        validationRg
       }}
     >
       {children}
