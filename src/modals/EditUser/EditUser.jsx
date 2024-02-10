@@ -108,8 +108,6 @@ function EditUser() {
     }
   }
 
-  const senhasSaoIguais = senha === confirmSenha;
-
   return (
     <div className={`edit-user edit-user-${theme}`}>
       <div className="container-edit-user">
