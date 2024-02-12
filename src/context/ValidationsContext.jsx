@@ -76,6 +76,14 @@ export function ValidationsProvider({ children }) {
     }
   }
 
+  function validationCpf(cpf) {
+    if (!cpf) {
+      return "O campo CPF deve ser preenchido";
+    } else if (cpf.length < 15) {
+      return "CPF incompleto";
+    }
+  }
+
   return (
     <ValidationsContext.Provider
       value={{
@@ -85,7 +93,8 @@ export function ValidationsProvider({ children }) {
         validationConfirmPassword,
         validationBirth,
         validationPhone,
-        validationRg
+        validationRg,
+        validationCpf
       }}
     >
       {children}

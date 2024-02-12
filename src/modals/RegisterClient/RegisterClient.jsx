@@ -258,6 +258,33 @@ function RegisterClient() {
     setRg(formatted);
   }
 
+  function formatCpf(Cpf) {
+    let digitos = Cpf.replace(/\D/g, "");
+    let formatted = "";
+
+    if (Cpf.length > 14) {
+      digitos = digitos.substring(0, 11);
+      setError("Quantidade máxima de dígitos atingida.");
+    }
+
+    if (digitos.length > 3) {
+      formatted += `${digitos.substring(0, 3)}.`;
+
+      if (digitos.length > 6) {
+        formatted += `${digitos.substring(3, 6)}.${digitos.substring(6, 9)}`;
+
+        if (digitos.length > 9) {
+          formatted += `-${digitos.substring(9)}`;
+        }
+      } else {
+        formatted += `${digitos.substring(3)}`;
+      }
+    } else {
+      formatted = digitos;
+    }
+    setCpf(formatted);
+  }
+
   return (
     <div className={`register-client register-client-${theme}`}>
       <div className="container-client">
@@ -320,7 +347,7 @@ function RegisterClient() {
                       <label>CPF*:</label>
                       <input
                         value={cpf}
-                        onChange={(e) => setCpf(e.target.value)}
+                        onChange={(e) => formatCpf(e.target.value)}
                       />
                     </div>
                   </div>
