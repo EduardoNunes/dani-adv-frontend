@@ -92,6 +92,24 @@ export function ValidationsProvider({ children }) {
     }
   }
 
+  function validationCity(city) {
+    if (!city) {
+      return "O campo Cidade deve ser preenchido";
+    }
+  }
+
+  function validationUf(uf) {
+    if (!uf) {
+      return "O campo Estado deve ser preenchido";
+    }
+  }
+
+  function validationPublicPlace(publicPlace) {
+    if (!publicPlace) {
+      return "O campo Logradouro deve ser preenchido";
+    }
+  }
+
   return (
     <ValidationsContext.Provider
       value={{
@@ -103,7 +121,10 @@ export function ValidationsProvider({ children }) {
         validationPhone,
         validationRg,
         validationCpf,
-        validationCep
+        validationCep,
+        validationCity,
+        validationUf,
+        validationPublicPlace
       }}
     >
       {children}

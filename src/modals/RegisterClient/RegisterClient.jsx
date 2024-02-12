@@ -20,14 +20,9 @@ function RegisterClient() {
     validationEmail,
     validationRg,
     validationCpf,
-    validationProfession,
-    validationMaritalStatus,
-    validationEducation,
     validationCep,
     validationCity,
     validationUf,
-    validationPublicPlace,
-    validationComplement,
   } = useValidationsContext();
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
@@ -97,27 +92,6 @@ function RegisterClient() {
         return;
       }
 
-      mensagemError = await validationProfession(profession);
-
-      if (mensagemError) {
-        setError(mensagemError);
-        return;
-      }
-
-      mensagemError = await validationMaritalStatus(maritalStatus);
-
-      if (mensagemError) {
-        setError(mensagemError);
-        return;
-      }
-
-      mensagemError = await validationEducation(education);
-
-      if (mensagemError) {
-        setError(mensagemError);
-        return;
-      }
-
       mensagemError = await validationCep(cep);
 
       if (mensagemError) {
@@ -133,20 +107,6 @@ function RegisterClient() {
       }
 
       mensagemError = await validationUf(uf);
-
-      if (mensagemError) {
-        setError(mensagemError);
-        return;
-      }
-
-      mensagemError = await validationPublicPlace(publicPlace);
-
-      if (mensagemError) {
-        setError(mensagemError);
-        return;
-      }
-
-      mensagemError = await validationComplement(complement);
 
       if (mensagemError) {
         setError(mensagemError);
