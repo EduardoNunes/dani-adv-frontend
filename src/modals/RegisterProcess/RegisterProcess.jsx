@@ -9,7 +9,8 @@ import { getItem } from "../../utils/storage";
 
 function RegisterProcess({ updateList }) {
   const { theme } = useTheme();
-  const { handleClickOpenRegisterProcess, handleClickOpenMessageToast } = useModal();
+  const { handleClickOpenRegisterProcess, handleClickOpenMessageToast } =
+    useModal();
   const [clientes, setClientes] = useState([]);
   const [selectedClient, setSelectedClient] = useState("");
   const [autor, setAutor] = useState("");
@@ -47,7 +48,7 @@ function RegisterProcess({ updateList }) {
       );
 
       handleClickOpenRegisterProcess(false);
-      handleClickOpenMessageToast(true, "Processo cadastrado com sucesso!")
+      handleClickOpenMessageToast(true, "Processo cadastrado com sucesso!");
       updateList();
       console.log("Processo cadastrado com sucesso!", response.data);
     } catch (error) {
@@ -57,7 +58,7 @@ function RegisterProcess({ updateList }) {
 
   useEffect(() => {
     const token = getItem("token");
-    
+
     async function showClients() {
       try {
         const response = await api.get("/listarClientes", {

@@ -153,6 +153,7 @@ function RegisterClient() {
     if (cep.length === 9) {
       setCep(cep.replaceAll(/\D/g, ""));
       const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+
       formatCep(cep);
       setCity(data.localidade);
       setNeighborhood(data.bairro);

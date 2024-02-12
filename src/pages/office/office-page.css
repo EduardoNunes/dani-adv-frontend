@@ -64,6 +64,14 @@
   border: 1px solid rgba(var(--cor-rosa), 0.9);
 }
 
+.office-page .container .tool-bar .content select {
+  width: 120px;
+  height: 30px;
+  border-radius: 10px;
+  padding-left: 5px;
+  border: 2px solid rgba(var(--cor-preto), 0.9);
+}
+
 .office-page .container .tool-bar .content .button-cadastrar button {
   height: 34px;
   width: 240px;

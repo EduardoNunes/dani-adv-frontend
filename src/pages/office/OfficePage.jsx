@@ -35,10 +35,13 @@ function OfficePage() {
   } = useModal();
   const [dataProcess, setDataProcess] = useState();
   const [newDataProcess, setNewDataProcess] = useState();
+  const [dataClients, setDataClients] = useState();
+  const [newDataClients, setNewDataClients] = useState();
+  const [selectedOption, setSelectOption] = useState("processos");
 
   const token = getItem("token");
 
-  async function clientProcess() {
+  async function listAllProcess() {
     const token = getItem("token");
     try {
       const response = await api.get("/processosEscritorio", {
@@ -53,10 +56,10 @@ function OfficePage() {
   }
 
   useEffect(() => {
-    clientProcess();
+    listAllProcess();
   }, []);
 
-  function setSearchAll(event) {
+  function searchAllProcess(event) {
     const searchTerm = event.toLowerCase();
 
     if (dataProcess) {
@@ -93,6 +96,101 @@ function OfficePage() {
     }
   }
 
+  async function listAllClients() {
+    const token = getItem("token");
+    try {
+      const response = await api.get("/listarClientes", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setDataClients(response.data);
+      setNewDataClients(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  /* function searchAllClients(event) {
+    const searchTerm = event.toLowerCase();
+
+    if (dataClients) {
+      if (!searchTerm) {
+        setDataClients(newDataClients);
+      } else {
+        let newDataFilter = newDataClients.filter((data) => {
+          const nome = data.nome ? data.nome.toLowerCase() : "";
+          const nascimento = data.nascimento
+            ? data.nascimento.toLowerCase()
+            : "";
+          const genero = data.genero ? data.genero.toLowerCase() : "";
+          const nacionalidade = data.nacionalidade
+            ? data.nacionalidade.toLowerCase()
+            : "";
+          const celular = data.celular ? data.celular.toLowerCase() : "";
+          const email = data.email ? data.email.toLowerCase() : "";
+          const redes_sociais = data.data_redes_sociais
+            ? data.data_redes_sociais.toLowerCase()
+            : "";
+          const rg = data.rg ? data.rg.toLowerCase() : "";
+          const cpf = data.cpf ? data.cpf.toLowerCase() : "";
+          const profissao = data.profissao ? data.profissao.toLowerCase() : "";
+          const estado_civil = data.estado_civil
+            ? data.estado_civil.toLowerCase()
+            : "";
+          const formacao_academica = data.formacao_academica
+            ? data.formacao_academica.toLowerCase()
+            : "";
+          const cep = data.cep ? data.cep.toLowerCase() : "";
+          const cidade = data.cidade ? data.cidade.toLowerCase() : "";
+          const bairro = data.bairro ? data.bairro.toLowerCase() : "";
+          const uf = data.uf ? data.uf.toLowerCase() : "";
+          const logradouro = data.logradouro
+            ? data.logradouro.toLowerCase()
+            : "";
+          const complemento = data.complemento
+            ? data.complemento.toLowerCase()
+            : "";
+          const infos = data.infos ? data.infos.toLowerCase() : "";
+
+          return (
+            nome.includes(searchTerm) ||
+            nascimento.includes(searchTerm) ||
+            genero.includes(searchTerm) ||
+            nacionalidade.includes(searchTerm) ||
+            celular.includes(searchTerm) ||
+            email.includes(searchTerm) ||
+            redes_sociais.includes(searchTerm) ||
+            rg.includes(searchTerm) ||
+            cpf.includes(searchTerm) ||
+            profissao.includes(searchTerm) ||
+            estado_civil.includes(searchTerm) ||
+            formacao_academica.includes(searchTerm) ||
+            cep.includes(searchTerm) ||
+            cidade.includes(searchTerm) ||
+            bairro.includes(searchTerm) ||
+            uf.includes(searchTerm) ||
+            logradouro.includes(searchTerm) ||
+            complemento.includes(searchTerm) ||
+            infos.includes(searchTerm)
+          );
+        });
+        setDataClients(newDataFilter);
+      }
+    }
+  } */
+
+function handleSelectChange(event) {
+    const selectedValue = event.target.value;
+    setSelectOption(selectedValue);
+
+    if (selectedValue === "processos") {
+      console.log(dataProcess);
+    } else {
+      listAllClients()
+      console.log(dataClients);
+    }
+}
+
   async function excluirProcesso(processoId) {
     try {
       await api.delete(`/deletarProcesso/${processoId}`, {
@@ -102,7 +200,7 @@ function OfficePage() {
       });
 
       console.log("Processo deletado com sucesso!");
-      clientProcess();
+      listAllProcess();
     } catch (error) {
       console.error(error);
     }
@@ -114,8 +212,8 @@ function OfficePage() {
   return (
     <div className={`office-page office-page-${theme}`}>
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
-      {openEditProcess && <EditProcess updateList={clientProcess} />}
-      {openRegisterProcess && <RegisterProcess updateList={clientProcess} />}
+      {openEditProcess && <EditProcess updateList={listAllProcess} />}
+      {openRegisterProcess && <RegisterProcess updateList={listAllProcess} />}
       {openRegisterClient && <RegisterClient />}
       {openConfirm && <ConfirmComponent excluirProcesso={excluirProcesso} />}
       <img
@@ -126,6 +224,14 @@ function OfficePage() {
       <div className="container">
         <div className="tool-bar">
           <div className="content">
+            <select
+              className="select"
+              value={selectedOption}
+              onChange={handleSelectChange}
+            >
+              <option value="processos">Processos</option>
+              <option value="clientes">Clientes</option>
+            </select>
             <div className="button-cadastrar">
               <button onClick={() => handleClickOpenRegisterProcess(true)}>
                 Cadastrar Processo
@@ -140,7 +246,7 @@ function OfficePage() {
               <input
                 type="text"
                 placeholder="Buscar"
-                onChange={(event) => setSearchAll(event.target.value)}
+                onChange={(event) => searchAllProcess(event.target.value)}
               />
               <img src={lupa} alt="lupa" />
             </div>
