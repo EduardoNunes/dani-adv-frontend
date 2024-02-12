@@ -190,11 +190,10 @@ function RegisterClient() {
   }
 
   async function handleAddressBlur() {
-    if (cep.length === 8) {
+    if (cep.length === 9) {
       setCep(cep.replaceAll(/\D/g, ""));
-      console.log("cep 8", cep);
       const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-      console.log(data);
+      formatCep(cep);
       setCity(data.localidade);
       setNeighborhood(data.bairro);
       setUf(data.uf);
@@ -285,6 +284,23 @@ function RegisterClient() {
     setCpf(formatted);
   }
 
+  function formatCep(Cep) {
+    let digitos = Cep.replace(/\D/g, "");
+    let formatted = "";
+
+    if (Cep.length > 9) {
+      digitos = digitos.substring(0, 8);
+      setError("Quantidade máxima de dígitos atingida.");
+    }
+
+    if (digitos.length > 5) {
+      formatted += `${digitos.substring(0, 5)}-${digitos.substring(5, 8)}`;
+    } else {
+      formatted = digitos;
+    }
+    setCep(formatted);
+  }
+
   return (
     <div className={`register-client register-client-${theme}`}>
       <div className="container-client">
@@ -359,7 +375,7 @@ function RegisterClient() {
                       <label>CEP*:</label>
                       <input
                         value={cep}
-                        onChange={(e) => setCep(e.target.value)}
+                        onChange={(e) => formatCep(e.target.value)}
                         onBlur={handleAddressBlur}
                       />
                       <label>Bairro*:</label>

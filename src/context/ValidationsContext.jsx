@@ -79,8 +79,16 @@ export function ValidationsProvider({ children }) {
   function validationCpf(cpf) {
     if (!cpf) {
       return "O campo CPF deve ser preenchido";
-    } else if (cpf.length < 15) {
+    } else if (cpf.length < 14) {
       return "CPF incompleto";
+    }
+  }
+
+  function validationCep(cep) {
+    if (!cep) {
+      return "O campo Cep deve ser preenchido";
+    } else if (cep.length < 9) {
+      return "Cep incompleto";
     }
   }
 
@@ -94,7 +102,8 @@ export function ValidationsProvider({ children }) {
         validationBirth,
         validationPhone,
         validationRg,
-        validationCpf
+        validationCpf,
+        validationCep
       }}
     >
       {children}
