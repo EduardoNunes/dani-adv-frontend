@@ -5,10 +5,6 @@ import MarmoreBranco from "../../assets/textura-marmore.jpg";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import ProcessDetails from "../../modals/ProcessDetails/ProcessDetails";
-import EditBlack from "../../assets/edit-black.png";
-import EditWhite from "../../assets/edit-white.png";
-import TrashBlack from "../../assets/trash-black.png";
-import TrashWhite from "../../assets/trash-white.png";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./office-page.css";
@@ -16,6 +12,7 @@ import EditProcess from "../../modals/EditProcess/EditProcess";
 import RegisterProcess from "../../modals/RegisterProcess/RegisterProcess";
 import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
 import RegisterClient from "../../modals/RegisterClient/RegisterClient";
+import TableComponent from "../../components/TableCompnent/TableComponent";
 
 function OfficePage() {
   const { theme } = useTheme();
@@ -105,6 +102,7 @@ function OfficePage() {
 
       setDataClients(response.data);
       setNewDataClients(response.data);
+      console.log(newDataClients);
     } catch (error) {
       console.error(error);
     }
@@ -179,17 +177,17 @@ function OfficePage() {
     }
   } */
 
-function handleSelectChange(event) {
+  function handleSelectChange(event) {
     const selectedValue = event.target.value;
     setSelectOption(selectedValue);
 
     if (selectedValue === "processos") {
       console.log(dataProcess);
     } else {
-      listAllClients()
+      listAllClients();
       console.log(dataClients);
     }
-}
+  }
 
   async function excluirProcesso(processoId) {
     try {
@@ -252,71 +250,19 @@ function handleSelectChange(event) {
             </div>
           </div>
         </div>
-
         <div className="table">
-          <div className="content">
-            <div className="title">
-              <ul>
-                <li>Autor:</li>
-                <li>Réu:</li>
-                <li>Nº do processo:</li>
-                <li>Vara:</li>
-                <li>Movimentação:</li>
-                <li></li>
-              </ul>
-            </div>
-            <div className="body">
-              {dataProcess && dataProcess.length === 0 ? (
-                <span>Não encontramos processos para esta conta</span>
-              ) : (
-                dataProcess &&
-                dataProcess.map((processo, index) => (
-                  <div key={index} className="line">
-                    <ul>
-                      <li
-                        title={processo.autor}
-                        onClick={() => handleOpenProcessDetails(true, processo)}
-                      >
-                        <p> {processo.autor}</p>{" "}
-                      </li>
-                      <li title={processo.reu}>
-                        <p>{processo.reu}</p>
-                      </li>
-                      <li title={processo.numero}>
-                        <p>{processo.numero}</p>
-                      </li>
-                      <li title={processo.vara}>
-                        <p>{processo.vara}</p>
-                      </li>
-                      <li title={processo.atualizado}>
-                        <p>{processo.atualizado}</p>
-                      </li>
-                      <li>
-                        <img
-                          src={theme === "light" ? EditBlack : EditWhite}
-                          alt="Edit Icon"
-                          onClick={() =>
-                            handleClickOpenEditProcess(true, processo)
-                          }
-                        />
-                        <img
-                          src={theme === "light" ? TrashBlack : TrashWhite}
-                          alt="Trash Icon"
-                          onClick={() =>
-                            handleClickOpenConfirm(
-                              true,
-                              "Tem certeza que deseja excluir este processo?",
-                              processo.id
-                            )
-                          }
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
+          <TableComponent
+            autor="Autor"
+            reu="Réu"
+            numProcesso="Nº do processo"
+            vara="Vara"
+            movimentacao="Movimentação"
+            dataProcess={dataProcess}
+            handleOpenProcessDetails={handleOpenProcessDetails}
+            handleClickOpenEditProcess={handleClickOpenEditProcess}
+            handleClickOpenConfirm={handleClickOpenConfirm}
+            theme={theme}
+          />
         </div>
       </div>
     </div>
