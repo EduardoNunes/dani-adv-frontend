@@ -103,7 +103,8 @@
 .register-client .container-client .chart-client form .formulario .contato,
 .register-client .container-client .chart-client form .formulario .dados-pessoais,
 .register-client .container-client .chart-client form .formulario .social,
-.register-client .container-client .chart-client form .formulario .address {
+.register-client .container-client .chart-client form .formulario .address,
+.register-client .container-client .chart-client form .formulario .financeiro {
   width: 90%;
   margin-bottom: 20px;
 }
@@ -139,6 +140,21 @@
 .register-client .container-client .chart-client form .formulario .address .container2 {
   width: 50%;
   padding: 0 10px 0 0;
+}
+
+.register-client .container-client .chart-client form .formulario .financeiro .financeiro-container {
+  margin-top: 5px;
+}
+
+.register-client .container-client .chart-client form .formulario .financeiro .financeiro-container label {
+  margin-right: 8px;
+}
+
+.register-client .container-client .chart-client form .formulario .financeiro .financeiro-container select {
+  width: 100px;
+  height: 26px;
+  border-radius: 10px;
+  padding-left: 6px;
 }
 
 .register-client .container-client .chart-client form input {

@@ -52,6 +52,31 @@ function OfficePage() {
     }
   }
 
+  async function listAllClients() {
+    const token = getItem("token");
+    try {
+      const response = await api.get("/listarClientes", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setDataClients(response.data);
+      setNewDataClients(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function handleSelectChange(event) {
+    const selectedValue = event.target.value;
+    setSelectOption(selectedValue);
+
+    if (selectedValue === "processos") {
+      listAllProcess();
+    } else {
+      listAllClients();
+    }
+  }
+
   useEffect(() => {
     listAllProcess();
   }, []);
@@ -90,21 +115,6 @@ function OfficePage() {
         });
         setDataProcess(newDataFilter);
       }
-    }
-  }
-
-  async function listAllClients() {
-    const token = getItem("token");
-    try {
-      const response = await api.get("/listarClientes", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      setDataClients(response.data);
-      setNewDataClients(response.data);
-      console.log(newDataClients);
-    } catch (error) {
-      console.error(error);
     }
   }
 
@@ -177,18 +187,6 @@ function OfficePage() {
     }
   } */
 
-  function handleSelectChange(event) {
-    const selectedValue = event.target.value;
-    setSelectOption(selectedValue);
-
-    if (selectedValue === "processos") {
-      console.log(dataProcess);
-    } else {
-      listAllClients();
-      console.log(dataClients);
-    }
-  }
-
   async function excluirProcesso(processoId) {
     try {
       await api.delete(`/deletarProcesso/${processoId}`, {
@@ -251,18 +249,35 @@ function OfficePage() {
           </div>
         </div>
         <div className="table">
-          <TableComponent
-            autor="Autor"
-            reu="Réu"
-            numProcesso="Nº do processo"
-            vara="Vara"
-            movimentacao="Movimentação"
-            dataProcess={dataProcess}
-            handleOpenProcessDetails={handleOpenProcessDetails}
-            handleClickOpenEditProcess={handleClickOpenEditProcess}
-            handleClickOpenConfirm={handleClickOpenConfirm}
-            theme={theme}
-          />
+          {selectedOption === "processos" ? (
+            <TableComponent
+              selectedOption={selectedOption}
+              titulo1="Autor"
+              titulo2="Réu"
+              titulo3="Nº do processo"
+              titulo4="Vara"
+              titulo5="Movimentação"
+              datas={dataProcess}
+              handleOpenDetails={handleOpenProcessDetails}
+              handleClickOpenEdit={handleClickOpenEditProcess}
+              handleClickOpenConfirm={handleClickOpenConfirm}
+              theme={theme}
+            />
+          ) : (
+            <TableComponent
+              selectedOption={selectedOption}
+              titulo1="Nome"
+              titulo2="Email"
+              titulo3="Celular"
+              titulo4="CPF"
+              titulo5="Status"
+              datas={dataClients}
+              handleOpenDetails="teste" /* {handleOpenClientsDetails} */
+              handleClickOpenEdit="teste2" /* {handleClickOpenEditClients} */
+              handleClickOpenConfirm={handleClickOpenConfirm}
+              theme={theme}
+            />
+          )}
         </div>
       </div>
     </div>

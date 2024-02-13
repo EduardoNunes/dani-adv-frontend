@@ -42,6 +42,7 @@ function RegisterClient() {
   const [profession, setProfession] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
   const [education, setEducation] = useState("");
+  const [status, setStatus] = useState("");
   const [infos, setInfos] = useState("");
   const [error, setError] = useState("");
   const token = getItem("token");
@@ -134,6 +135,7 @@ function RegisterClient() {
           uf,
           logradouro: publicPlace,
           complemento: complement,
+          status: status,
           infos,
         },
         {
@@ -423,6 +425,20 @@ function RegisterClient() {
                         onChange={(e) => setEducation(e.target.value)}
                       />
                     </div>
+                  </div>
+                </div>
+                <div className="financeiro">
+                  <h4>Financeiro:</h4>
+                  <div className="financeiro-container">
+                    <label>Status:</label>
+                    <select
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                    >
+                      <option value="em-dia">Em dia</option>
+                      <option value="pendente">Pendente</option>
+                      <option value="quitado">Quitado</option>
+                    </select>
                   </div>
                 </div>
               </div>

@@ -4,60 +4,62 @@ import TrashWhite from "../../assets/trash-white.png";
 import TrashBlack from "../../assets/trash-black.png";
 
 function TableComponent({
-  autor,
-  reu,
-  numProcesso,
-  vara,
-  dataProcess,
-  handleOpenProcessDetails,
-  handleClickOpenEditProcess,
+  selectedOption,
+  titulo1,
+  titulo2,
+  titulo3,
+  titulo4,
+  titulo5,
+  datas,
+  handleOpenDetails,
+  handleClickOpenEdit,
   handleClickOpenConfirm,
   theme,
 }) {
+
   return (
     <div className="content">
       <div className="title">
         <ul>
-          <li>{autor}</li>
-          <li>{reu}</li>
-          <li>{numProcesso}</li>
-          <li>{vara}</li>
-          <li>Vara:</li>
-          
+          <li>{titulo1}</li>
+          <li>{titulo2}</li>
+          <li>{titulo3}</li>
+          <li>{titulo4}</li>
+          <li>{titulo5}:</li>
           <li></li>
         </ul>
       </div>
       <div className="body">
-        {dataProcess && dataProcess.length === 0 ? (
-          <span>Não encontramos processos para esta conta</span>
-        ) : (
-          dataProcess &&
-          dataProcess.map((processo, index) => (
+        {datas && datas.length === 0 ? (
+          <span>Não encontramos dados para esta opção.</span>
+        ) : selectedOption === "processos" ? (
+          datas &&
+          datas.map((data, index) => (
             <div key={index} className="line">
               <ul>
                 <li
-                  title={processo.autor}
-                  onClick={() => handleOpenProcessDetails(true, processo)}
+                  title={data.autor}
+                  onClick={() => handleOpenDetails(true, data)}
                 >
-                  <p> {processo.autor}</p>{" "}
+                  <p> {data.autor}</p>{" "}
                 </li>
-                <li title={processo.reu}>
-                  <p>{processo.reu}</p>
+                <li title={data.reu}>
+                  <p>{data.reu}</p>
                 </li>
-                <li title={processo.numero}>
-                  <p>{processo.numero}</p>
+                <li title={data.numero}>
+                  <p>{data.numero}</p>
                 </li>
-                <li title={processo.vara}>
-                  <p>{processo.vara}</p>
+                <li title={data.vara}>
+                  <p>{data.vara}</p>
                 </li>
-                <li title={processo.atualizado}>
-                  <p>{processo.atualizado}</p>
+                <li title={data.atualizado}>
+                  <p>{data.atualizado}</p>
                 </li>
                 <li>
                   <img
                     src={theme === "light" ? EditBlack : EditWhite}
                     alt="Edit Icon"
-                    onClick={() => handleClickOpenEditProcess(true, processo)}
+                    onClick={() => handleClickOpenEdit(true, datas)}
                   />
                   <img
                     src={theme === "light" ? TrashBlack : TrashWhite}
@@ -65,8 +67,52 @@ function TableComponent({
                     onClick={() =>
                       handleClickOpenConfirm(
                         true,
-                        "Tem certeza que deseja excluir este processo?",
-                        processo.id
+                        "Tem certeza que deseja excluir este dados?",
+                        datas.id
+                      )
+                    }
+                  />
+                </li>
+              </ul>
+            </div>
+          ))
+        ) : (
+          datas &&
+          datas.map((data, index) => (
+            <div key={index} className="line">
+              <ul>
+                <li
+                  title={data.nome}
+                  onClick={() => handleOpenDetails(true, data)}
+                >
+                  <p> {data.nome}</p>{" "}
+                </li>
+                <li title={data.email}>
+                  <p>{data.email}</p>
+                </li>
+                <li title={data.celular}>
+                  <p>{data.celular}</p>
+                </li>
+                <li title={data.cpf}>
+                  <p>{data.cpf}</p>
+                </li>
+                <li title={data.status}>
+                  <p>{data.status}</p>
+                </li>
+                <li>
+                  <img
+                    src={theme === "light" ? EditBlack : EditWhite}
+                    alt="Edit Icon"
+                    onClick={() => handleClickOpenEdit(true, data)}
+                  />
+                  <img
+                    src={theme === "light" ? TrashBlack : TrashWhite}
+                    alt="Trash Icon"
+                    onClick={() =>
+                      handleClickOpenConfirm(
+                        true,
+                        "Tem certeza que deseja excluir este dados?",
+                        data.id
                       )
                     }
                   />
