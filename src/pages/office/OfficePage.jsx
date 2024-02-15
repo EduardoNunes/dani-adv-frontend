@@ -2,24 +2,28 @@ import { useEffect, useState } from "react";
 import lupa from "../../assets/lupa.png";
 import MarmoreRoxo from "../../assets/marmore-preto-roxo.jpg";
 import MarmoreBranco from "../../assets/textura-marmore.jpg";
+import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
+import TableComponent from "../../components/TableCompnent/TableComponent";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
+import EditProcess from "../../modals/EditProcess/EditProcess";
 import ProcessDetails from "../../modals/ProcessDetails/ProcessDetails";
+import RegisterClient from "../../modals/RegisterClient/RegisterClient";
+import RegisterProcess from "../../modals/RegisterProcess/RegisterProcess";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./office-page.css";
-import EditProcess from "../../modals/EditProcess/EditProcess";
-import RegisterProcess from "../../modals/RegisterProcess/RegisterProcess";
-import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
-import RegisterClient from "../../modals/RegisterClient/RegisterClient";
-import TableComponent from "../../components/TableCompnent/TableComponent";
+import ClientDetails from "../../modals/ClientDetails/ClientDetails";
 
 function OfficePage() {
   const { theme } = useTheme();
   const {
     handleOpenProcessDetails,
+    handleOpenClientDetails,
     openProcessDetails,
+    openClientDetails,
     selectedProcess,
+    selectedClient,
     openEditProcess,
     handleClickOpenEditProcess,
     handleClickOpenRegisterProcess,
@@ -52,6 +56,10 @@ function OfficePage() {
     }
   }
 
+  useEffect(() => {
+    listAllProcess();
+  }, []);
+
   async function listAllClients() {
     const token = getItem("token");
     try {
@@ -76,10 +84,6 @@ function OfficePage() {
       listAllClients();
     }
   }
-
-  useEffect(() => {
-    listAllProcess();
-  }, []);
 
   function searchAllProcess(event) {
     const searchTerm = event.toLowerCase();
@@ -118,75 +122,6 @@ function OfficePage() {
     }
   }
 
-  /* function searchAllClients(event) {
-    const searchTerm = event.toLowerCase();
-
-    if (dataClients) {
-      if (!searchTerm) {
-        setDataClients(newDataClients);
-      } else {
-        let newDataFilter = newDataClients.filter((data) => {
-          const nome = data.nome ? data.nome.toLowerCase() : "";
-          const nascimento = data.nascimento
-            ? data.nascimento.toLowerCase()
-            : "";
-          const genero = data.genero ? data.genero.toLowerCase() : "";
-          const nacionalidade = data.nacionalidade
-            ? data.nacionalidade.toLowerCase()
-            : "";
-          const celular = data.celular ? data.celular.toLowerCase() : "";
-          const email = data.email ? data.email.toLowerCase() : "";
-          const redes_sociais = data.data_redes_sociais
-            ? data.data_redes_sociais.toLowerCase()
-            : "";
-          const rg = data.rg ? data.rg.toLowerCase() : "";
-          const cpf = data.cpf ? data.cpf.toLowerCase() : "";
-          const profissao = data.profissao ? data.profissao.toLowerCase() : "";
-          const estado_civil = data.estado_civil
-            ? data.estado_civil.toLowerCase()
-            : "";
-          const formacao_academica = data.formacao_academica
-            ? data.formacao_academica.toLowerCase()
-            : "";
-          const cep = data.cep ? data.cep.toLowerCase() : "";
-          const cidade = data.cidade ? data.cidade.toLowerCase() : "";
-          const bairro = data.bairro ? data.bairro.toLowerCase() : "";
-          const uf = data.uf ? data.uf.toLowerCase() : "";
-          const logradouro = data.logradouro
-            ? data.logradouro.toLowerCase()
-            : "";
-          const complemento = data.complemento
-            ? data.complemento.toLowerCase()
-            : "";
-          const infos = data.infos ? data.infos.toLowerCase() : "";
-
-          return (
-            nome.includes(searchTerm) ||
-            nascimento.includes(searchTerm) ||
-            genero.includes(searchTerm) ||
-            nacionalidade.includes(searchTerm) ||
-            celular.includes(searchTerm) ||
-            email.includes(searchTerm) ||
-            redes_sociais.includes(searchTerm) ||
-            rg.includes(searchTerm) ||
-            cpf.includes(searchTerm) ||
-            profissao.includes(searchTerm) ||
-            estado_civil.includes(searchTerm) ||
-            formacao_academica.includes(searchTerm) ||
-            cep.includes(searchTerm) ||
-            cidade.includes(searchTerm) ||
-            bairro.includes(searchTerm) ||
-            uf.includes(searchTerm) ||
-            logradouro.includes(searchTerm) ||
-            complemento.includes(searchTerm) ||
-            infos.includes(searchTerm)
-          );
-        });
-        setDataClients(newDataFilter);
-      }
-    }
-  } */
-
   async function excluirProcesso(processoId) {
     try {
       await api.delete(`/deletarProcesso/${processoId}`, {
@@ -210,6 +145,7 @@ function OfficePage() {
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
       {openEditProcess && <EditProcess updateList={listAllProcess} />}
       {openRegisterProcess && <RegisterProcess updateList={listAllProcess} />}
+      {openClientDetails && <ClientDetails cliente={selectedClient} />}
       {openRegisterClient && <RegisterClient />}
       {openConfirm && <ConfirmComponent excluirProcesso={excluirProcesso} />}
       <img
@@ -272,8 +208,8 @@ function OfficePage() {
               titulo4="CPF"
               titulo5="Status"
               datas={dataClients}
-              handleOpenDetails="teste" /* {handleOpenClientsDetails} */
-              handleClickOpenEdit="teste2" /* {handleClickOpenEditClients} */
+              handleOpenDetails={handleOpenClientDetails}
+              handleClickOpenEdit="teste2" /* {handleClickOpenEditClient} */
               handleClickOpenConfirm={handleClickOpenConfirm}
               theme={theme}
             />

@@ -8,6 +8,8 @@ export function useModal() {
 
 export function ModalProvider({ children }) {
   const [openProcessDetails, setOpenProcessDetails] = useState(false);
+  const [openClientDetails, setOpenClientDetails] = useState(false)
+  const [selectedClient, setSelectedClient] = useState(false)
   const [selectedProcess, setSelectedProcess] = useState(null);
   const [openUserEdit, setOpenUserEdit] = useState(false);
   const [openEditProcess, setOpenEditProcess] = useState(false);
@@ -22,6 +24,11 @@ export function ModalProvider({ children }) {
   function handleOpenProcessDetails(openClose, processo) {
     setSelectedProcess(processo);
     setOpenProcessDetails(openClose);
+  }
+
+  function handleOpenClientDetails(openClose, cliente) {
+    setSelectedClient(cliente)
+    setOpenClientDetails(openClose)
   }
 
   function handleClickOpenSettings(openClose) {
@@ -60,7 +67,10 @@ export function ModalProvider({ children }) {
       value={{
         handleOpenProcessDetails,
         openProcessDetails,
+        handleOpenClientDetails,
+        openClientDetails,
         selectedProcess,
+        selectedClient,
         handleClickOpenSettings,
         openUserEdit,
         handleClickOpenEditProcess,

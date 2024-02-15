@@ -59,7 +59,7 @@ function TableComponent({
                   <img
                     src={theme === "light" ? EditBlack : EditWhite}
                     alt="Edit Icon"
-                    onClick={() => handleClickOpenEdit(true, datas)}
+                    onClick={() => handleClickOpenEdit(true, data)}
                   />
                   <img
                     src={theme === "light" ? TrashBlack : TrashWhite}

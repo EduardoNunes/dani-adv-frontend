@@ -32,7 +32,7 @@ function EditProcess({ updateList }) {
     event.preventDefault();
 
     try {
-      const response = await api.put(
+      await api.put(
         `/editarProcessoEscritorio/${id}`,
         {
           autor,
@@ -52,12 +52,11 @@ function EditProcess({ updateList }) {
       handleClickOpenEditProcess(false);
       updateList();
       handleClickOpenMessageToast(true, "Processo atualizado com sucesso!");
-      console.log("Processo atualizado com sucesso!", response.data);
     } catch (error) {
       console.error(error);
     }
   }
-
+  
   return (
     <div className={`edit-process edit-process-${theme}`}>
       <div className="container-process">
