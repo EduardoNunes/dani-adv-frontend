@@ -30,7 +30,7 @@ function OfficePage() {
     handleClickOpenRegisterClient,
     openRegisterClient,
     openRegisterProcess,
-    handleClickOpenConfirm,
+    handleClickOpenDeleteConfirm,
     openConfirm,
     handleClickOpenMessageToast,
   } = useModal();
@@ -69,7 +69,7 @@ function OfficePage() {
 
       setDataClients(response.data);
       setNewDataClients(response.data);
-      console.log(newDataClients)
+      console.log(newDataClients);
     } catch (error) {
       console.error(error);
     }
@@ -137,7 +137,7 @@ function OfficePage() {
       console.error(error);
     }
 
-    handleClickOpenConfirm(false);
+    handleClickOpenDeleteConfirm(false);
     handleClickOpenMessageToast(true, "Processo excluído!");
   }
 
@@ -197,7 +197,7 @@ function OfficePage() {
               datas={dataProcess}
               handleOpenDetails={handleOpenProcessDetails}
               handleClickOpenEdit={handleClickOpenEditProcess}
-              handleClickOpenConfirm={handleClickOpenConfirm}
+              handleClickOpenDeleteConfirm={handleClickOpenDeleteConfirm}
               theme={theme}
             />
           ) : (
@@ -211,7 +211,7 @@ function OfficePage() {
               datas={dataClients}
               handleOpenDetails={handleOpenClientDetails}
               handleClickOpenEdit="teste2" /* {handleClickOpenEditClient} */
-              handleClickOpenConfirm={handleClickOpenConfirm}
+              handleClickOpenDeleteConfirm={handleClickOpenDeleteConfirm}
               theme={theme}
             />
           )}

@@ -13,10 +13,9 @@ function TableComponent({
   datas,
   handleOpenDetails,
   handleClickOpenEdit,
-  handleClickOpenConfirm,
+  handleClickOpenDeleteConfirm,
   theme,
 }) {
-
   return (
     <div className="content">
       <div className="title">
@@ -65,10 +64,10 @@ function TableComponent({
                     src={theme === "light" ? TrashBlack : TrashWhite}
                     alt="Trash Icon"
                     onClick={() =>
-                      handleClickOpenConfirm(
+                      handleClickOpenDeleteConfirm(
                         true,
                         "Tem certeza que deseja excluir este dados?",
-                        datas.id
+                        data.id
                       )
                     }
                   />
@@ -109,7 +108,7 @@ function TableComponent({
                     src={theme === "light" ? TrashBlack : TrashWhite}
                     alt="Trash Icon"
                     onClick={() =>
-                      handleClickOpenConfirm(
+                      handleClickOpenDeleteConfirm(
                         true,
                         "Tem certeza que deseja excluir este dados?",
                         data.id

@@ -8,18 +8,18 @@ export function useModal() {
 
 export function ModalProvider({ children }) {
   const [openProcessDetails, setOpenProcessDetails] = useState(false);
-  const [openClientDetails, setOpenClientDetails] = useState(false)
-  const [selectedClient, setSelectedClient] = useState(false)
+  const [openClientDetails, setOpenClientDetails] = useState(false);
+  const [selectedClient, setSelectedClient] = useState(false);
   const [selectedProcess, setSelectedProcess] = useState(null);
   const [openUserEdit, setOpenUserEdit] = useState(false);
   const [openEditProcess, setOpenEditProcess] = useState(false);
   const [selectedEditProcess, setSelectedEditProcess] = useState(null);
   const [openRegisterProcess, setOpenRegisterProcess] = useState(false);
-  const [openRegisterClient, setOpenRegisterClient] = useState(false)
+  const [openRegisterClient, setOpenRegisterClient] = useState(false);
   const [openToast, setOpenToast] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const [mensagem, setMensagem] = useState("");
-  const [processoId, setProcessoId] = useState("")
+  const [processoId, setProcessoId] = useState("");
 
   function handleOpenProcessDetails(openClose, processo) {
     setSelectedProcess(processo);
@@ -27,8 +27,8 @@ export function ModalProvider({ children }) {
   }
 
   function handleOpenClientDetails(openClose, cliente) {
-    setSelectedClient(cliente)
-    setOpenClientDetails(openClose)
+    setSelectedClient(cliente);
+    setOpenClientDetails(openClose);
   }
 
   function handleClickOpenSettings(openClose) {
@@ -56,10 +56,11 @@ export function ModalProvider({ children }) {
     }, 3000);
   }
 
-  function handleClickOpenConfirm(openClose, mensagem, processoId) {
+  function handleClickOpenDeleteConfirm(openClose, mensagem, processoId) {
     setOpenConfirm(openClose);
     setMensagem(mensagem);
-    setProcessoId(processoId)
+    setProcessoId(processoId);
+    console.log("modalContext ID", processoId)
   }
 
   return (
@@ -82,10 +83,10 @@ export function ModalProvider({ children }) {
         openRegisterProcess,
         handleClickOpenMessageToast,
         openToast,
-        handleClickOpenConfirm,
-        mensagem,        
+        handleClickOpenDeleteConfirm,
+        mensagem,
         openConfirm,
-        processoId
+        processoId,
       }}
     >
       {children}

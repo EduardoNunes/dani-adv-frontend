@@ -3,8 +3,8 @@ import "./confirm-component.css";
 import Aviso from "../../assets/aviso.png";
 
 function ConfirmComponent({ excluirProcesso }) {
-  const { mensagem, handleClickOpenConfirm, processoId } = useModal();
-
+  const { mensagem, handleClickOpenDeleteConfirm, processoId } = useModal();
+console.log("confirm modal ID", processoId)
   return (
     <div className="full-screen">
       <div className="confirm">
@@ -12,7 +12,7 @@ function ConfirmComponent({ excluirProcesso }) {
         <p>{mensagem}</p>
         <div className="buttons">
           <button onClick={() => excluirProcesso(processoId)}>Confirmar</button>
-          <button onClick={() => handleClickOpenConfirm(false, "")}>
+          <button onClick={() => handleClickOpenDeleteConfirm(false, "")}>
             Cancelar
           </button>
         </div>
