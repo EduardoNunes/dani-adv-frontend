@@ -69,6 +69,7 @@ function OfficePage() {
 
       setDataClients(response.data);
       setNewDataClients(response.data);
+      console.log(newDataClients)
     } catch (error) {
       console.error(error);
     }
