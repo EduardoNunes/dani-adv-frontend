@@ -19,7 +19,8 @@ export function ModalProvider({ children }) {
   const [openToast, setOpenToast] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const [mensagem, setMensagem] = useState("");
-  const [processoId, setProcessoId] = useState("");
+  const [dataId, setDataId] = useState("");
+  const [selectedDelete, setSelectedDelete] = useState();
 
   function handleOpenProcessDetails(openClose, processo) {
     setSelectedProcess(processo);
@@ -56,11 +57,17 @@ export function ModalProvider({ children }) {
     }, 3000);
   }
 
-  function handleClickOpenDeleteConfirm(openClose, mensagem, processoId) {
+  function handleClickOpenDeleteConfirm(
+    openClose,
+    mensagem,
+    dataId,
+    selectedOption,
+    teste
+  ) {
     setOpenConfirm(openClose);
     setMensagem(mensagem);
-    setProcessoId(processoId);
-    console.log("modalContext ID", processoId)
+    setDataId(dataId);
+    setSelectedDelete(selectedOption)
   }
 
   return (
@@ -86,7 +93,8 @@ export function ModalProvider({ children }) {
         handleClickOpenDeleteConfirm,
         mensagem,
         openConfirm,
-        processoId,
+        dataId,
+        selectedDelete
       }}
     >
       {children}

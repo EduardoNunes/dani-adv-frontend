@@ -123,9 +123,9 @@ function OfficePage() {
     }
   }
 
-  async function excluirProcesso(processoId) {
+  async function excluirProcesso(dataId) {
     try {
-      await api.delete(`/deletarProcesso/${processoId}`, {
+      await api.delete(`/deletarProcesso/${dataId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -141,14 +141,37 @@ function OfficePage() {
     handleClickOpenMessageToast(true, "Processo excluído!");
   }
 
+  async function excluirCliente(dataId) {
+    console.log(dataId);
+    try {
+      await api.delete(`/deletarClienteEscritorio/${dataId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+    } catch (error) {
+      console.error(error);
+    }
+
+    listAllClients();
+    handleClickOpenDeleteConfirm(false);
+    handleClickOpenMessageToast(true, "Cliente excluído!");
+  }
+
   return (
     <div className={`office-page office-page-${theme}`}>
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
       {openEditProcess && <EditProcess updateList={listAllProcess} />}
       {openRegisterProcess && <RegisterProcess updateList={listAllProcess} />}
       {openClientDetails && <ClientDetails cliente={selectedClient} />}
-      {openRegisterClient && <RegisterClient />}
-      {openConfirm && <ConfirmComponent excluirProcesso={excluirProcesso} />}
+      {openRegisterClient && <RegisterClient updateList={listAllClients}/>}
+      {openConfirm && (
+        <ConfirmComponent
+          excluirProcesso={excluirProcesso}
+          excluirCliente={excluirCliente}
+        />
+      )}
       <img
         className={`background background-${theme}`}
         src={theme === "light" ? MarmoreBranco : MarmoreRoxo}

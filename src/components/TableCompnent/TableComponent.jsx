@@ -16,6 +16,7 @@ function TableComponent({
   handleClickOpenDeleteConfirm,
   theme,
 }) {
+
   return (
     <div className="content">
       <div className="title">
@@ -67,7 +68,9 @@ function TableComponent({
                       handleClickOpenDeleteConfirm(
                         true,
                         "Tem certeza que deseja excluir este dados?",
-                        data.id
+                        data.id,
+                        selectedOption,
+                        "teste"
                       )
                     }
                   />
@@ -111,7 +114,9 @@ function TableComponent({
                       handleClickOpenDeleteConfirm(
                         true,
                         "Tem certeza que deseja excluir este dados?",
-                        data.id
+                        data.id,
+                        selectedOption,
+                        "teste"
                       )
                     }
                   />

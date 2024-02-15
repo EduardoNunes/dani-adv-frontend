@@ -9,7 +9,7 @@ import axios from "axios";
 import "./register-client.css";
 import { useValidationsContext } from "../../context/ValidationsContext";
 
-function RegisterClient() {
+function RegisterClient({ updateList }) {
   const { theme } = useTheme();
   const { handleClickOpenRegisterClient, handleClickOpenMessageToast } =
     useModal();
@@ -42,7 +42,7 @@ function RegisterClient() {
   const [profession, setProfession] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
   const [education, setEducation] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Em dia");
   const [infos, setInfos] = useState("");
   const [error, setError] = useState("");
   const token = getItem("token");
@@ -144,6 +144,7 @@ function RegisterClient() {
       );
 
       handleClickOpenRegisterClient(false);
+      updateList()
       handleClickOpenMessageToast(true, "Cliente cadastrado com sucesso!");
       console.log("Processo cadastrado com sucesso!", response.data);
     } catch (error) {
