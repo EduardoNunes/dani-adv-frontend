@@ -14,12 +14,15 @@ import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./office-page.css";
 import ClientDetails from "../../modals/ClientDetails/ClientDetails";
+import EditClient from "../../modals/EditClient/EditClient";
 
 function OfficePage() {
   const { theme } = useTheme();
   const {
     handleOpenProcessDetails,
     handleOpenClientDetails,
+    handleClickOpenEditClient,
+    openEditClient,
     openProcessDetails,
     openClientDetails,
     selectedProcess,
@@ -172,6 +175,7 @@ function OfficePage() {
           excluirCliente={excluirCliente}
         />
       )}
+      {openEditClient && <EditClient updateList={listAllClients} />}
       <img
         className={`background background-${theme}`}
         src={theme === "light" ? MarmoreBranco : MarmoreRoxo}
@@ -233,7 +237,7 @@ function OfficePage() {
               titulo5="Status"
               datas={dataClients}
               handleOpenDetails={handleOpenClientDetails}
-              handleClickOpenEdit="teste2" /* {handleClickOpenEditClient} */
+              handleClickOpenEdit={handleClickOpenEditClient}
               handleClickOpenDeleteConfirm={handleClickOpenDeleteConfirm}
               theme={theme}
             />

@@ -1,0 +1,222 @@
+.edit-client {
+  display: flex;
+  position: absolute;
+
+  width: 100vw;
+  height: calc(100vh - 40px);
+  background-color: rgba(var(--cor-preto), 0.8);
+
+  z-index: 1;
+}
+
+.edit-client .container-client {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.edit-client .container-client .chart-client {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  height: 760px;
+  width: 70%;
+  min-width: 1000px;
+
+  padding: 40px;
+  border-radius: 10px;
+
+  background-color: rgba(var(--cor-branco), 0.9);
+}
+
+.edit-client-dark .container-client .chart-client {
+  background-color: rgba(var(--cor-preto), 1);
+  border: 1px solid rgba(var(--cor-roxo), 0.5);
+}
+
+.edit-client .container-client .chart-client img {
+  position: absolute;
+  width: 25px;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.edit-client .container-client .chart-client h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-roxo), 0.6);
+}
+
+.edit-client-dark .container-client .chart-client h3 {
+  background-color: rgba(var(--cor-rosa), 0.6);
+  color: rgba(var(--cor-branco), 0.9);
+  font-weight: 300;
+}
+
+.edit-client .container-client .chart-client form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 96%;
+  min-width: 90%;
+  border-radius: 5px;
+
+  list-style: none;
+  background-color: rgba(var(--cor-roxo), 0.2);
+}
+
+.edit-client-dark .container-client .chart-client form {
+  background-color: rgba(var(--cor-rosa), 0.2);
+}
+
+.edit-client .container-client .chart-client form .formulario {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  margin-top: 10px;
+}
+
+.edit-client .container-client .chart-client form .formulario .container1,
+.edit-client .container-client .chart-client form .formulario .container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.edit-client .container-client .chart-client form .formulario .pessoal,
+.edit-client .container-client .chart-client form .formulario .contato,
+.edit-client .container-client .chart-client form .formulario .dados-pessoais,
+.edit-client .container-client .chart-client form .formulario .social,
+.edit-client .container-client .chart-client form .formulario .address,
+.edit-client .container-client .chart-client form .formulario .financeiro {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.edit-client .container-client .chart-client form .formulario h4 {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 2px;
+  font-size: 19px;
+}
+
+.edit-client .container-client .chart-client form .formulario .dados-pessoais .dados-pessoais-container,
+.edit-client .container-client .chart-client form .formulario .pessoal-container1,
+.edit-client .container-client .chart-client form .formulario .contato-container,
+.edit-client .container-client .chart-client form .formulario .social .social-container2, 
+.edit-client .container-client .chart-client form .formulario .address .container0 {
+  display: flex;
+  margin-top: 5px;
+}
+
+.edit-client .container-client .chart-client form .formulario .pessoal .pessoal-container0,
+.edit-client .container-client .chart-client form .formulario .social .social-container1,
+.edit-client .container-client .chart-client form .formulario .address .container3 {
+  padding: 0 10px 0 0;
+}
+
+.edit-client .container-client .chart-client form .formulario .dados-pessoais .dados-pessoais-container div,
+.edit-client .container-client .chart-client form .formulario .pessoal-container1 div,
+.edit-client .container-client .chart-client form .formulario .contato-container div,
+.edit-client .container-client .chart-client form .formulario .social .social-container2 div,
+.edit-client .container-client .chart-client form .formulario .address .container1,
+.edit-client .container-client .chart-client form .formulario .address .container2 {
+  width: 50%;
+  padding: 0 10px 0 0;
+}
+
+.edit-client .container-client .chart-client form .formulario .financeiro .financeiro-container {
+  margin-top: 5px;
+}
+
+.edit-client .container-client .chart-client form .formulario .financeiro .financeiro-container label {
+  margin-right: 8px;
+}
+
+.edit-client .container-client .chart-client form .formulario .financeiro .financeiro-container select {
+  width: 100px;
+  height: 26px;
+  border-radius: 10px;
+  padding-left: 6px;
+}
+
+.edit-client .container-client .chart-client form input {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 24px;
+
+  margin: 2px 0 6px;
+  padding-left: 10px;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-branco), 0.8);
+}
+
+.edit-client .container-client .chart-client form .infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 160px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.edit-client .container-client .chart-client form .infos label {
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+.edit-client .container-client .chart-client form .infos textarea {
+  display: flex;
+  align-items: center;
+
+  width: 80%;
+  height: 100%;
+
+  border: 1px solid rgba(var(--cor-preto), 1);
+  padding: 4px 14px;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-branco), 0.8);
+}
+
+.edit-client .container-client .chart-client form span {
+  margin-bottom: 5px;
+  color: red;
+}
+
+.edit-client .container-client .chart-client form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 50px;
+  width: 140px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.edit-client .container-client .chart-client form button:hover {
+  background-color: rgba(var(--cor-preto), 0.16);
+}
