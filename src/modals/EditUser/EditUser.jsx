@@ -5,11 +5,11 @@ import XBranco from "../../assets/x-branco.png";
 import XPreto from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
+import { useValidationsContext } from "../../context/ValidationsContext";
 import { useShowPassword } from "../../context/showPasswordContext";
 import api from "../../services/api";
 import { getItem, setItem } from "../../utils/storage";
 import "./edit-user.css";
-import { useValidationsContext } from "../../context/ValidationsContext";
 
 function EditUser() {
   const {

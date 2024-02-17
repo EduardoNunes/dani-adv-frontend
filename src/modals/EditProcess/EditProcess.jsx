@@ -1,11 +1,11 @@
-import "./edit-process.css";
-import XPreto from "../../assets/x-preto.png";
-import XBranco from "../../assets/x-branco.png";
-import { useTheme } from "../../context/ThemeContext";
-import { useModal } from "../../context/ModalsContext";
 import { useState } from "react";
+import XBranco from "../../assets/x-branco.png";
+import XPreto from "../../assets/x-preto.png";
+import { useModal } from "../../context/ModalsContext";
+import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
+import "./edit-process.css";
 
 function EditProcess({ updateList }) {
   const { theme } = useTheme();
@@ -14,9 +14,6 @@ function EditProcess({ updateList }) {
     selectedEditProcess,
     handleClickOpenMessageToast,
   } = useModal();
-  const [contratante, setContratante] = useState(
-    selectedEditProcess.contratante
-  );
   const [autor, setAutor] = useState(selectedEditProcess.autor);
   const [reu, setReu] = useState(selectedEditProcess.reu);
   const [numero, setNumero] = useState(selectedEditProcess.numero);
@@ -40,7 +37,7 @@ function EditProcess({ updateList }) {
       await api.put(
         `/editarProcessoEscritorio/${id}`,
         {
-          contratante,
+          contratante: selectedEditProcess.contratante,
           autor,
           reu,
           numero,
@@ -78,10 +75,7 @@ function EditProcess({ updateList }) {
           <h3>Editar Processo</h3>
           <form onSubmit={handleSubmit}>
             <label>Contratante:</label>
-            <input
-              value={contratante}
-              onChange={(e) => setContratante(e.target.value)}
-            ></input>
+            <p><strong>{selectedEditProcess.contratante}</strong></p>
             <label>Autor:</label>
             <input
               value={autor}

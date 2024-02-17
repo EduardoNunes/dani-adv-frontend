@@ -98,7 +98,8 @@
   font-weight: 300;
 }
 
-.edit-process .container-process .chart-process form input {
+.edit-process .container-process .chart-process form input,
+.edit-process .container-process .chart-process form p {
   display: flex;
   align-items: center;
 
