@@ -1,18 +1,18 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import LogoReduzidaBranco from "../../assets/logo-reduzida-branco.png";
 import LogoReduzidaColor from "../../assets/logo-reduzida-color-120px.png";
-import settingsWhite from "../../assets/settings-white.png";
-import settingsBlack from "../../assets/settings-black.png";
-import { useFontSize } from "../../context/FontSizeContext";
-import { useScroll } from "../../context/ScrollContext";
-import { useTheme } from "../../context/ThemeContext";
-import { removeItem, getItem } from "../../utils/storage";
-import "./header.css";
 import sairBranco from "../../assets/sair-branco.png";
 import sairPreto from "../../assets/sair-preto.png";
+import settingsBlack from "../../assets/settings-black.png";
+import settingsWhite from "../../assets/settings-white.png";
+import { useFontSize } from "../../context/FontSizeContext";
 import { useModal } from "../../context/ModalsContext";
+import { useScroll } from "../../context/ScrollContext";
+import { useTheme } from "../../context/ThemeContext";
 import EditUser from "../../modals/EditUser/EditUser";
+import { getItem, removeItem } from "../../utils/storage";
 import Toast from "../Toast/Toast";
+import "./header.css";
 
 function Header() {
   const { handleClickOpenSettings, openUserEdit, openToast } = useModal();

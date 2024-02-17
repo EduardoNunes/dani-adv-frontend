@@ -59,7 +59,7 @@ function Login() {
       if (response.status > 204) {
         return;
       }
-      console.log("resposta", response)
+      
       setItem("token", response.data.token);
       setItem("usuario", response.data.usuario.nome);
       setItem("id", response.data.usuario.id);
@@ -151,7 +151,7 @@ function Login() {
             </div>
           </div>
 
-          <TipoCadastro titulo="Quero acessar como:" />
+          <TipoCadastro titulo="Quero acessar como:" page="login"/>
 
           {error && <span>{error}</span>}
           <div>

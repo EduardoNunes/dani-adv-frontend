@@ -46,7 +46,7 @@ function EditClient({ updateList }) {
   const [error, setError] = useState("");
   const token = getItem("token");
   const id = selectedEditClient.id
-console.log(selectedEditClient)
+  
   async function handleSubmit(event) {
     event.preventDefault();
 

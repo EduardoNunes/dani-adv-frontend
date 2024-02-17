@@ -57,7 +57,6 @@ export function ValidationsProvider({ children }) {
     } else if (year < 1800 || year > currentYear) {
       return "Ano de nascimento inválido";
     }
-    console.log(birth);
   }
 
   function validationPhone(phone) {

@@ -7,7 +7,7 @@ import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import { useShowPassword } from "../../context/showPasswordContext";
 import api from "../../services/api";
-import { getItem } from "../../utils/storage";
+import { getItem, setItem } from "../../utils/storage";
 import "./edit-user.css";
 import { useValidationsContext } from "../../context/ValidationsContext";
 
@@ -34,18 +34,20 @@ function EditUser() {
   useEffect(() => {
     const EditUserData = async () => {
       const token = getItem("token");
-      const id = getItem("id");
+      const id = getItem("id");      
+
       try {
-        const response = await api.get(`/obterCliente/${id}`, {
+        const response = await api.get(`/obterCliente/${id}/${getItem("tipo cadastro")}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
         const user = response.data[0];
         if (!user) return;
+
         setUserData(user);
         setNome(user.nome);
         setEmail(user.email);
-
+       
         return;
       } catch (error) {
         console.error(error);
@@ -86,22 +88,23 @@ function EditUser() {
         setError(mensagemError);
         return;
       }
-
+      
       const response = await api.put(
         `/atualizarUsuario/${id}`,
         {
           nome,
           email,
           senha,
+          tipo_cadastro: getItem("tipo cadastro"),
         },
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
 
-      console.log("Usuário atualizado com sucesso!", response.data);
       handleClickOpenMessageToast(true, "Usuário atualizado com sucesso!");
       handleClickOpenSettings(false);
+      setItem("usuario", response.data[0].nome)
     } catch (error) {
       console.error("Erro na solicitação:", error.message);
       setError(mensagemError);
@@ -169,10 +172,10 @@ function EditUser() {
                 </div>
               </div>
               <label>Tipo de cadastro</label>
-              <p>{userData.cadastro}</p>
+              <p>{userData.tipo_cadastro}</p>
 
               {error && <span>{error}</span>}
-              
+
               <div className="edit-buttons">
                 <button>Enviar</button>
               </div>

@@ -194,7 +194,7 @@ function RegisterPage() {
             </div>
           </div>
 
-          <TipoCadastro titulo="Quero me cadastrar como:" />
+          <TipoCadastro titulo="Quero me cadastrar como:" page="register" />
 
           {error && <span>{error}</span>}
           <div>

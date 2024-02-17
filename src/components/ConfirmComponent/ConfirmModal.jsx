@@ -4,7 +4,6 @@ import Aviso from "../../assets/aviso.png";
 
 function ConfirmComponent({ excluirProcesso, excluirCliente }) {
   const { mensagem, handleClickOpenDeleteConfirm, dataId, selectedDelete } = useModal();
-  console.log("id", dataId, "selectedOptioin", selectedDelete);
   
   return (
     <div className="full-screen">

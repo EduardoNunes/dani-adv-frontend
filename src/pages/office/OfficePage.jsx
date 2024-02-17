@@ -40,7 +40,6 @@ function OfficePage() {
   const [dataProcess, setDataProcess] = useState();
   const [newDataProcess, setNewDataProcess] = useState();
   const [dataClients, setDataClients] = useState();
-  const [newDataClients, setNewDataClients] = useState();
   const [selectedOption, setSelectOption] = useState("processos");
 
   const token = getItem("token");
@@ -71,8 +70,6 @@ function OfficePage() {
       });
 
       setDataClients(response.data);
-      setNewDataClients(response.data);
-      console.log(newDataClients);
     } catch (error) {
       console.error(error);
     }
@@ -134,7 +131,6 @@ function OfficePage() {
         },
       });
 
-      console.log("Processo deletado com sucesso!");
       listAllProcess();
     } catch (error) {
       console.error(error);
@@ -145,14 +141,12 @@ function OfficePage() {
   }
 
   async function excluirCliente(dataId) {
-    console.log(dataId);
     try {
       await api.delete(`/deletarClienteEscritorio/${dataId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
     } catch (error) {
       console.error(error);
     }
@@ -168,7 +162,7 @@ function OfficePage() {
       {openEditProcess && <EditProcess updateList={listAllProcess} />}
       {openRegisterProcess && <RegisterProcess updateList={listAllProcess} />}
       {openClientDetails && <ClientDetails cliente={selectedClient} />}
-      {openRegisterClient && <RegisterClient updateList={listAllClients}/>}
+      {openRegisterClient && <RegisterClient updateList={listAllClients} />}
       {openConfirm && (
         <ConfirmComponent
           excluirProcesso={excluirProcesso}
