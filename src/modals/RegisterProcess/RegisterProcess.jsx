@@ -1,11 +1,11 @@
-import "./register-process.css";
-import XPreto from "../../assets/x-preto.png";
-import XBranco from "../../assets/x-branco.png";
-import { useTheme } from "../../context/ThemeContext";
-import { useModal } from "../../context/ModalsContext";
 import { useEffect, useState } from "react";
+import XBranco from "../../assets/x-branco.png";
+import XPreto from "../../assets/x-preto.png";
+import { useModal } from "../../context/ModalsContext";
+import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
+import "./register-process.css";
 
 function RegisterProcess({ updateList }) {
   const { theme } = useTheme();
@@ -13,9 +13,11 @@ function RegisterProcess({ updateList }) {
     useModal();
   const [clientes, setClientes] = useState([]);
   const [selectedClient, setSelectedClient] = useState("");
+  const [contratante, setContratante] = useState("");
   const [autor, setAutor] = useState("");
   const [reu, setReu] = useState("");
   const [numero, setNumero] = useState("");
+  const [tipoAcao, setTipoAcao] = useState("");
   const [vara, setVara] = useState("");
   const [juiz, setJuiz] = useState("");
   const [comarca, setComarca] = useState("");
@@ -25,6 +27,15 @@ function RegisterProcess({ updateList }) {
   const [infos, setInfos] = useState("");
   const token = getItem("token");
 
+  useEffect(() => {
+    clientes.forEach((cliente) => {
+      if (cliente.id === parseInt(selectedClient)) {
+        setContratante(cliente.nome);
+        return;
+      }
+    });    
+  }, [clientes, selectedClient])
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -32,16 +43,18 @@ function RegisterProcess({ updateList }) {
       const response = await api.post(
         `/cadastrarProcesso`,
         {
+          contratante: contratante,
           autor,
           reu,
           numero,
+          tipo_acao: tipoAcao,
           vara,
           juiz,
           comarca,
           data_entrada,
           atualizado,
-          infos,
           status,
+          infos,
           cliente_id: selectedClient,
         },
         {
@@ -88,7 +101,7 @@ function RegisterProcess({ updateList }) {
           />
           <h3>Cadastrar Processo</h3>
           <form onSubmit={handleSubmit}>
-            <label>Cliente:</label>
+            <label>Contratante:</label>
             <select
               value={selectedClient}
               onChange={(e) => setSelectedClient(e.target.value)}
@@ -97,7 +110,7 @@ function RegisterProcess({ updateList }) {
               {clientes &&
                 clientes.map((cliente) => (
                   <option key={cliente.id} value={cliente.id}>
-                    {cliente.nome}
+                    {cliente.nome}                   
                   </option>
                 ))}
             </select>
@@ -112,6 +125,11 @@ function RegisterProcess({ updateList }) {
             <input
               value={numero}
               onChange={(e) => setNumero(e.target.value)}
+            ></input>
+            <label>Tipo de ação:</label>
+            <input
+              value={tipoAcao}
+              onChange={(e) => setTipoAcao(e.target.value)}
             ></input>
             <label>Vara:</label>
             <input

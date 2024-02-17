@@ -8,9 +8,11 @@ function ProcessDetails({ processo }) {
   const { theme } = useTheme();
   const { handleOpenProcessDetails } = useModal();
   const {
+    contratante,
     autor,
     reu,
     numero,
+    tipo_acao,
     vara,
     juiz,
     comarca,
@@ -32,12 +34,16 @@ function ProcessDetails({ processo }) {
           />
           <h3>Detalhes do processo</h3>
           <ul>
+            <li>Contratante:</li>
+            <p>{contratante}</p>
             <li>Autor:</li>
             <p>{autor}</p>
             <li>Reu:</li>
             <p>{reu}</p>
             <li>Número do processo:</li>
             <p>{numero}</p>
+            <li>Tipo da ação:</li>
+            <p>{tipo_acao}</p>
             <li>Vara:</li>
             <p>{vara}</p>
             <li>Juiz:</li>

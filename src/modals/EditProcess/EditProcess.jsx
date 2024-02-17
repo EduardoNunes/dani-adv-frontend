@@ -14,9 +14,13 @@ function EditProcess({ updateList }) {
     selectedEditProcess,
     handleClickOpenMessageToast,
   } = useModal();
+  const [contratante, setContratante] = useState(
+    selectedEditProcess.contratante
+  );
   const [autor, setAutor] = useState(selectedEditProcess.autor);
   const [reu, setReu] = useState(selectedEditProcess.reu);
   const [numero, setNumero] = useState(selectedEditProcess.numero);
+  const [tipo_acao, setTipo_acao] = useState(selectedEditProcess.tipo_acao);
   const [vara, setVara] = useState(selectedEditProcess.vara);
   const [juiz, setJuiz] = useState(selectedEditProcess.juiz);
   const [comarca, setComarca] = useState(selectedEditProcess.comarca);
@@ -36,9 +40,11 @@ function EditProcess({ updateList }) {
       await api.put(
         `/editarProcessoEscritorio/${id}`,
         {
+          contratante,
           autor,
           reu,
           numero,
+          tipo_acao,
           vara,
           juiz,
           comarca,
@@ -71,6 +77,11 @@ function EditProcess({ updateList }) {
           />
           <h3>Editar Processo</h3>
           <form onSubmit={handleSubmit}>
+            <label>Contratante:</label>
+            <input
+              value={contratante}
+              onChange={(e) => setContratante(e.target.value)}
+            ></input>
             <label>Autor:</label>
             <input
               value={autor}
@@ -82,6 +93,11 @@ function EditProcess({ updateList }) {
             <input
               value={numero}
               onChange={(e) => setNumero(e.target.value)}
+            ></input>
+            <label>Tipo da ação:</label>
+            <input
+              value={tipo_acao}
+              onChange={(e) => setTipo_acao(e.target.value)}
             ></input>
             <label>Vara:</label>
             <input
