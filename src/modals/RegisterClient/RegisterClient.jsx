@@ -43,6 +43,8 @@ function RegisterClient({ updateList }) {
   const [maritalStatus, setMaritalStatus] = useState("");
   const [education, setEducation] = useState("");
   const [status, setStatus] = useState("Em dia");
+  const [senha, setSenha] = useState("@Cliente01");
+  const [tipoCadastro, setTipoCadastro] = useState("cliente");
   const [infos, setInfos] = useState("");
   const [error, setError] = useState("");
   const token = getItem("token");
@@ -113,7 +115,7 @@ function RegisterClient({ updateList }) {
         setError(mensagemError);
         return;
       }
-
+      
       const response = await api.post(
         `/cadastrarClienteEscritorio`,
         {
@@ -136,6 +138,8 @@ function RegisterClient({ updateList }) {
           logradouro: publicPlace,
           complemento: complement,
           status: status,
+          senha: senha,
+          tipo_cadastro: tipoCadastro,
           infos,
         },
         {
@@ -144,7 +148,7 @@ function RegisterClient({ updateList }) {
       );
 
       handleClickOpenRegisterClient(false);
-      updateList()
+      updateList();
       handleClickOpenMessageToast(true, "Cliente cadastrado com sucesso!");
       console.log("Processo cadastrado com sucesso!", response.data);
     } catch (error) {
@@ -442,8 +446,31 @@ function RegisterClient({ updateList }) {
                     </select>
                   </div>
                 </div>
+                <div className="credenciais">
+                  <h4>Credenciais:</h4>
+                  <div className="creden-content">
+                    <div className="senha">
+                      <label>Senha padrão:</label>
+                      <input
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
+                      />
+                    </div>
+                    <div className="tipo-cadastro">
+                      <label>Tipo de cadastro:</label>
+                      <select
+                        value={tipoCadastro}
+                        onChange={(e) => setTipoCadastro(e.target.value)}
+                      >
+                        <option value="cliente">Cliente</option>
+                        <option value="escritorio">Escritório</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
             <div className="infos">
               <label>Informações adicionais:</label>
               <textarea

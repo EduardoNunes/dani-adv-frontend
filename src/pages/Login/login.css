@@ -138,8 +138,15 @@
   font-family: "fonte";
 }
 
+.login form .bottom p {
+  margin: 22px 0 2px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .login-dark form .bottom {
   color: rgba(var(--cor-branco), 0.8);
+
 }
 
 .login-dark form a {

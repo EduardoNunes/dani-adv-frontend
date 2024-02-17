@@ -101,7 +101,12 @@
 
 .register-client .container-client .chart-client form .formulario .pessoal,
 .register-client .container-client .chart-client form .formulario .contato,
-.register-client .container-client .chart-client form .formulario .dados-pessoais,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .dados-pessoais,
 .register-client .container-client .chart-client form .formulario .social,
 .register-client .container-client .chart-client form .formulario .address,
 .register-client .container-client .chart-client form .formulario .financeiro {
@@ -117,44 +122,180 @@
   font-size: 19px;
 }
 
-.register-client .container-client .chart-client form .formulario .dados-pessoais .dados-pessoais-container,
-.register-client .container-client .chart-client form .formulario .pessoal-container1,
-.register-client .container-client .chart-client form .formulario .contato-container,
-.register-client .container-client .chart-client form .formulario .social .social-container2, 
-.register-client .container-client .chart-client form .formulario .address .container0 {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .dados-pessoais
+  .dados-pessoais-container,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .pessoal-container1,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .contato-container,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .social
+  .social-container2,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .address
+  .container0 {
   display: flex;
   margin-top: 5px;
 }
 
-.register-client .container-client .chart-client form .formulario .pessoal .pessoal-container0,
-.register-client .container-client .chart-client form .formulario .social .social-container1,
-.register-client .container-client .chart-client form .formulario .address .container3 {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .pessoal
+  .pessoal-container0,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .social
+  .social-container1,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .address
+  .container3 {
   padding: 0 10px 0 0;
 }
 
-.register-client .container-client .chart-client form .formulario .dados-pessoais .dados-pessoais-container div,
-.register-client .container-client .chart-client form .formulario .pessoal-container1 div,
-.register-client .container-client .chart-client form .formulario .contato-container div,
-.register-client .container-client .chart-client form .formulario .social .social-container2 div,
-.register-client .container-client .chart-client form .formulario .address .container1,
-.register-client .container-client .chart-client form .formulario .address .container2 {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .dados-pessoais
+  .dados-pessoais-container
+  div,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .pessoal-container1
+  div,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .contato-container
+  div,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .social
+  .social-container2
+  div,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .address
+  .container1,
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .address
+  .container2 {
   width: 50%;
   padding: 0 10px 0 0;
 }
 
-.register-client .container-client .chart-client form .formulario .financeiro .financeiro-container {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .financeiro
+  .financeiro-container {
   margin-top: 5px;
 }
 
-.register-client .container-client .chart-client form .formulario .financeiro .financeiro-container label {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .financeiro
+  .financeiro-container
+  label {
   margin-right: 8px;
 }
 
-.register-client .container-client .chart-client form .formulario .financeiro .financeiro-container select {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .formulario
+  .financeiro
+  .financeiro-container
+  select {
   width: 100px;
   height: 26px;
   border-radius: 10px;
   padding-left: 6px;
+}
+
+.register-client .container-client .chart-client form .credenciais {
+  width: 90%;
+}
+
+.register-client .container-client .chart-client form .credenciais .creden-content {
+  display: flex;
+  align-items: center;
+  margin-top: -10px;
+  width: 100%;
+}
+
+.register-client .container-client .chart-client form .credenciais .senha,
+.register-client .container-client .chart-client form .credenciais .tipo-cadastro {
+  width: 50%;
+}
+
+.register-client .container-client .chart-client form .credenciais .senha {
+  margin-top: 8px;
+}
+
+.register-client .container-client .chart-client form .credenciais input,
+.register-client .container-client .chart-client form .credenciais select {
+  width: 100%;
+}
+
+.register-client .container-client .chart-client form .credenciais select {
+  height: 24px;
+  margin-top: 3px;
+  padding-left: 10px;
+  border-radius: 6px;
 }
 
 .register-client .container-client .chart-client form input {

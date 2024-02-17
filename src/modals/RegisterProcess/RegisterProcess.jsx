@@ -21,6 +21,7 @@ function RegisterProcess({ updateList }) {
   const [comarca, setComarca] = useState("");
   const [data_entrada, setData_Entrada] = useState("");
   const [atualizado, setAtualizado] = useState("");
+  const [status, setStatus] = useState("Em dia");
   const [infos, setInfos] = useState("");
   const token = getItem("token");
 
@@ -40,7 +41,8 @@ function RegisterProcess({ updateList }) {
           data_entrada,
           atualizado,
           infos,
-          usuarios_id: selectedClient,
+          status,
+          cliente_id: selectedClient,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -136,6 +138,12 @@ function RegisterProcess({ updateList }) {
               value={atualizado}
               onChange={(e) => setAtualizado(e.target.value)}
             ></input>
+            <label>Status:</label>
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+              <option value="Em dia">Em dia</option>
+              <option value="Quitado">Quitado</option>
+              <option value="Pendente">Pendente</option>
+            </select>
             <label>Informações:</label>
             <textarea
               value={infos}

@@ -16,6 +16,7 @@ function ProcessDetails({ processo }) {
     comarca,
     data_entrada,
     atualizado,
+    status,
     infos,
   } = processo;
 
@@ -47,6 +48,8 @@ function ProcessDetails({ processo }) {
             <p>{data_entrada}</p>
             <li>Atualizado em:</li>
             <p>{atualizado}</p>
+            <li>Status</li>
+            <p>{status}</p>
             <li>Informações:</li>
             <p className="infos">{infos}</p>
           </ul>

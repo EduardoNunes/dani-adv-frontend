@@ -111,6 +111,13 @@
   background-color: rgba(var(--cor-branco), 0.8);
 }
 
+.edit-process .container-process .chart-process form select {
+  width: 80%;
+  height: 24px;
+  padding-left: 7px;
+  border-radius: 5px;
+}
+
 .edit-process .container-process .chart-process form textarea {    
     display: flex;
     align-items: center;

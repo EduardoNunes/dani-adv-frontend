@@ -24,6 +24,7 @@ function EditProcess({ updateList }) {
     selectedEditProcess.data_entrada
   );
   const [atualizado, setAtualizado] = useState(selectedEditProcess.atualizado);
+  const [status, setStatus] = useState(selectedEditProcess.status);
   const [infos, setInfos] = useState(selectedEditProcess.infos);
   const token = getItem("token");
   const id = selectedEditProcess.id;
@@ -43,6 +44,7 @@ function EditProcess({ updateList }) {
           comarca,
           data_entrada,
           atualizado,
+          status,
           infos,
         },
         {
@@ -56,7 +58,7 @@ function EditProcess({ updateList }) {
       console.error(error);
     }
   }
-  
+
   return (
     <div className={`edit-process edit-process-${theme}`}>
       <div className="container-process">
@@ -106,6 +108,12 @@ function EditProcess({ updateList }) {
               value={atualizado}
               onChange={(e) => setAtualizado(e.target.value)}
             ></input>
+            <label>Status:</label>
+            <select value={status} onChange={(e) => setStatus(e.target.value)}>
+              <option value="em-dia">Em dia</option>
+              <option value="pendente">Pendente</option>
+              <option value="quitado">Quitado</option>
+            </select>
             <label>Informações:</label>
             <textarea
               value={infos}

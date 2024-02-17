@@ -274,7 +274,7 @@ console.log(selectedEditClient)
             alt="Sair"
             onClick={() => handleClickOpenEditClient(false)}
           />
-          <h3>Cadastrar Cliente</h3>
+          <h3>Editar Cliente</h3>
           <form onSubmit={handleSubmit}>
             <div className="formulario">
               <div className="container1">

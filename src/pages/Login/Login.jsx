@@ -4,15 +4,15 @@ import BalancaRosaFoto from "../../assets/balanca-rosa.jpg";
 import JusticaRoxoFoto from "../../assets/martelo-ouro.jpg";
 import olhoAberto from "../../assets/olho-aberto.png";
 import olhoFechado from "../../assets/olho-fechado.png";
+import TipoCadastro from "../../components/TipoCadastro/TipoCadastro";
 import { useFontSize } from "../../context/FontSizeContext";
 import { useTheme } from "../../context/ThemeContext";
-import api from "../../services/api";
-import TipoCadastro from "../../components/TipoCadastro/TipoCadastro";
-import "./login.css";
 import { useTipoCadastroContext } from "../../context/TipoCadastroContext";
-import { getItem, setItem } from "../../utils/storage";
-import { useShowPassword } from "../../context/showPasswordContext";
 import { useValidationsContext } from "../../context/ValidationsContext";
+import { useShowPassword } from "../../context/showPasswordContext";
+import api from "../../services/api";
+import { getItem, setItem } from "../../utils/storage";
+import "./login.css";
 
 function Login() {
   const { theme } = useTheme();
@@ -59,11 +59,11 @@ function Login() {
       if (response.status > 204) {
         return;
       }
-
+      console.log("resposta", response)
       setItem("token", response.data.token);
       setItem("usuario", response.data.usuario.nome);
       setItem("id", response.data.usuario.id);
-      setItem("tipo cadastro", response.data.usuario.cadastro);
+      setItem("tipo cadastro", response.data.usuario.tipo_cadastro);
 
       if (getItem("tipo cadastro") === "cliente") {
         navigate("/client");
@@ -179,7 +179,7 @@ function Login() {
           <div
             className="bottom"
             style={{
-              fontSize: `calc(16px + ${fontSizeModify}px)`,
+              fontSize: `calc(18px + ${fontSizeModify}px)`,
             }}
           >
             <p>Ainda não tem cadastro?</p>
