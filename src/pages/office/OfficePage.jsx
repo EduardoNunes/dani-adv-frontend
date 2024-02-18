@@ -210,11 +210,11 @@ function OfficePage() {
           {selectedOption === "processos" ? (
             <TableComponent
               selectedOption={selectedOption}
-              titulo1="Autor"
-              titulo2="Réu"
-              titulo3="Nº do processo"
-              titulo4="Vara"
-              titulo5="Movimentação"
+              titulo1="Contratante"
+              titulo2="Nº do processo"
+              titulo3="Tipo da ação"
+              titulo4="Movimentação"
+              titulo5="Status Financiero"
               datas={dataProcess}
               handleOpenDetails={handleOpenProcessDetails}
               handleClickOpenEdit={handleClickOpenEditProcess}
@@ -227,7 +227,7 @@ function OfficePage() {
               titulo1="Nome"
               titulo2="Email"
               titulo3="Celular"
-              titulo4="CPF"
+              titulo4="Quant. de Processos"
               titulo5="Status"
               datas={dataClients}
               handleOpenDetails={handleOpenClientDetails}
