@@ -23,6 +23,7 @@ export function ModalProvider({ children }) {
   const [selectedDelete, setSelectedDelete] = useState();
   const [openEditClient, setOpenEditClient] = useState(false);
   const [selectedEditClient, setSelectedEditClient] = useState();
+  const [openFinanceiroProcesso, setOpenFinanceiroProcesso] = useState(false);
 
   function handleOpenProcessDetails(openClose, processo) {
     setSelectedProcess(processo);
@@ -68,13 +69,16 @@ export function ModalProvider({ children }) {
     openClose,
     mensagem,
     dataId,
-    selectedOption,
-    teste
+    selectedOption
   ) {
     setOpenConfirm(openClose);
     setMensagem(mensagem);
     setDataId(dataId);
     setSelectedDelete(selectedOption);
+  }
+
+  function handleClickOpenFinanceiroProcesso(openClose) {
+    setOpenFinanceiroProcesso(openClose)
   }
 
   return (
@@ -105,6 +109,8 @@ export function ModalProvider({ children }) {
         openConfirm,
         dataId,
         selectedDelete,
+        handleClickOpenFinanceiroProcesso,
+        openFinanceiroProcesso,
       }}
     >
       {children}

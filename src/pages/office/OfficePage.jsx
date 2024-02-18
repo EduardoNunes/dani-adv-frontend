@@ -3,9 +3,12 @@ import lupa from "../../assets/lupa.png";
 import MarmoreRoxo from "../../assets/marmore-preto-roxo.jpg";
 import MarmoreBranco from "../../assets/textura-marmore.jpg";
 import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
+import FinanceiroProcessDetails from "../../components/FinanceiroProcesso/FinanceiroProcesso";
 import TableComponent from "../../components/TableCompnent/TableComponent";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
+import ClientDetails from "../../modals/ClientDetails/ClientDetails";
+import EditClient from "../../modals/EditClient/EditClient";
 import EditProcess from "../../modals/EditProcess/EditProcess";
 import ProcessDetails from "../../modals/ProcessDetails/ProcessDetails";
 import RegisterClient from "../../modals/RegisterClient/RegisterClient";
@@ -13,8 +16,6 @@ import RegisterProcess from "../../modals/RegisterProcess/RegisterProcess";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./office-page.css";
-import ClientDetails from "../../modals/ClientDetails/ClientDetails";
-import EditClient from "../../modals/EditClient/EditClient";
 
 function OfficePage() {
   const { theme } = useTheme();
@@ -36,6 +37,8 @@ function OfficePage() {
     handleClickOpenDeleteConfirm,
     openConfirm,
     handleClickOpenMessageToast,
+    handleClickOpenFinanceiroProcesso,
+    openFinanceiroProcesso
   } = useModal();
   const [dataProcess, setDataProcess] = useState();
   const [newDataProcess, setNewDataProcess] = useState();
@@ -170,6 +173,7 @@ function OfficePage() {
         />
       )}
       {openEditClient && <EditClient updateList={listAllClients} />}
+      {openFinanceiroProcesso && <FinanceiroProcessDetails />}
       <img
         className={`background background-${theme}`}
         src={theme === "light" ? MarmoreBranco : MarmoreRoxo}
@@ -219,6 +223,7 @@ function OfficePage() {
               handleOpenDetails={handleOpenProcessDetails}
               handleClickOpenEdit={handleClickOpenEditProcess}
               handleClickOpenDeleteConfirm={handleClickOpenDeleteConfirm}
+              handleClickOpenFinanceiroProcesso={handleClickOpenFinanceiroProcesso}
               theme={theme}
             />
           ) : (
@@ -228,7 +233,7 @@ function OfficePage() {
               titulo2="Email"
               titulo3="Celular"
               titulo4="Quant. de Processos"
-              titulo5="Status"
+              titulo5="Status Financeiro"
               datas={dataClients}
               handleOpenDetails={handleOpenClientDetails}
               handleClickOpenEdit={handleClickOpenEditClient}

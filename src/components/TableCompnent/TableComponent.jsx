@@ -5,6 +5,7 @@ import TrashBlack from "../../assets/trash-black.png";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
+import "./table-component.css"
 
 function TableComponent({
   selectedOption,
@@ -18,6 +19,7 @@ function TableComponent({
   handleClickOpenEdit,
   handleClickOpenDeleteConfirm,
   theme,
+  handleClickOpenFinanceiroProcesso
 }) {
   const [processCount, setProcessCount] = useState({});
 
@@ -49,7 +51,7 @@ function TableComponent({
   }, [selectedOption]);
 
   return (
-    <div className="content">
+    <div className="table-component">
       <div className="title">
         <ul>
           <li>{titulo1}:</li>
@@ -83,7 +85,11 @@ function TableComponent({
                 <li title={data.atualizado}>
                   <p>{data.atualizado}</p>
                 </li>
-                <li title={data.status}>
+                <li 
+                className="status-financeiro"
+                title={data.status}
+                onClick={() => handleClickOpenFinanceiroProcesso(true)}
+                >
                   <p>{data.status}</p>
                 </li>
                 <li>
