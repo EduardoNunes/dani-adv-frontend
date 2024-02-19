@@ -29,10 +29,10 @@ function FinanceiroProcessDetails() {
             <label>Data do valor de entrada:</label>
             <input type="number" />
             <label>Quantidade de parcelas:</label>
+            <input type="number" />            
+            <label>Valor das parcelas:</label>
             <input type="number" />
             <label>Data das parcelas:</label>
-            <input type="number" />
-            <label>Valor das parcelas:</label>
             <input type="number" />
             <label>Porcentagem final:</label>
             <input type="number" />
@@ -40,7 +40,7 @@ function FinanceiroProcessDetails() {
             <input type="number" />
             <label>Valor total:</label>
             <input type="number" />
-            <label>Sattus</label>
+            <label>Status</label>
             <input type="number" />
 
             <button>Cadastrar valores:</button>

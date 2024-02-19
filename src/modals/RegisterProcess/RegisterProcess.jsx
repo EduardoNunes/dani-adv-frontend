@@ -33,8 +33,8 @@ function RegisterProcess({ updateList }) {
         setContratante(cliente.nome);
         return;
       }
-    });    
-  }, [clientes, selectedClient])
+    });
+  }, [clientes, selectedClient]);
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -101,73 +101,151 @@ function RegisterProcess({ updateList }) {
           />
           <h3>Cadastrar Processo</h3>
           <form onSubmit={handleSubmit}>
-            <label>Contratante:</label>
-            <select
-              value={selectedClient}
-              onChange={(e) => setSelectedClient(e.target.value)}
-            >
-              <option value="">Selecione um cliente</option>
-              {clientes &&
-                clientes.map((cliente) => (
-                  <option key={cliente.id} value={cliente.id}>
-                    {cliente.nome}                   
-                  </option>
-                ))}
-            </select>
-            <label>Autor:</label>
-            <input
-              value={autor}
-              onChange={(e) => setAutor(e.target.value)}
-            ></input>
-            <label>Reu:</label>
-            <input value={reu} onChange={(e) => setReu(e.target.value)}></input>
-            <label>Número do processo:</label>
-            <input
-              value={numero}
-              onChange={(e) => setNumero(e.target.value)}
-            ></input>
-            <label>Tipo de ação:</label>
-            <input
-              value={tipoAcao}
-              onChange={(e) => setTipoAcao(e.target.value)}
-            ></input>
-            <label>Vara:</label>
-            <input
-              value={vara}
-              onChange={(e) => setVara(e.target.value)}
-            ></input>
-            <label>Juiz:</label>
-            <input
-              value={juiz}
-              onChange={(e) => setJuiz(e.target.value)}
-            ></input>
-            <label>Comarca:</label>
-            <input
-              value={comarca}
-              onChange={(e) => setComarca(e.target.value)}
-            ></input>
-            <label>Data de entrada:</label>
-            <input
-              value={data_entrada}
-              onChange={(e) => setData_Entrada(e.target.value)}
-            ></input>
-            <label>Atualizado em:</label>
-            <input
-              value={atualizado}
-              onChange={(e) => setAtualizado(e.target.value)}
-            ></input>
-            <label>Status:</label>
-            <select value={status} onChange={(e) => setStatus(e.target.value)}>
-              <option value="Em dia">Em dia</option>
-              <option value="Quitado">Quitado</option>
-              <option value="Pendente">Pendente</option>
-            </select>
-            <label>Informações:</label>
-            <textarea
-              value={infos}
-              onChange={(e) => setInfos(e.target.value)}
-            ></textarea>
+            <div className="container1">
+              <div className="section1">
+                <div className="contratante">
+                  <label>Contratante:</label>
+                  <select
+                    value={selectedClient}
+                    onChange={(e) => setSelectedClient(e.target.value)}
+                  >
+                    <option value="">Selecione um cliente</option>
+                    {clientes &&
+                      clientes.map((cliente) => (
+                        <option key={cliente.id} value={cliente.id}>
+                          {cliente.nome}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <div className="partes">
+                  <label>Autor:</label>
+                  <input
+                    value={autor}
+                    onChange={(e) => setAutor(e.target.value)}
+                  ></input>
+                  <label>Reu:</label>
+                  <input
+                    value={reu}
+                    onChange={(e) => setReu(e.target.value)}
+                  ></input>
+                </div>
+                <div className="processo">
+                  <div>
+                    <label>Número do processo:</label>
+                    <input
+                      value={numero}
+                      onChange={(e) => setNumero(e.target.value)}
+                    ></input>
+                  </div>
+                  <div>
+                    <label>Tipo de ação:</label>
+                    <input
+                      value={tipoAcao}
+                      onChange={(e) => setTipoAcao(e.target.value)}
+                    ></input>
+                  </div>
+                </div>
+              </div>
+              <div className="section2">
+                <div className="localidade">
+                  <label>Vara:</label>
+                  <input
+                    value={vara}
+                    onChange={(e) => setVara(e.target.value)}
+                  ></input>
+                  <label>Juiz:</label>
+                  <input
+                    value={juiz}
+                    onChange={(e) => setJuiz(e.target.value)}
+                  ></input>
+                  <label>Comarca:</label>
+                  <input
+                    value={comarca}
+                    onChange={(e) => setComarca(e.target.value)}
+                  ></input>
+                </div>
+                <div className="data">
+                  <div>
+                    <label>Data de entrada:</label>
+                    <input
+                      value={data_entrada}
+                      onChange={(e) => setData_Entrada(e.target.value)}
+                    ></input>
+                  </div>
+                  <div>
+                    <label>Atualizado em:</label>
+                    <input
+                      value={atualizado}
+                      onChange={(e) => setAtualizado(e.target.value)}
+                    ></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h3>Financeiro:</h3>
+            <div className="financeiro">
+              <div className="entrada">
+                <div className="valor">
+                  <label>Valor de entrada:</label>
+                  <input type="number" />
+                  <label>Data da entrada:</label>
+                  <input type="date" />
+                </div>
+              </div>
 
+              <div className="parcelamento">
+                <div className="container1">
+                  <div className="quantidade">
+                    <label>Quant. parcelas:</label>
+                    <input type="number" />
+                  </div>
+                  <div className="valor">
+                    <label>Valor parcelas:</label>
+                    <input type="number" />
+                  </div>
+                </div>
+                <div className="container2">
+                  <div className="primeira">
+                    <label>Primeira parcela:</label>
+                    <input type="date" />
+                  </div>
+                  <div className="ultima">
+                    <label>Última parcela:</label>
+                    <input type="date" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="final">
+                <div className="container0">
+                  <div className="porcentagem">
+                    <div className="primeira">
+                      <label>Porcentagem final:</label>
+                      <input type="number" />
+                    </div>
+                    <div className="segunda">
+                      <label>Data % final:</label>
+                      <input type="date" />
+                    </div>
+                  </div>
+                  <div className="total">
+                    <div className="end">
+                      <label>Valor total:</label>
+                      <input type="number" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="infos">
+              <label>Informações gerais:</label>
+              <textarea
+                value={infos}
+                onChange={(e) => setInfos(e.target.value)}
+              ></textarea>
+            </div>
             <button>Enviar</button>
           </form>
         </div>

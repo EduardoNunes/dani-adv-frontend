@@ -1,11 +1,13 @@
 import EditBlack from "../../assets/edit-black.png";
 import EditWhite from "../../assets/edit-white.png";
+import PaymentWhite from "../../assets/pagamento-white.png";
+import PaymentBlack from "../../assets/pagamento-black.png";
 import TrashWhite from "../../assets/trash-white.png";
 import TrashBlack from "../../assets/trash-black.png";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
-import "./table-component.css"
+import "./table-component.css";
 
 function TableComponent({
   selectedOption,
@@ -19,7 +21,7 @@ function TableComponent({
   handleClickOpenEdit,
   handleClickOpenDeleteConfirm,
   theme,
-  handleClickOpenFinanceiroProcesso
+  handleClickOpenFinanceiroProcesso,
 }) {
   const [processCount, setProcessCount] = useState({});
 
@@ -85,10 +87,10 @@ function TableComponent({
                 <li title={data.atualizado}>
                   <p>{data.atualizado}</p>
                 </li>
-                <li 
-                className="status-financeiro"
-                title={data.status}
-                onClick={() => handleClickOpenFinanceiroProcesso(true)}
+                <li
+                  className="status-financeiro"
+                  title={data.status}
+                  onClick={() => handleClickOpenFinanceiroProcesso(true)}
                 >
                   <p>{data.status}</p>
                 </li>
@@ -97,6 +99,11 @@ function TableComponent({
                     src={theme === "light" ? EditBlack : EditWhite}
                     alt="Edit Icon"
                     onClick={() => handleClickOpenEdit(true, data)}
+                  />
+                  <img
+                    src={theme === "light" ? PaymentWhite : PaymentBlack}
+                    alt="Edit Icon"
+                    onClick={() => handleClickOpenFinanceiroProcesso(true)}
                   />
                   <img
                     src={theme === "light" ? TrashBlack : TrashWhite}
