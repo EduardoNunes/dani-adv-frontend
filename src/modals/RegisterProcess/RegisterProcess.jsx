@@ -36,7 +36,7 @@ function RegisterProcess({ updateList }) {
   const [data_porcentagem_final, setData_porcentagem_final] = useState("");
   const [total, setTotal] = useState("");
   const token = getItem("token");
-  console.log(setStatus, setDatas_parcelas)
+
   useEffect(() => {
     clientes.forEach((cliente) => {
       if (cliente.id === parseInt(selectedClient)) {
@@ -126,6 +126,42 @@ function RegisterProcess({ updateList }) {
     showClients();
   }, []);
 
+  function formatNumberProcess(numberProcess) {
+    let digitos = numberProcess.replace(/\D/g, "");
+    let formatted = "";
+
+    if (numberProcess.length > 30) {
+      digitos = digitos.substring(0, 11);
+      //setError("Quantidade máxima de dígitos atingida.");
+    }
+
+    if (digitos.length > 0) {
+      formatted += digitos.substring(0, 7);
+
+      if (digitos.length > 7) {
+        formatted += `-${digitos.substring(7, 9)}`;
+
+        if (digitos.length > 9) {
+          formatted += `.${digitos.substring(9, 13)}`;
+
+          if (digitos.length > 13) {
+            formatted += `.${digitos.substring(13, 14)}`;
+
+            if (digitos.length > 14) {
+              formatted += `.${digitos.substring(14, 16)}`;
+              
+              if (digitos.length > 16) {
+                formatted += `.${digitos.substring(16, 20)}`;
+              }
+            }
+          }
+        }
+      }
+    }
+    console.log(formatted);
+    setNumero(formatted);
+  }
+
   return (
     <div className={`register-process register-process-${theme}`}>
       <div className="container-process">
@@ -169,7 +205,7 @@ function RegisterProcess({ updateList }) {
                     <label>Número do processo:</label>
                     <input
                       value={numero}
-                      onChange={(e) => setNumero(e.target.value)}
+                      onChange={(e) => formatNumberProcess(e.target.value)}
                     />
                   </div>
                   <div>
@@ -203,6 +239,7 @@ function RegisterProcess({ updateList }) {
                   <div>
                     <label>Data de entrada:</label>
                     <input
+                      type="date"
                       value={data_entrada}
                       onChange={(e) => setData_Entrada(e.target.value)}
                     />
@@ -210,6 +247,7 @@ function RegisterProcess({ updateList }) {
                   <div>
                     <label>Atualizado em:</label>
                     <input
+                      type="date"
                       value={atualizado}
                       onChange={(e) => setAtualizado(e.target.value)}
                     />
