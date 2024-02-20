@@ -25,8 +25,18 @@ function RegisterProcess({ updateList }) {
   const [atualizado, setAtualizado] = useState("");
   const [status, setStatus] = useState("Em dia");
   const [infos, setInfos] = useState("");
+  const [entrada, setEntrada] = useState("");
+  const [data_entrada_processo, setData_entrada_processo] = useState("");
+  const [priemira_parcela, setPrimeira_parcela] = useState("");
+  const [ultima_parcela, setUltima_parcela] = useState("");
+  const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
+  const [valor_parcelas, setValor_parcelas] = useState("");
+  const [datas_parcelas, setDatas_parcelas] = useState("");
+  const [porcentagem_final, setPorcentagem_final] = useState("");
+  const [data_porcentagem_final, setData_porcentagem_final] = useState("");
+  const [total, setTotal] = useState("");
   const token = getItem("token");
-
+  console.log(setStatus, setDatas_parcelas)
   useEffect(() => {
     clientes.forEach((cliente) => {
       if (cliente.id === parseInt(selectedClient)) {
@@ -38,6 +48,7 @@ function RegisterProcess({ updateList }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    let processo_id;
 
     try {
       const response = await api.post(
@@ -62,10 +73,36 @@ function RegisterProcess({ updateList }) {
         }
       );
 
+      processo_id = response.data.processo.id;
+
+      if (processo_id) {
+        try {
+          await api.post(
+            `/cadastrarFinanceiroProcesso`,
+            {
+              contratante: contratante,
+              entrada,
+              data_entrada_processo,
+              quantidade_parcelas,
+              valor_parcelas,
+              datas_parcelas,
+              porcentagem_final,
+              data_porcentagem_final,
+              total,
+              processo_id,
+            },
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
       handleClickOpenRegisterProcess(false);
       handleClickOpenMessageToast(true, "Processo cadastrado com sucesso!");
       updateList();
-      console.log("Processo cadastrado com sucesso!", response.data);
     } catch (error) {
       console.error(error);
     }
@@ -123,12 +160,9 @@ function RegisterProcess({ updateList }) {
                   <input
                     value={autor}
                     onChange={(e) => setAutor(e.target.value)}
-                  ></input>
+                  />
                   <label>Reu:</label>
-                  <input
-                    value={reu}
-                    onChange={(e) => setReu(e.target.value)}
-                  ></input>
+                  <input value={reu} onChange={(e) => setReu(e.target.value)} />
                 </div>
                 <div className="processo">
                   <div>
@@ -136,14 +170,14 @@ function RegisterProcess({ updateList }) {
                     <input
                       value={numero}
                       onChange={(e) => setNumero(e.target.value)}
-                    ></input>
+                    />
                   </div>
                   <div>
                     <label>Tipo de ação:</label>
                     <input
                       value={tipoAcao}
                       onChange={(e) => setTipoAcao(e.target.value)}
-                    ></input>
+                    />
                   </div>
                 </div>
               </div>
@@ -153,17 +187,17 @@ function RegisterProcess({ updateList }) {
                   <input
                     value={vara}
                     onChange={(e) => setVara(e.target.value)}
-                  ></input>
+                  />
                   <label>Juiz:</label>
                   <input
                     value={juiz}
                     onChange={(e) => setJuiz(e.target.value)}
-                  ></input>
+                  />
                   <label>Comarca:</label>
                   <input
                     value={comarca}
                     onChange={(e) => setComarca(e.target.value)}
-                  ></input>
+                  />
                 </div>
                 <div className="data">
                   <div>
@@ -171,14 +205,14 @@ function RegisterProcess({ updateList }) {
                     <input
                       value={data_entrada}
                       onChange={(e) => setData_Entrada(e.target.value)}
-                    ></input>
+                    />
                   </div>
                   <div>
                     <label>Atualizado em:</label>
                     <input
                       value={atualizado}
                       onChange={(e) => setAtualizado(e.target.value)}
-                    ></input>
+                    />
                   </div>
                 </div>
               </div>
@@ -188,9 +222,17 @@ function RegisterProcess({ updateList }) {
               <div className="entrada">
                 <div className="valor">
                   <label>Valor de entrada:</label>
-                  <input type="number" />
+                  <input
+                    type="number"
+                    value={entrada}
+                    onChange={(e) => setEntrada(e.target.value)}
+                  />
                   <label>Data da entrada:</label>
-                  <input type="date" />
+                  <input
+                    type="date"
+                    value={data_entrada_processo}
+                    onChange={(e) => setData_entrada_processo(e.target.value)}
+                  />
                 </div>
               </div>
 
@@ -198,21 +240,37 @@ function RegisterProcess({ updateList }) {
                 <div className="container1">
                   <div className="quantidade">
                     <label>Quant. parcelas:</label>
-                    <input type="number" />
+                    <input
+                      type="number"
+                      value={quantidade_parcelas}
+                      onChange={(e) => setQuantidade_parcelas(e.target.value)}
+                    />
                   </div>
                   <div className="valor">
                     <label>Valor parcelas:</label>
-                    <input type="number" />
+                    <input
+                      type="number"
+                      value={valor_parcelas}
+                      onChange={(e) => setValor_parcelas(e.target.value)}
+                    />
                   </div>
                 </div>
                 <div className="container2">
                   <div className="primeira">
                     <label>Primeira parcela:</label>
-                    <input type="date" />
+                    <input
+                      type="date"
+                      value={priemira_parcela}
+                      onChange={(e) => setPrimeira_parcela(e.target.value)}
+                    />
                   </div>
                   <div className="ultima">
                     <label>Última parcela:</label>
-                    <input type="date" />
+                    <input
+                      type="date"
+                      value={ultima_parcela}
+                      onChange={(e) => setUltima_parcela(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
@@ -222,17 +280,31 @@ function RegisterProcess({ updateList }) {
                   <div className="porcentagem">
                     <div className="primeira">
                       <label>Porcentagem final:</label>
-                      <input type="number" />
+                      <input
+                        type="number"
+                        value={porcentagem_final}
+                        onChange={(e) => setPorcentagem_final(e.target.value)}
+                      />
                     </div>
                     <div className="segunda">
                       <label>Data % final:</label>
-                      <input type="date" />
+                      <input
+                        type="date"
+                        value={data_porcentagem_final}
+                        onChange={(e) =>
+                          setData_porcentagem_final(e.target.value)
+                        }
+                      />
                     </div>
                   </div>
                   <div className="total">
                     <div className="end">
                       <label>Valor total:</label>
-                      <input type="number" />
+                      <input
+                        type="number"
+                        value={total}
+                        onChange={(e) => setTotal(e.target.value)}
+                      />
                     </div>
                   </div>
                 </div>
