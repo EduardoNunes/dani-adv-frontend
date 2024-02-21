@@ -130,11 +130,6 @@ function RegisterProcess({ updateList }) {
     let digitos = numberProcess.replace(/\D/g, "");
     let formatted = "";
 
-    if (numberProcess.length > 30) {
-      digitos = digitos.substring(0, 11);
-      //setError("Quantidade máxima de dígitos atingida.");
-    }
-
     if (digitos.length > 0) {
       formatted += digitos.substring(0, 7);
 
@@ -149,7 +144,7 @@ function RegisterProcess({ updateList }) {
 
             if (digitos.length > 14) {
               formatted += `.${digitos.substring(14, 16)}`;
-              
+
               if (digitos.length > 16) {
                 formatted += `.${digitos.substring(16, 20)}`;
               }
@@ -158,8 +153,44 @@ function RegisterProcess({ updateList }) {
         }
       }
     }
-    console.log(formatted);
     setNumero(formatted);
+  }
+console.log(setStatus, setDatas_parcelas)
+  function formatCoin(moeda) {
+    let digitos = moeda.replace(/\D/g, "");
+    let formatted = "";
+
+    if (digitos.length < 3) {
+      const centavos = digitos.substring(digitos.length - 2);
+      formatted = `R$ ${centavos}`;
+    } else if (digitos.length < 6) {
+      const centavos = digitos.substring(digitos.length - 2);
+      const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
+      formatted = `R$ ${centena},${centavos}`;
+    } else if (digitos.length < 9) {
+      const centavos = digitos.substring(digitos.length - 2);
+      const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
+      const milhar = digitos.substring(digitos.length - 5, digitos.length - 8);
+      formatted = `R$ ${milhar}.${centena},${centavos}`;
+    } else if (digitos.length < 12) {
+      const centavos = digitos.substring(digitos.length - 2);
+      const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
+      const milhar = digitos.substring(digitos.length - 5, digitos.length - 8);
+      const milhao = digitos.substring(digitos.length - 8, digitos.length - 11);
+      formatted = `R$ ${milhao}.${milhar}.${centena},${centavos}`;
+    } else if (digitos.length < 15) {
+      const centavos = digitos.substring(digitos.length - 2);
+      const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
+      const milhar = digitos.substring(digitos.length - 5, digitos.length - 8);
+      const milhao = digitos.substring(digitos.length - 8, digitos.length - 11);
+      const bilhao = digitos.substring(
+        digitos.length - 11,
+        digitos.length - 14
+      );
+      formatted = `R$ ${bilhao}.${milhao}.${milhar}.${centena},${centavos}`;
+    } else return;
+
+    setEntrada(formatted);
   }
 
   return (
@@ -204,6 +235,7 @@ function RegisterProcess({ updateList }) {
                   <div>
                     <label>Número do processo:</label>
                     <input
+                      type="text"
                       value={numero}
                       onChange={(e) => formatNumberProcess(e.target.value)}
                     />
@@ -261,9 +293,9 @@ function RegisterProcess({ updateList }) {
                 <div className="valor">
                   <label>Valor de entrada:</label>
                   <input
-                    type="number"
+                    type="text"
                     value={entrada}
-                    onChange={(e) => setEntrada(e.target.value)}
+                    onChange={(e) => formatCoin(e.target.value)}
                   />
                   <label>Data da entrada:</label>
                   <input
@@ -287,7 +319,7 @@ function RegisterProcess({ updateList }) {
                   <div className="valor">
                     <label>Valor parcelas:</label>
                     <input
-                      type="number"
+                      type="text"
                       value={valor_parcelas}
                       onChange={(e) => setValor_parcelas(e.target.value)}
                     />

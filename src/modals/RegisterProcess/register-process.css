@@ -167,11 +167,11 @@
     width: calc(100% / 3);
   }
 
-  .register-process .container-process .chart-process form .financeiro .entrada div {
+  .register-process .container-process .chart-process form .financeiro .entrada .valor {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 60%;
   }
 
   .register-process .container-process .chart-process form .financeiro .entrada div input {
