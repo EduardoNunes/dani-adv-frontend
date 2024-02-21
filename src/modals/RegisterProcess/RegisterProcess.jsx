@@ -35,6 +35,7 @@ function RegisterProcess({ updateList }) {
   const [porcentagem_final, setPorcentagem_final] = useState("");
   const [data_porcentagem_final, setData_porcentagem_final] = useState("");
   const [condenacao, setCondenacao] = useState("");
+  const [resultadoPorcentagem, setResultadoPorcentagem] = useState("");
   const [total, setTotal] = useState("");
   const token = getItem("token");
 
@@ -197,6 +198,10 @@ function RegisterProcess({ updateList }) {
       setValor_parcelas(formatted);
     } else if (input === "valor-causa") {
       setCondenacao(formatted);
+    } else if (input === "resultado-porcentagem") {
+      setResultadoPorcentagem(formatted);
+    } else if (input === "total") {
+      setTotal(formatted);
     }
   }
 
@@ -205,6 +210,38 @@ function RegisterProcess({ updateList }) {
 
     setPorcentagem_final(digitos);
   }
+
+  function calculoValorTotal() {
+    let sum = 0;
+    let entradaNumber = entrada.replace(/\D/g, "");
+    let valor_parcelasNumber = valor_parcelas.replace(/\D/g, "");
+    let porcentagem_finalNumber = porcentagem_final.replace(/\D/g, "");
+    let condenacaNumber = condenacao.replace(/\D/g, "");
+    let resultadoPorcentagemNumber = resultadoPorcentagem.replace(/\D/g, "");
+    let valorTotalParcelas = 0;
+
+    if (quantidade_parcelas && valor_parcelas) {
+      valorTotalParcelas = quantidade_parcelas * valor_parcelasNumber;
+    } else {
+      valorTotalParcelas = 0;
+    }
+
+    if (porcentagem_finalNumber && condenacaNumber) {
+      resultadoPorcentagemNumber =
+        (condenacaNumber * porcentagem_finalNumber) / 100;
+    }
+
+    formatCoin(resultadoPorcentagemNumber.toString(), "resultado-porcentagem");
+
+    console.log(valorTotalParcelas);
+    setTotal(entrada);
+  }
+
+  useEffect(() => {
+    if (porcentagem_final) {
+      calculoValorTotal();
+    }
+  }, [porcentagem_final, condenacao]);
 
   return (
     <div className={`register-process register-process-${theme}`}>
@@ -354,7 +391,7 @@ function RegisterProcess({ updateList }) {
                     <input
                       type="date"
                       value={ultima_parcela}
-                      onChange={(e) => setUltima_parcela(e.target.value)}
+                      //onChange={(e) => setUltima_parcela(e.target.value)}
                     />
                   </div>
                 </div>
@@ -367,7 +404,7 @@ function RegisterProcess({ updateList }) {
                       <label>Porcentagem final:</label>
                       <input
                         type="text"
-                        value={`${porcentagem_final}%`}
+                        value={`%${porcentagem_final}`}
                         onChange={(e) => porcentagemFinal(e.target.value)}
                       />
                     </div>
@@ -376,7 +413,9 @@ function RegisterProcess({ updateList }) {
                       <input
                         type="date"
                         value={data_porcentagem_final}
-                        onChange={(e) => setData_porcentagem_final(e.target.value)}
+                        onChange={(e) =>
+                          setData_porcentagem_final(e.target.value)
+                        }
                       />
                     </div>
                     <div className="terceira">
@@ -391,12 +430,22 @@ function RegisterProcess({ updateList }) {
                     </div>
                   </div>
                   <div className="total">
+                    <div className="top">
+                      <label>Result. Porcent.:</label>
+                      <input
+                        type="text"
+                        value={`R$ ${resultadoPorcentagem}`}
+/*                         onChange={(e) =>
+                          formatCoin(e.target.value, "resultado-porcentagem")
+                        } */
+                      />
+                    </div>
                     <div className="end">
                       <label>Valor total:</label>
                       <input
                         type="text"
                         value={`R$ ${total}`}
-                        onChange={(e) => setTotal(e.target.value)}
+                        onChange={(e) => formatCoin(e.target.value, "total")}
                       />
                     </div>
                   </div>

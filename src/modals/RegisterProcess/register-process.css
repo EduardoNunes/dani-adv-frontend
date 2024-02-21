@@ -246,7 +246,7 @@
     width: 50%;
   }
 
-  .register-process .container-process .chart-process form .final .container0 .total .end {
+  .register-process .container-process .chart-process form .final .container0 .total div {
     display: flex;
     flex-direction: column;
     width: 100%;
