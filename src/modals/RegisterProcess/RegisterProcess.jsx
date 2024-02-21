@@ -34,6 +34,7 @@ function RegisterProcess({ updateList }) {
   const [datas_parcelas, setDatas_parcelas] = useState("");
   const [porcentagem_final, setPorcentagem_final] = useState("");
   const [data_porcentagem_final, setData_porcentagem_final] = useState("");
+  const [condenacao, setCondenacao] = useState("");
   const [total, setTotal] = useState("");
   const token = getItem("token");
 
@@ -155,29 +156,29 @@ function RegisterProcess({ updateList }) {
     }
     setNumero(formatted);
   }
-console.log(setStatus, setDatas_parcelas)
-  function formatCoin(moeda) {
+
+  function formatCoin(moeda, input) {
     let digitos = moeda.replace(/\D/g, "");
     let formatted = "";
 
     if (digitos.length < 3) {
       const centavos = digitos.substring(digitos.length - 2);
-      formatted = `R$ ${centavos}`;
+      formatted = `${centavos}`;
     } else if (digitos.length < 6) {
       const centavos = digitos.substring(digitos.length - 2);
       const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
-      formatted = `R$ ${centena},${centavos}`;
+      formatted = `${centena},${centavos}`;
     } else if (digitos.length < 9) {
       const centavos = digitos.substring(digitos.length - 2);
       const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
       const milhar = digitos.substring(digitos.length - 5, digitos.length - 8);
-      formatted = `R$ ${milhar}.${centena},${centavos}`;
+      formatted = `${milhar}.${centena},${centavos}`;
     } else if (digitos.length < 12) {
       const centavos = digitos.substring(digitos.length - 2);
       const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
       const milhar = digitos.substring(digitos.length - 5, digitos.length - 8);
       const milhao = digitos.substring(digitos.length - 8, digitos.length - 11);
-      formatted = `R$ ${milhao}.${milhar}.${centena},${centavos}`;
+      formatted = `${milhao}.${milhar}.${centena},${centavos}`;
     } else if (digitos.length < 15) {
       const centavos = digitos.substring(digitos.length - 2);
       const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
@@ -187,10 +188,22 @@ console.log(setStatus, setDatas_parcelas)
         digitos.length - 11,
         digitos.length - 14
       );
-      formatted = `R$ ${bilhao}.${milhao}.${milhar}.${centena},${centavos}`;
+      formatted = `${bilhao}.${milhao}.${milhar}.${centena},${centavos}`;
     } else return;
 
-    setEntrada(formatted);
+    if (input === "entrada") {
+      setEntrada(formatted);
+    } else if (input === "valor-parcelas") {
+      setValor_parcelas(formatted);
+    } else if (input === "valor-causa") {
+      setCondenacao(formatted);
+    }
+  }
+
+  function porcentagemFinal(params) {
+    let digitos = params.replace(/\D/g, "");
+
+    setPorcentagem_final(digitos);
   }
 
   return (
@@ -294,8 +307,8 @@ console.log(setStatus, setDatas_parcelas)
                   <label>Valor de entrada:</label>
                   <input
                     type="text"
-                    value={entrada}
-                    onChange={(e) => formatCoin(e.target.value)}
+                    value={`R$ ${entrada}`}
+                    onChange={(e) => formatCoin(e.target.value, "entrada")}
                   />
                   <label>Data da entrada:</label>
                   <input
@@ -320,8 +333,10 @@ console.log(setStatus, setDatas_parcelas)
                     <label>Valor parcelas:</label>
                     <input
                       type="text"
-                      value={valor_parcelas}
-                      onChange={(e) => setValor_parcelas(e.target.value)}
+                      value={`R$ ${valor_parcelas}`}
+                      onChange={(e) =>
+                        formatCoin(e.target.value, "valor-parcelas")
+                      }
                     />
                   </div>
                 </div>
@@ -351,9 +366,9 @@ console.log(setStatus, setDatas_parcelas)
                     <div className="primeira">
                       <label>Porcentagem final:</label>
                       <input
-                        type="number"
-                        value={porcentagem_final}
-                        onChange={(e) => setPorcentagem_final(e.target.value)}
+                        type="text"
+                        value={`${porcentagem_final}%`}
+                        onChange={(e) => porcentagemFinal(e.target.value)}
                       />
                     </div>
                     <div className="segunda">
@@ -361,8 +376,16 @@ console.log(setStatus, setDatas_parcelas)
                       <input
                         type="date"
                         value={data_porcentagem_final}
+                        onChange={(e) => setData_porcentagem_final(e.target.value)}
+                      />
+                    </div>
+                    <div className="terceira">
+                      <label>Condenação:</label>
+                      <input
+                        type="text"
+                        value={`R$ ${condenacao}`}
                         onChange={(e) =>
-                          setData_porcentagem_final(e.target.value)
+                          formatCoin(e.target.value, "valor-causa")
                         }
                       />
                     </div>
@@ -371,8 +394,8 @@ console.log(setStatus, setDatas_parcelas)
                     <div className="end">
                       <label>Valor total:</label>
                       <input
-                        type="number"
-                        value={total}
+                        type="text"
+                        value={`R$ ${total}`}
                         onChange={(e) => setTotal(e.target.value)}
                       />
                     </div>

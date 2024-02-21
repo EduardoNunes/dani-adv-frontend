@@ -223,33 +223,33 @@
 
   .register-process .container-process .chart-process form .final .container0 {
     display: flex;
-    flex-direction: column;
     width: 100%;
   }
 
   .register-process .container-process .chart-process form .final .container0 .porcentagem {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 50%;
   }
 
   .register-process .container-process .chart-process form .final .container0 .porcentagem div {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
     padding-right: 10px;
   }
 
   .register-process .container-process .chart-process form .final .container0 .total {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    width: 100%;
+    width: 50%;
   }
 
   .register-process .container-process .chart-process form .final .container0 .total .end {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
   }  
 
   .register-process .container-process .chart-process form .infos {
