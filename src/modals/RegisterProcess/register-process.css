@@ -1,281 +1,377 @@
 .register-process {
-    display: flex;
-    position: absolute;
-  
-    width: 100vw;
-    height: calc(100vh - 40px);
-    background-color: rgba(var(--cor-preto), 0.8);
-  
-    z-index: 1;
-  }
-  
-  .register-process .container-process {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    width: 100%;
-    height: 100%;
-  }
-  
-  .register-process .container-process .chart-process {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  
-    height: 80%;
-    min-height: 650px;
-    width: 80%;
-    min-width: 600px;
-  
-    padding: 40px;
-    border-radius: 10px;
-  
-    background-color: rgba(var(--cor-branco), 0.9);
-  }
-  
-  .register-process-dark .container-process .chart-process {
-    background-color: rgba(var(--cor-preto), 1);
-    border: 1px solid rgba(var(--cor-roxo), 0.5);
-  }
-  
-  .register-process .container-process .chart-process img {
-    position: absolute;
-    width: 25px;
-    top: 14px;
-    right: 14px;
-    cursor: pointer;
-  }
-  
-  .register-process .container-process .chart-process h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    height: 30px;
-    width: 100%;
-    border-radius: 5px;
-  
-    background-color: rgba(var(--cor-roxo), 0.6);
-  }
-  
-  .register-process-dark .container-process .chart-process h3 {
-    background-color: rgba(var(--cor-rosa), 0.6);
-    color: rgba(var(--cor-branco), 0.9);
-    font-weight: 300;
-  }
-  
-  .register-process .container-process .chart-process form {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 100%;
-    min-width: 100%;
-    border-radius: 5px;
-  
-    list-style: none;
-    background-color: rgba(var(--cor-roxo), 0.2);
-  }
-  
-  .register-process-dark .container-process .chart-process form {
-    background-color: rgba(var(--cor-rosa), 0.2);
-  }
+  display: flex;
+  position: absolute;
 
-  .register-process .container-process .chart-process form label {
-    margin: 10px 0 5px;
-    font-weight: 600;
-  }
+  width: 100vw;
+  height: calc(100vh - 40px);
+  background-color: rgba(var(--cor-preto), 0.8);
 
-  .register-process .container-process .chart-process form .container1 {
-    display: flex;
-    width: 100%;
-  }
-
-  .register-process .container-process .chart-process form .container1 .section1,
-  .register-process .container-process .chart-process form .container1 .section2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-  }
-
-  .register-process .container-process .chart-process form .contratante,
-  .register-process .container-process .chart-process form .partes,
-  .register-process .container-process .chart-process form .localidade {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-  }
-
-  .register-process .container-process .chart-process form .processo,
-  .register-process .container-process .chart-process form .data {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    height: 80px;
-  }
-
-  .register-process .container-process .chart-process form .processo div,
-  .register-process .container-process .chart-process form .data div {
-    width: 100%;
-  }
-
-  .register-process .container-process .chart-process form .processo div input,
-  .register-process .container-process .chart-process form .data div input {
-    margin-top: 5px;
-    width: 100%;
-  }
-
-  .register-process .container-process .chart-process form .processo div:first-child,
-  .register-process .container-process .chart-process form .data div:first-child {
-    padding-right: 12px;
-  }
-
-  .register-process .container-process .chart-process form .status {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .register-process .container-process .chart-process form .status select {
-    width: 100px;
-  }
-
-  .register-process .container-process .chart-process form input,
-  .register-process .container-process .chart-process form select {
-    height: 26px;
-    padding-left: 10px;
-    border-radius: 10px;    
-  }
-
-  .register-process .container-process .chart-process form h3 {  
-    height: 22px;  
-    background-color: rgba(var(--cor-roxo), 0.4);
-  }
-
-  .register-process .container-process .chart-process form .financeiro {
-    display: flex;
-    width: 90%;
-  }
-  
-  .register-process .container-process .chart-process form .financeiro .entrada {
-    display: flex;
-    justify-content: center;
-    width: calc(100% / 3);
-  }
-
-  .register-process .container-process .chart-process form .financeiro .entrada .valor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60%;
-  }
-
-  .register-process .container-process .chart-process form .financeiro .entrada div input {
-    width: 100%;
-  }
-
-  .register-process .container-process .chart-process form .financeiro .entrada div {
-    padding-right: 10px;
-  }
-  
-  .register-process .container-process .chart-process form .parcelamento {
-    display: flex;
-    flex-direction: column;
-    width: calc(100% / 3) ;
-  }
-
-  .register-process .container-process .chart-process form .parcelamento .container1 {
-    display: flex;
-    width: 100%;
-  }
-
-  .register-process .container-process .chart-process form .parcelamento .container1 div {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    padding-right: 10px;
-  }
-
-  .register-process .container-process .chart-process form .parcelamento .container2 {
-    display: flex;
-    width: 100%;
-  }
-
-  .register-process .container-process .chart-process form .parcelamento .container2 div {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-  }
-
-  .register-process .container-process .chart-process form .parcelamento .container2 div {
-    padding-right: 10px;
-  }
-
-  .register-process .container-process .chart-process form .final {
-    display: flex;
-    flex-direction: column;
-    width: calc(100% / 3) ;
-  }
-
-  .register-process .container-process .chart-process form .final .container0 {
-    display: flex;
-    width: 100%;
-  }
-
-  .register-process .container-process .chart-process form .final .container0 .porcentagem {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-  }
-
-  .register-process .container-process .chart-process form .final .container0 .porcentagem div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-right: 10px;
-  }
-
-  .register-process .container-process .chart-process form .final .container0 .total {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 50%;
-  }
-
-  .register-process .container-process .chart-process form .final .container0 .total div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }  
-
-  .register-process .container-process .chart-process form .infos {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-  }
-
-  .register-process .container-process .chart-process form .infos textarea {
-    width: 100%;
-    height: 80px;
-  
-    border: 1px solid rgba(var(--cor-preto), 1);
-    padding: 4px 10px;
-    border-radius: 5px;
-  
-    background-color: rgba(var(--cor-branco), 0.8);
+  z-index: 1;
 }
-  
-  .register-process .container-process .chart-process form button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 140px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
+
+.register-process .container-process {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.register-process .container-process .chart-process {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  height: 80%;
+  min-height: 650px;
+  width: 80%;
+  min-width: 600px;
+
+  padding: 40px;
+  border-radius: 10px;
+
+  background-color: rgba(var(--cor-branco), 0.9);
+}
+
+.register-process-dark .container-process .chart-process {
+  background-color: rgba(var(--cor-preto), 1);
+  border: 1px solid rgba(var(--cor-roxo), 0.5);
+}
+
+.register-process .container-process .chart-process img {
+  position: absolute;
+  width: 25px;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+}
+
+.register-process .container-process .chart-process h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-roxo), 0.6);
+}
+
+.register-process-dark .container-process .chart-process h3 {
+  background-color: rgba(var(--cor-rosa), 0.6);
+  color: rgba(var(--cor-branco), 0.9);
+  font-weight: 300;
+}
+
+.register-process .container-process .chart-process form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100%;
+  min-width: 100%;
+  border-radius: 5px;
+
+  list-style: none;
+  background-color: rgba(var(--cor-roxo), 0.2);
+}
+
+.register-process-dark .container-process .chart-process form {
+  background-color: rgba(var(--cor-rosa), 0.2);
+}
+
+.register-process .container-process .chart-process form label {
+  margin: 10px 0 5px;
+  font-weight: 600;
+}
+
+.register-process .container-process .chart-process form .container1 {
+  display: flex;
+  width: 100%;
+}
+
+.register-process .container-process .chart-process form .container1 .section1,
+.register-process .container-process .chart-process form .container1 .section2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.register-process .container-process .chart-process form .contratante,
+.register-process .container-process .chart-process form .partes,
+.register-process .container-process .chart-process form .localidade {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.register-process .container-process .chart-process form .processo,
+.register-process .container-process .chart-process form .data {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 80px;
+}
+
+.register-process .container-process .chart-process form .processo div,
+.register-process .container-process .chart-process form .data div {
+  width: 100%;
+}
+
+.register-process .container-process .chart-process form .processo div input,
+.register-process .container-process .chart-process form .data div input {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .processo
+  div:first-child,
+.register-process .container-process .chart-process form .data div:first-child {
+  padding-right: 12px;
+}
+
+.register-process .container-process .chart-process form .status {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-process .container-process .chart-process form .status select {
+  width: 100px;
+}
+
+.register-process .container-process .chart-process form input,
+.register-process .container-process .chart-process form select {
+  height: 26px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
+.register-process .container-process .chart-process form h3 {
+  height: 22px;
+  background-color: rgba(var(--cor-roxo), 0.4);
+}
+
+.register-process .container-process .chart-process form .financeiro {
+  display: flex;
+  width: 90%;
+}
+
+.register-process .container-process .chart-process form .financeiro .entrada {
+  display: flex;
+  justify-content: center;
+  width: calc(100% / 3);
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .financeiro
+  .entrada
+  .valor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .financeiro
+  .entrada
+  div
+  input {
+  width: 100%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .financeiro
+  .entrada
+  div {
+  padding-right: 10px;
+}
+
+.register-process .container-process .chart-process form .parcelamento {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 3);
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .parcelamento
+  .container1 {
+  display: flex;
+  width: 100%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .parcelamento
+  .container1
+  div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-right: 10px;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .parcelamento
+  .container2 {
+  display: flex;
+  width: 100%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .parcelamento
+  .container2
+  div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .parcelamento
+  .container2
+  div {
+  padding-right: 10px;
+}
+
+.register-process .container-process .chart-process form .final {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 3);
+}
+
+.register-process .container-process .chart-process form .final .container0 {
+  display: flex;
+  width: 100%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .final
+  .container0
+  .porcentagem {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .final
+  .container0
+  .porcentagem
+  div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-right: 10px;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .final
+  .container0
+  .total {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .final
+  .container0
+  .total
+  div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% / 33%);
+}
+
+.register-process
+  .container-process
+  .chart-process
+  form
+  .final
+  .container0
+  .total
+  div
+  output {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  height: 26px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: rgba(var(--cor-branco), 0.8);
+}
+
+.register-process .container-process .chart-process form .infos {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.register-process .container-process .chart-process form .infos textarea {
+  width: 100%;
+  height: 80px;
+
+  border: 1px solid rgba(var(--cor-preto), 1);
+  padding: 4px 10px;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-branco), 0.8);
+}
+
+.register-process .container-process .chart-process form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 140px;
+  margin-top: 10px;
+  cursor: pointer;
+}

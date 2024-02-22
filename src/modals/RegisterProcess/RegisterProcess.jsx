@@ -160,11 +160,15 @@ function RegisterProcess({ updateList }) {
 
   function formatCoin(moeda, input) {
     let digitos = moeda.replace(/\D/g, "");
+
+    digitos = digitos.replace(/^0+/, "");
+
     let formatted = "";
 
-    if (digitos.length < 3) {
-      const centavos = digitos.substring(digitos.length - 2);
-      formatted = `${centavos}`;
+    if (digitos.length === 0) {
+      formatted = "0,00";
+    } else if (digitos.length < 3) {
+      formatted = `0,${digitos.padStart(2, "0")}`;
     } else if (digitos.length < 6) {
       const centavos = digitos.substring(digitos.length - 2);
       const centena = digitos.substring(digitos.length - 2, digitos.length - 5);
@@ -211,37 +215,15 @@ function RegisterProcess({ updateList }) {
     setPorcentagem_final(digitos);
   }
 
-  function calculoValorTotal() {
-    let sum = 0;
-    let entradaNumber = entrada.replace(/\D/g, "");
-    let valor_parcelasNumber = valor_parcelas.replace(/\D/g, "");
-    let porcentagem_finalNumber = porcentagem_final.replace(/\D/g, "");
-    let condenacaNumber = condenacao.replace(/\D/g, "");
-    let resultadoPorcentagemNumber = resultadoPorcentagem.replace(/\D/g, "");
-    let valorTotalParcelas = 0;
-
-    if (quantidade_parcelas && valor_parcelas) {
-      valorTotalParcelas = quantidade_parcelas * valor_parcelasNumber;
-    } else {
-      valorTotalParcelas = 0;
-    }
-
-    if (porcentagem_finalNumber && condenacaNumber) {
-      resultadoPorcentagemNumber =
-        (condenacaNumber * porcentagem_finalNumber) / 100;
-    }
-
-    formatCoin(resultadoPorcentagemNumber.toString(), "resultado-porcentagem");
-
-    console.log(valorTotalParcelas);
-    setTotal(entrada);
-  }
-
   useEffect(() => {
-    if (porcentagem_final) {
+    if (entrada) {
       calculoValorTotal();
     }
-  }, [porcentagem_final, condenacao]);
+
+    function calculoValorTotal() {
+      setTotal(entrada);
+    }
+  }, [entrada]);
 
   return (
     <div className={`register-process register-process-${theme}`}>
@@ -391,7 +373,7 @@ function RegisterProcess({ updateList }) {
                     <input
                       type="date"
                       value={ultima_parcela}
-                      //onChange={(e) => setUltima_parcela(e.target.value)}
+                      onChange={(e) => setUltima_parcela(e.target.value)}
                     />
                   </div>
                 </div>
@@ -435,9 +417,9 @@ function RegisterProcess({ updateList }) {
                       <input
                         type="text"
                         value={`R$ ${resultadoPorcentagem}`}
-/*                         onChange={(e) =>
+                        onChange={(e) =>
                           formatCoin(e.target.value, "resultado-porcentagem")
-                        } */
+                        }
                       />
                     </div>
                     <div className="end">
