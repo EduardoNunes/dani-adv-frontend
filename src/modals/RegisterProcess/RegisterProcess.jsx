@@ -227,16 +227,37 @@ function RegisterProcess({ updateList }) {
         parcelamento = valor_parcelasNumber * quantidade_parcelas;
       }
 
-      if (porcentagem_final && condenacaoNumber) {
-        console.log(porcentagem_finalNumber, condenacaoNumber);
+      if (porcentagem_final && condenacao) {
         resultadoPorcentagemNumber =
           (porcentagem_finalNumber * condenacaoNumber) / 100;
-
-        setResultadoPorcentagem((resultadoPorcentagemNumber/100).toFixed(2));
+        console.log(
+          entradaNumber,
+          parcelamento,
+          parseInt(resultadoPorcentagemNumber),
+          result
+        );
+        if (resultadoPorcentagemNumber >= 1) {
+          formatCoin(
+            parseInt(resultadoPorcentagemNumber).toString(),
+            "resultado-porcentagem"
+          );
+        } else {
+          resultadoPorcentagemNumber = 0;
+          formatCoin(
+            resultadoPorcentagemNumber.toString(),
+            "resultado-porcentagem"
+          );
+        }
       }
 
-      result = entradaNumber + parcelamento + resultadoPorcentagemNumber;
-      setTotal(result);
+      if (resultadoPorcentagemNumber >= 1) {
+        result =
+          entradaNumber + parcelamento + parseInt(resultadoPorcentagemNumber);
+      } else {
+        result = entradaNumber + parcelamento;
+      }
+
+      formatCoin(result.toString(), "total");
     }
   }, [
     entrada,
