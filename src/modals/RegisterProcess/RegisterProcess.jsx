@@ -209,21 +209,42 @@ function RegisterProcess({ updateList }) {
     }
   }
 
-  function porcentagemFinal(params) {
-    let digitos = params.replace(/\D/g, "");
-
-    setPorcentagem_final(digitos);
-  }
-
   useEffect(() => {
-    if (entrada) {
-      calculoValorTotal();
-    }
+    calculoValorTotal();
 
     function calculoValorTotal() {
-      setTotal(entrada);
+      let entradaNumber = Number(entrada.replace(/\D/g, ""));
+      let valor_parcelasNumber = Number(valor_parcelas.replace(/\D/g, ""));
+      let condenacaoNumber = Number(condenacao.replace(/\D/g, ""));
+      let porcentagem_finalNumber = Number(
+        porcentagem_final.replace(/\D/g, "")
+      );
+      let resultadoPorcentagemNumber = 0;
+      let parcelamento = 0;
+      let result = 0;
+
+      if (quantidade_parcelas && valor_parcelas) {
+        parcelamento = valor_parcelasNumber * quantidade_parcelas;
+      }
+
+      if (porcentagem_final && condenacaoNumber) {
+        console.log(porcentagem_finalNumber, condenacaoNumber);
+        resultadoPorcentagemNumber =
+          (porcentagem_finalNumber * condenacaoNumber) / 100;
+
+        setResultadoPorcentagem((resultadoPorcentagemNumber/100).toFixed(2));
+      }
+
+      result = entradaNumber + parcelamento + resultadoPorcentagemNumber;
+      setTotal(result);
     }
-  }, [entrada]);
+  }, [
+    entrada,
+    quantidade_parcelas,
+    valor_parcelas,
+    porcentagem_final,
+    condenacao,
+  ]);
 
   return (
     <div className={`register-process register-process-${theme}`}>
@@ -385,9 +406,9 @@ function RegisterProcess({ updateList }) {
                     <div className="primeira">
                       <label>Porcentagem final:</label>
                       <input
-                        type="text"
-                        value={`%${porcentagem_final}`}
-                        onChange={(e) => porcentagemFinal(e.target.value)}
+                        type="number"
+                        value={porcentagem_final}
+                        onChange={(e) => setPorcentagem_final(e.target.value)}
                       />
                     </div>
                     <div className="segunda">
@@ -414,21 +435,11 @@ function RegisterProcess({ updateList }) {
                   <div className="total">
                     <div className="top">
                       <label>Result. Porcent.:</label>
-                      <input
-                        type="text"
-                        value={`R$ ${resultadoPorcentagem}`}
-                        onChange={(e) =>
-                          formatCoin(e.target.value, "resultado-porcentagem")
-                        }
-                      />
+                      <output>{`R$ ${resultadoPorcentagem}`}</output>
                     </div>
                     <div className="end">
                       <label>Valor total:</label>
-                      <input
-                        type="text"
-                        value={`R$ ${total}`}
-                        onChange={(e) => formatCoin(e.target.value, "total")}
-                      />
+                      <output>{`R$ ${total}`}</output>
                     </div>
                   </div>
                 </div>
