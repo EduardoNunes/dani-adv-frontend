@@ -6,6 +6,7 @@ import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./register-process.css";
+import { type } from "@testing-library/user-event/dist/type";
 
 function RegisterProcess({ updateList }) {
   const { theme } = useTheme();
@@ -37,6 +38,8 @@ function RegisterProcess({ updateList }) {
   const [condenacao, setCondenacao] = useState("");
   const [resultadoPorcentagem, setResultadoPorcentagem] = useState("");
   const [total, setTotal] = useState("");
+  const [isInputAbleParcelas, setIsInputAbleParcelas] = useState(false);
+  const [isInputAblePorcentagem, setIsInputAblePorcentagem] = useState(false);
   const token = getItem("token");
 
   useEffect(() => {
@@ -230,12 +233,6 @@ function RegisterProcess({ updateList }) {
       if (porcentagem_final && condenacao) {
         resultadoPorcentagemNumber =
           (porcentagem_finalNumber * condenacaoNumber) / 100;
-        console.log(
-          entradaNumber,
-          parcelamento,
-          parseInt(resultadoPorcentagemNumber),
-          result
-        );
         if (resultadoPorcentagemNumber >= 1) {
           formatCoin(
             parseInt(resultadoPorcentagemNumber).toString(),
@@ -266,6 +263,51 @@ function RegisterProcess({ updateList }) {
     porcentagem_final,
     condenacao,
   ]);
+
+  useEffect(() => {
+    const calcularDatasPagamento = () => {
+      const [ano, mes, dia] = priemira_parcela.split("-").map(Number);
+      const quantidade_parcelasNumber = parseInt(quantidade_parcelas);
+
+      const data = new Date(ano, mes - 1, dia);
+      data.setMonth(data.getMonth() + quantidade_parcelasNumber - 1);
+      setIsInputAbleParcelas(false);
+
+      const ultimoAno = String(data.getFullYear());
+      const ultimoMes = String(data.getMonth() + 1).padStart(2, "0");
+      const ultimoDia = String(data.getDate()).padStart(2, "0");
+
+      const ultimaParcela = `${ultimoAno}-${ultimoMes}-${ultimoDia}`;
+
+      setUltima_parcela(String(ultimaParcela));
+    };
+
+    if (quantidade_parcelas && priemira_parcela) {
+      calcularDatasPagamento();
+    }
+  }, [priemira_parcela, quantidade_parcelas, ultima_parcela]);
+
+  useEffect(() => {
+    if (quantidade_parcelas === "0") {
+      setValor_parcelas("");
+      setPrimeira_parcela("");
+      setUltima_parcela("");
+      setIsInputAbleParcelas(true);
+    } else {
+      setIsInputAbleParcelas(false);
+    }
+  }, [quantidade_parcelas]);
+
+  useEffect(() => {
+    if (porcentagem_final === "0") {
+      setData_porcentagem_final("");
+      setCondenacao("");
+      setResultadoPorcentagem("");
+      setIsInputAblePorcentagem(true);
+    } else {
+      setIsInputAblePorcentagem(false);
+    }
+  }, [porcentagem_final]);
 
   return (
     <div className={`register-process register-process-${theme}`}>
@@ -394,6 +436,7 @@ function RegisterProcess({ updateList }) {
                     <label>Valor parcelas:</label>
                     <input
                       type="text"
+                      disabled={isInputAbleParcelas}
                       value={`R$ ${valor_parcelas}`}
                       onChange={(e) =>
                         formatCoin(e.target.value, "valor-parcelas")
@@ -406,6 +449,7 @@ function RegisterProcess({ updateList }) {
                     <label>Primeira parcela:</label>
                     <input
                       type="date"
+                      disabled={isInputAbleParcelas}
                       value={priemira_parcela}
                       onChange={(e) => setPrimeira_parcela(e.target.value)}
                     />
@@ -414,6 +458,7 @@ function RegisterProcess({ updateList }) {
                     <label>Última parcela:</label>
                     <input
                       type="date"
+                      disabled={isInputAbleParcelas}
                       value={ultima_parcela}
                       onChange={(e) => setUltima_parcela(e.target.value)}
                     />
@@ -436,6 +481,7 @@ function RegisterProcess({ updateList }) {
                       <label>Data % final:</label>
                       <input
                         type="date"
+                        disabled={isInputAblePorcentagem}
                         value={data_porcentagem_final}
                         onChange={(e) =>
                           setData_porcentagem_final(e.target.value)
@@ -446,6 +492,7 @@ function RegisterProcess({ updateList }) {
                       <label>Condenação:</label>
                       <input
                         type="text"
+                        disabled={isInputAblePorcentagem}
                         value={`R$ ${condenacao}`}
                         onChange={(e) =>
                           formatCoin(e.target.value, "valor-causa")
