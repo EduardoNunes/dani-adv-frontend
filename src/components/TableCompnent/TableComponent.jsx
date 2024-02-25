@@ -103,7 +103,7 @@ function TableComponent({
                   <img
                     src={theme === "light" ? PaymentWhite : PaymentBlack}
                     alt="Edit Icon"
-                    onClick={() => handleClickOpenFinanceiroProcesso(true)}
+                    onClick={() => handleClickOpenFinanceiroProcesso(true, data.id)}
                   />
                   <img
                     src={theme === "light" ? TrashBlack : TrashWhite}

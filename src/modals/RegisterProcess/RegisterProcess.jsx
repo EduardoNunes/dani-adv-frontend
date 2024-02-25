@@ -6,7 +6,6 @@ import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./register-process.css";
-import { type } from "@testing-library/user-event/dist/type";
 
 function RegisterProcess({ updateList }) {
   const { theme } = useTheme();
@@ -28,7 +27,7 @@ function RegisterProcess({ updateList }) {
   const [infos, setInfos] = useState("");
   const [entrada, setEntrada] = useState("");
   const [data_entrada_processo, setData_entrada_processo] = useState("");
-  const [priemira_parcela, setPrimeira_parcela] = useState("");
+  const [primeira_parcela, setPrimeira_parcela] = useState("");
   const [ultima_parcela, setUltima_parcela] = useState("");
   const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
   const [valor_parcelas, setValor_parcelas] = useState("");
@@ -266,26 +265,34 @@ function RegisterProcess({ updateList }) {
 
   useEffect(() => {
     const calcularDatasPagamento = () => {
-      const [ano, mes, dia] = priemira_parcela.split("-").map(Number);
+      const [ano, mes, dia] = primeira_parcela.split("-").map(Number);
       const quantidade_parcelasNumber = parseInt(quantidade_parcelas);
 
-      const data = new Date(ano, mes - 1, dia);
-      data.setMonth(data.getMonth() + quantidade_parcelasNumber - 1);
+      const datasParcelas = [];
+
+      for (let i = 0; i < quantidade_parcelasNumber; i++) {
+        const dataParcela = new Date(ano, mes - 1 + i, dia);
+
+        const anoParcela = String(dataParcela.getFullYear());
+        const mesParcela = String(dataParcela.getMonth() + 1).padStart(2, "0");
+        const diaParcela = String(dataParcela.getDate()).padStart(2, "0");
+
+        datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}`);
+      }
+
       setIsInputAbleParcelas(false);
 
-      const ultimoAno = String(data.getFullYear());
-      const ultimoMes = String(data.getMonth() + 1).padStart(2, "0");
-      const ultimoDia = String(data.getDate()).padStart(2, "0");
+      const ultimaParcela = datasParcelas[datasParcelas.length - 1];
 
-      const ultimaParcela = `${ultimoAno}-${ultimoMes}-${ultimoDia}`;
-
-      setUltima_parcela(String(ultimaParcela));
+      setUltima_parcela(ultimaParcela);
+      setDatas_parcelas(datasParcelas);
+      console.log(datas_parcelas)
     };
 
-    if (quantidade_parcelas && priemira_parcela) {
+    if (quantidade_parcelas && primeira_parcela) {
       calcularDatasPagamento();
     }
-  }, [priemira_parcela, quantidade_parcelas, ultima_parcela]);
+  }, [primeira_parcela, quantidade_parcelas, ultima_parcela]);
 
   useEffect(() => {
     if (quantidade_parcelas === "0") {
@@ -302,9 +309,10 @@ function RegisterProcess({ updateList }) {
     if (porcentagem_final === "0") {
       setData_porcentagem_final("");
       setCondenacao("");
-      setResultadoPorcentagem("");
+      setResultadoPorcentagem("0");
       setIsInputAblePorcentagem(true);
     } else {
+      setResultadoPorcentagem(0);
       setIsInputAblePorcentagem(false);
     }
   }, [porcentagem_final]);
@@ -450,7 +458,7 @@ function RegisterProcess({ updateList }) {
                     <input
                       type="date"
                       disabled={isInputAbleParcelas}
-                      value={priemira_parcela}
+                      value={primeira_parcela}
                       onChange={(e) => setPrimeira_parcela(e.target.value)}
                     />
                   </div>

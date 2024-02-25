@@ -70,7 +70,6 @@
 .register-process .container-process .chart-process form {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   flex-direction: column;
   height: 100%;
   min-width: 100%;
