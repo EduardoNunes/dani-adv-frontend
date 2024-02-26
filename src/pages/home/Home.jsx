@@ -58,7 +58,7 @@ function Home() {
         />
         <div className={`frase frase-${theme}`}>
           <h1>"Quem não luta pelos seus direitos não é digno deles."</h1>
-          <h1>Rui Barbosa</h1>
+          <h1>Ruy Barbosa</h1>
         </div>
       </div>
       <div id="sobre">

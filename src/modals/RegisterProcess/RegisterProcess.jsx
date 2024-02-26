@@ -32,6 +32,7 @@ function RegisterProcess({ updateList }) {
   const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
   const [valor_parcelas, setValor_parcelas] = useState("");
   const [datas_parcelas, setDatas_parcelas] = useState("");
+  const [parcelas_pagas, setParcelas_pagas] = useState("")
   const [porcentagem_final, setPorcentagem_final] = useState("");
   const [data_porcentagem_final, setData_porcentagem_final] = useState("");
   const [condenacao, setCondenacao] = useState("");
@@ -90,6 +91,7 @@ function RegisterProcess({ updateList }) {
               quantidade_parcelas,
               valor_parcelas,
               datas_parcelas,
+              parcelas_pagas,
               porcentagem_final,
               data_porcentagem_final,
               total,
@@ -263,36 +265,37 @@ function RegisterProcess({ updateList }) {
     condenacao,
   ]);
 
+  const calcularDatasPagamento = () => {
+    const [ano, mes, dia] = primeira_parcela.split("-").map(Number);
+    const quantidade_parcelasNumber = parseInt(quantidade_parcelas);
+
+    const datasParcelas = [];
+
+    for (let i = 0; i < quantidade_parcelasNumber; i++) {
+      const dataParcela = new Date(ano, mes - 1 + i, dia);
+
+      const anoParcela = String(dataParcela.getFullYear());
+      const mesParcela = String(dataParcela.getMonth() + 1).padStart(2, "0");
+      const diaParcela = String(dataParcela.getDate()).padStart(2, "0");
+
+      datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}`);
+    }
+
+    setIsInputAbleParcelas(false);
+
+    const ultimaParcela = datasParcelas[datasParcelas.length - 1];
+
+    setUltima_parcela(ultimaParcela);
+    setDatas_parcelas(datasParcelas);
+  };
+
   useEffect(() => {
-    const calcularDatasPagamento = () => {
-      const [ano, mes, dia] = primeira_parcela.split("-").map(Number);
-      const quantidade_parcelasNumber = parseInt(quantidade_parcelas);
-
-      const datasParcelas = [];
-
-      for (let i = 0; i < quantidade_parcelasNumber; i++) {
-        const dataParcela = new Date(ano, mes - 1 + i, dia);
-
-        const anoParcela = String(dataParcela.getFullYear());
-        const mesParcela = String(dataParcela.getMonth() + 1).padStart(2, "0");
-        const diaParcela = String(dataParcela.getDate()).padStart(2, "0");
-
-        datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}`);
-      }
-
-      setIsInputAbleParcelas(false);
-
-      const ultimaParcela = datasParcelas[datasParcelas.length - 1];
-
-      setUltima_parcela(ultimaParcela);
-      setDatas_parcelas(datasParcelas);
-      console.log(datas_parcelas)
-    };
-
     if (quantidade_parcelas && primeira_parcela) {
       calcularDatasPagamento();
     }
-  }, [primeira_parcela, quantidade_parcelas, ultima_parcela]);
+    //DESABILITANDO ESLINT NA LINHA ABAIXO PELO PROGRAMA ESTAR SOLICITANDO DEPENDENCIA Q N SERÁ USADA AQUI
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [primeira_parcela, quantidade_parcelas]);
 
   useEffect(() => {
     if (quantidade_parcelas === "0") {
