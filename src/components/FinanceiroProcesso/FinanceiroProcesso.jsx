@@ -11,6 +11,7 @@ function FinanceiroProcessDetails() {
   const { theme } = useTheme();
   const { handleClickOpenFinanceiroProcesso, dataProcessId } = useModal();
   const [dataFinanceiroProcess, setDataFinanceiroProcess] = useState();
+  const [error, setError] = useState("");
   const token = getItem("token");
 
   async function handleSubmit() {}
@@ -29,6 +30,7 @@ function FinanceiroProcessDetails() {
         console.log(response.data[0]);
       } catch (error) {
         console.log(error);
+        setError(`${error.response.data.mensagem}`);
       }
     }
 
@@ -106,7 +108,7 @@ function FinanceiroProcessDetails() {
                 <input type="text" />
                 <label>Status:</label>
                 <input type="text" />
-
+                {error && <span>{error}</span>}
                 <button>Cadastrar valores:</button>
               </div>
             )}
