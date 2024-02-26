@@ -9,8 +9,18 @@ import "./financeiro-processo.css";
 
 function FinanceiroProcessDetails() {
   const { theme } = useTheme();
-  const { handleClickOpenFinanceiroProcesso, dataProcessId } = useModal();
-  const [dataFinanceiroProcess, setDataFinanceiroProcess] = useState();
+  const { handleClickOpenEditFinanceiroProcesso, dataProcessId } = useModal();
+  const [entrada, setEntrada] = useState("");
+  const [data_entrada, setData_entrada] = useState("");
+  const [quantidade_parcelas, setQuantidade_parcelas] = useState(0);
+  const [valor_parcelas, setValor_parcelas] = useState("");
+  const [datas_parcelas, setDatas_parcelas] = useState("");
+  const [parcelas_pagas, setParcelas_pagas] = useState("");
+  const [porcentagem_final, setPorcentagem_final] = useState(0);
+  const [data_porcentagem_final, setData_porcentagem_final] = useState("");
+  const [condenacao, setCondenacao] = useState("");
+  const [resultado_porcentagem, setResultado_porcentagem] = useState("");
+  const [total, setTotal] = useState("");
   const [error, setError] = useState("");
   const token = getItem("token");
 
@@ -26,8 +36,18 @@ function FinanceiroProcessDetails() {
           }
         );
 
-        setDataFinanceiroProcess(response.data[0]);
-        console.log(response.data[0]);
+        setEntrada(response.data[0].entrada);
+        setData_entrada(response.data[0].data_entrada);
+        setQuantidade_parcelas(response.data[0].quantidade_parcelas);
+        setValor_parcelas(response.data[0].valor_parcelas);
+        setDatas_parcelas(response.data[0].datas_parcelas);
+        setParcelas_pagas(response.data[0].parcelas_pagas);
+        setPorcentagem_final(response.data[0].porcentagem_final);
+        setData_porcentagem_final(response.data[0].data_porcentagem_final);
+        setCondenacao(response.data[0].condenacao);
+        setResultado_porcentagem(response.data[0].resultado_porcentagem);
+        setTotal(response.data[0].total);
+
       } catch (error) {
         console.log(error);
         setError(`${error.response.data.mensagem}`);
@@ -45,73 +65,88 @@ function FinanceiroProcessDetails() {
             src={theme === "light" ? XPreto : XBranco}
             title="Sair"
             alt=""
-            onClick={() => handleClickOpenFinanceiroProcesso(false)}
+            onClick={() => handleClickOpenEditFinanceiroProcesso(false)}
           />
           <h3>Editar financeiro do processo.</h3>
 
           <form onSubmit={handleSubmit}>
-            {dataFinanceiroProcess ? (
-              <div>
-                <label>Valor de entrada:</label>
-                <input type="text" value={dataFinanceiroProcess.entrada} />
-                <label>Data do valor de entrada:</label>
-                <input type="date" value={dataFinanceiroProcess.data_entrada} />
-                <label>Quantidade de parcelas:</label>
-                <input
-                  type="number"
-                  value={dataFinanceiroProcess.quantidade_parcelas}
-                />
-                <label>Valor das parcelas:</label>
-                <input
-                  type="text"
-                  value={dataFinanceiroProcess.valor_parcelas}
-                />
-                <label>Data das parcelas:</label>
-                <input
-                  type="date"
-                  value={dataFinanceiroProcess.data_parcelas}
-                />
-                <label>Porcentagem final:</label>
-                <input
-                  type="text"
-                  value={dataFinanceiroProcess.porcentagem_final}
-                />
-                <label>Data da porcentagem final:</label>
-                <input
-                  type="date"
-                  value={dataFinanceiroProcess.data_porcentagem_final}
-                />
-                <label>Valor total:</label>
-                <input type="text" value={dataFinanceiroProcess.total} />
-                <label>Status:</label>
-                <input type="text" value={dataFinanceiroProcess.status} />
+            <div>
+              <label>Valor de entrada:</label>
+              <input
+                type="text"
+                value={entrada}
+                onChange={(e) => setEntrada(e.target.value)}
+              />
+              <label>Data do valor de entrada:</label>
+              <input
+                type="text"
+                value={data_entrada}
+                onChange={(e) => setData_entrada(e.target.value)}
+              />
+              <label>Quantidade de parcelas:</label>
+              <input
+                type="number"
+                value={quantidade_parcelas}
+                onChange={(e) => setQuantidade_parcelas(e.target.value)}
+              />
+              <label>Valor das parcelas:</label>
+              <input
+                type="text"
+                value={valor_parcelas}
+                onChange={(e) => setValor_parcelas(e.target.value)}
+              />
+              <label>Datas das parcelas:</label>
+              <input
+                type="text"
+                value={datas_parcelas}
+                onChange={(e) => setDatas_parcelas(e.target.value)}
+              />
+              <label>Parcelas Pagas:</label>
+              <input
+                type="text"
+                value={parcelas_pagas}
+                onChange={(e) => setParcelas_pagas(e.target.value)}
+              />
+              <label>Porcentagem final:</label>
+              <input
+                type="number"
+                value={porcentagem_final}
+                onChange={(e) => setPorcentagem_final(e.target.value)}
+              />
+              <label>Data da porcentagem final:</label>
+              <input
+                type="text"
+                value={data_porcentagem_final}
+                onChange={(e) => setData_porcentagem_final(e.target.value)}
+              />
+              <label>Valor da condenação:</label>
+              <input
+                type="text"
+                value={condenacao}
+                onChange={(e) => setCondenacao(e.target.value)}
+              />
+              <label>Calculo da condenação:</label>
+              <input
+                type="text"
+                value={resultado_porcentagem}
+                onChange={(e) => setResultado_porcentagem(e.target.value)}
+              />
+              <label>Valor total:</label>
+              <input
+                type="text"
+                value={total}
+                onChange={(e) => setTotal(e.target.value)}
+              />
+              <label>Status:</label>
+              <input
+                type="text"
+                value={"STATUS"}
+                onChange={(e) => setTotal(e.target.value)}
+              />
 
-                <button>Cadastrar valores:</button>
-              </div>
-            ) : (
-              <div>
-                <label>Valor de entrada:</label>
-                <input type="text" />
-                <label>Data do valor de entrada:</label>
-                <input type="date" />
-                <label>Quantidade de parcelas:</label>
-                <input type="number" />
-                <label>Valor das parcelas:</label>
-                <input type="text" />
-                <label>Data das parcelas:</label>
-                <input type="date" />
-                <label>Porcentagem final:</label>
-                <input type="text" />
-                <label>Data da porcentagem final:</label>
-                <input type="date" />
-                <label>Valor total:</label>
-                <input type="text" />
-                <label>Status:</label>
-                <input type="text" />
-                {error && <span>{error}</span>}
-                <button>Cadastrar valores:</button>
-              </div>
-            )}
+              <span>{error}</span>
+              <button>Cadastrar valores:</button>
+            </div>
           </form>
         </div>
       </div>

@@ -37,7 +37,7 @@ function OfficePage() {
     handleClickOpenDeleteConfirm,
     openConfirm,
     handleClickOpenMessageToast,
-    handleClickOpenFinanceiroProcesso,
+    handleClickOpenEditFinanceiroProcesso,
     openFinanceiroProcesso,
   } = useModal();
   const [dataProcess, setDataProcess] = useState();
@@ -223,8 +223,8 @@ function OfficePage() {
               handleOpenDetails={handleOpenProcessDetails}
               handleClickOpenEdit={handleClickOpenEditProcess}
               handleClickOpenDeleteConfirm={handleClickOpenDeleteConfirm}
-              handleClickOpenFinanceiroProcesso={
-                handleClickOpenFinanceiroProcesso
+              handleClickOpenEditFinanceiroProcesso={
+                handleClickOpenEditFinanceiroProcesso
               }
               theme={theme}
             />

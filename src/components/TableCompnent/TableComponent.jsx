@@ -4,6 +4,8 @@ import PaymentWhite from "../../assets/pagamento-white.png";
 import PaymentBlack from "../../assets/pagamento-black.png";
 import TrashWhite from "../../assets/trash-white.png";
 import TrashBlack from "../../assets/trash-black.png";
+import ListBlack from "../../assets/list-black.png";
+import ListWhite from "../../assets/list-white.png";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
@@ -21,7 +23,7 @@ function TableComponent({
   handleClickOpenEdit,
   handleClickOpenDeleteConfirm,
   theme,
-  handleClickOpenFinanceiroProcesso,
+  handleClickOpenEditFinanceiroProcesso,
 }) {
   const [processCount, setProcessCount] = useState({});
 
@@ -77,6 +79,10 @@ function TableComponent({
                   onClick={() => handleOpenDetails(true, data)}
                 >
                   <p> {data.contratante}</p>{" "}
+                  <img
+                    src={theme === "light" ? ListBlack : ListWhite}
+                    alt="ícone lista"
+                  />
                 </li>
                 <li title={data.numero}>
                   <p>{data.numero}</p>
@@ -90,9 +96,13 @@ function TableComponent({
                 <li
                   className="status-financeiro"
                   title={data.status}
-                  onClick={() => handleClickOpenFinanceiroProcesso(true)}
+                  onClick={() => ("")}
                 >
                   <p>{data.status}</p>
+                  <img
+                    src={theme === "light" ? ListBlack : ListWhite}
+                    alt="ícone lista"
+                  />
                 </li>
                 <li>
                   <img
@@ -103,7 +113,9 @@ function TableComponent({
                   <img
                     src={theme === "light" ? PaymentWhite : PaymentBlack}
                     alt="Edit Icon"
-                    onClick={() => handleClickOpenFinanceiroProcesso(true, data.id)}
+                    onClick={() =>
+                      handleClickOpenEditFinanceiroProcesso(true, data.id)
+                    }
                   />
                   <img
                     src={theme === "light" ? TrashBlack : TrashWhite}
@@ -132,6 +144,10 @@ function TableComponent({
                   onClick={() => handleOpenDetails(true, data)}
                 >
                   <p> {data.nome}</p>{" "}
+                  <img
+                    src={theme === "light" ? ListBlack : ListWhite}
+                    alt="ícone lista"
+                  />
                 </li>
                 <li title={data.email}>
                   <p>{data.email}</p>

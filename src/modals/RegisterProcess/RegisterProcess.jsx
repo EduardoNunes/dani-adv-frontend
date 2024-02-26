@@ -94,6 +94,8 @@ function RegisterProcess({ updateList }) {
               parcelas_pagas,
               porcentagem_final,
               data_porcentagem_final,
+              condenacao,
+              resultadoPorcentagem,
               total,
               processo_id,
             },
@@ -287,6 +289,7 @@ function RegisterProcess({ updateList }) {
 
     setUltima_parcela(ultimaParcela);
     setDatas_parcelas(datasParcelas);
+    setParcelas_pagas({})
   };
 
   useEffect(() => {
@@ -315,7 +318,7 @@ function RegisterProcess({ updateList }) {
       setResultadoPorcentagem("0");
       setIsInputAblePorcentagem(true);
     } else {
-      setResultadoPorcentagem(0);
+      setResultadoPorcentagem("0");
       setIsInputAblePorcentagem(false);
     }
   }, [porcentagem_final]);

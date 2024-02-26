@@ -1,166 +1,225 @@
+.office-page .container .table .table-component {
+  height: 100%;
+  width: 100%;
+}
 
-  .office-page .container .table .table-component {
-    height: 100%;
-    width: 100%;  
-  }
-  
-  .office-page .container .table .table-component .title {
-    height: 10%;
-  }
-  
-  .office-page .container .table .table-component .title ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    height: 100%;
-    border: 1px solid rgba(var(--cor-preto), 0.9);
-    border-radius: 10px;
-    
-    list-style: none;
-    background-color: rgba(var(--cor-roxo), 0.5);
-  }
-  
-  .office-page-dark .container .table .table-component .title ul {
-    border: 1px solid rgba(var(--cor-rosa), 1);
-    background-color: rgba(var(--cor-rosa), 0.3);
-  }
-  
-  .office-page .container .table .table-component .title ul li {
-    display: flex;
-    justify-content: center;
-  
-    width: 16.66%;
-  
-    font-family: "fonte";
-    font-size: 16px;
-    font-weight: 600;
-  }
-  
-  .office-page-dark .container .table .table-component .title ul li {
-    color: rgba(var(--cor-branco), 0.9);
-    font-weight: 300;
-  }
-  
-  .office-page .container .table .table-component .body {
-    height: 90%;
-    border-radius: 10px;
-    overflow-y: auto;
-  }
-  
-  .office-page .container .table .table-component .body .line {
-    height: 10%;
-  }
-  
-  .office-page-dark .container .table .table-component .body .line {
-    background-color: rgba(var(--cor-rosa), 0.05);
-    color: rgba(var(--cor-branco), 1);
-  }
-  
-  .office-page .container .table .table-component .body .line ul {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    list-style: none;
-  }
-  
-  .office-page .container .table .table-component .body .line ul li {
-    display: flex;
-    align-items: center;
-  
-    width: 16.66%;
-    height: 100%;
-    padding-left: 10px;
-  
-    border-right: 1px solid rgba(var(--cor-preto), 0.8);
-    border-bottom: 1px solid rgba(var(--cor-roxo), 0.5);
-  }
-  
-  .office-page .container .table .table-component .body .line ul li:first-child {
-    cursor: pointer;
-  }
-  
-  .office-page .container .table .table-component .body .line ul li:first-child:hover {
-    background-color: rgba(var(--cor-roxo), 0.2);
-    border: 1px solid rgba(var(--cor-preto), 0.5);
-  }
-  
-  .office-page-dark
-    .container
-    .table
-    .table-component
-    .body
-    .line
-    ul
-    li:first-child:hover {
-    background-color: rgba(var(--cor-rosa), 0.2);
-  }
-  
-  .office-page .container .table .table-component .body .line ul li:last-child {
-    border-right: none;
-  }
-  
-  .office-page .container .table .table-component .body .line ul li:last-child {
-    justify-content: center;
-  }
-  
-  .office-page-dark .container .table .table-component .body .line ul li {
-    border-right: 1px solid rgba(var(--cor-rosa), 0.7);
-    border-bottom: 1px solid rgba(var(--cor-rosa), 0.3);
-  }
+.office-page .container .table .table-component .title {
+  height: 10%;
+}
 
-  .office-page .container .table .table-component .body .line ul .status-financeiro {
-    cursor: pointer;
-  }
+.office-page .container .table .table-component .title ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .office-page .container .table .table-component .body .line ul .status-financeiro:hover {
-    background-color: rgba(var(--cor-roxo), 0.2);
-    border: 1px solid rgba(var(--cor-preto), 0.5);
-  }
-  
-  .office-page .container .table .table-component .body .line ul li p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  
-  .office-page-dark .container .table .table-component .body .line ul li p {
-    color: rgba(var(--cor-branco), 0.9);
-  }
-  
-  .office-page .container .table .table-component .body .line ul li:last-child {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0 10px;
-  }
+  height: 100%;
+  border: 1px solid rgba(var(--cor-preto), 0.9);
+  border-radius: 10px;
 
-  .office-page .container .table .table-component .body .line ul li img {
-    width: 26px;
-    transition: ease-in-out 0.2s;
-    opacity: 0.7;
-  }
-  
-  .office-page .container .table .table-component .body .line ul li img:hover {
-    width: 29px;
-    cursor: pointer;
-  }
+  list-style: none;
+  background-color: rgba(var(--cor-roxo), 0.5);
+}
 
-  .office-page .container .table .table-component .body .line ul li img:nth-of-type(2) {
-    width: 29px;
-    transition: ease-in-out 0.2s;
-    opacity: 0.7;
-  }
+.office-page-dark .container .table .table-component .title ul {
+  border: 1px solid rgba(var(--cor-rosa), 1);
+  background-color: rgba(var(--cor-rosa), 0.3);
+}
 
-  .office-page .container .table .table-component .body .line ul li img:nth-of-type(2):hover {
-    width: 32px;
-  }
-  
-  .office-page .container .table .table-component .body .line ul li img:last-child {
-    width: 25px;
-    opacity: 0.9;
-  }
+.office-page .container .table .table-component .title ul li {
+  display: flex;
+  justify-content: center;
 
-  .office-page .container .table .table-component .body .line ul li img:last-child:hover {
-    width: 28px;
-    opacity: 0.9;
-  }
+  width: 16.66%;
+
+  font-family: "fonte";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.office-page-dark .container .table .table-component .title ul li {
+  color: rgba(var(--cor-branco), 0.9);
+  font-weight: 300;
+}
+
+.office-page .container .table .table-component .body {
+  height: 90%;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.office-page .container .table .table-component .body .line {
+  height: 10%;
+}
+
+.office-page-dark .container .table .table-component .body .line {
+  background-color: rgba(var(--cor-rosa), 0.05);
+  color: rgba(var(--cor-branco), 1);
+}
+
+.office-page .container .table .table-component .body .line ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+}
+
+.office-page .container .table .table-component .body .line ul li {
+  display: flex;
+  align-items: center;
+
+  width: 16.66%;
+  height: 100%;
+  padding-left: 10px;
+
+  border-right: 1px solid rgba(var(--cor-preto), 0.8);
+  border-bottom: 1px solid rgba(var(--cor-roxo), 0.5);
+}
+
+.office-page .container .table .table-component .body ul li:nth-child(1),
+.office-page .container .table .table-component .body ul li:nth-child(5) {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.office-page .container .table .table-component .body .line ul li:first-child {
+  cursor: pointer;
+}
+
+.office-page
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  li:first-child:hover {
+  background-color: rgba(var(--cor-roxo), 0.2);
+  border: 1px solid rgba(var(--cor-preto), 0.5);
+}
+
+.office-page-dark
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  li:first-child:hover {
+  background-color: rgba(var(--cor-rosa), 0.2);
+}
+
+.office-page .container .table .table-component .body .line ul li:last-child {
+  border-right: none;
+}
+
+.office-page .container .table .table-component .body .line ul li:last-child {
+  justify-content: center;
+}
+
+.office-page-dark .container .table .table-component .body .line ul li {
+  border-right: 1px solid rgba(var(--cor-rosa), 0.7);
+  border-bottom: 1px solid rgba(var(--cor-rosa), 0.3);
+}
+
+.office-page
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  .status-financeiro {
+  cursor: pointer;
+}
+
+.office-page
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  .status-financeiro:hover {
+  background-color: rgba(var(--cor-roxo), 0.2);
+  border: 1px solid rgba(var(--cor-preto), 0.5);
+}
+
+.office-page .container .table .table-component .body .line ul li p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.office-page-dark .container .table .table-component .body .line ul li p {
+  color: rgba(var(--cor-branco), 0.9);
+}
+
+.office-page .container .table .table-component .body .line ul li:last-child {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 10px;
+}
+
+.office-page .container .table .table-component .body .line ul li img {
+  width: 26px;
+  transition: ease-in-out 0.2s;
+  opacity: 0.7;
+}
+
+.office-page .container .table .table-component .body .line ul li img:hover {
+  width: 29px;
+  cursor: pointer;
+}
+
+.office-page
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  li
+  img:nth-of-type(2) {
+  width: 29px;
+  transition: ease-in-out 0.2s;
+  opacity: 0.7;
+}
+
+.office-page
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  li
+  img:nth-of-type(2):hover {
+  width: 32px;
+}
+
+.office-page
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  li
+  img:last-child {
+  width: 25px;
+  opacity: 0.9;
+}
+
+.office-page
+  .container
+  .table
+  .table-component
+  .body
+  .line
+  ul
+  li
+  img:last-child:hover {
+  width: 28px;
+  opacity: 0.9;
+}
