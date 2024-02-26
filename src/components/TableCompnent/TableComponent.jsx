@@ -96,7 +96,9 @@ function TableComponent({
                 <li
                   className="status-financeiro"
                   title={data.status}
-                  onClick={() => ("")}
+                  onClick={() =>
+                    handleClickOpenEditFinanceiroProcesso(true, data.id, "view")
+                  }
                 >
                   <p>{data.status}</p>
                   <img
@@ -114,7 +116,11 @@ function TableComponent({
                     src={theme === "light" ? PaymentWhite : PaymentBlack}
                     alt="Edit Icon"
                     onClick={() =>
-                      handleClickOpenEditFinanceiroProcesso(true, data.id)
+                      handleClickOpenEditFinanceiroProcesso(
+                        true,
+                        data.id,
+                        "edit"
+                      )
                     }
                   />
                   <img

@@ -25,7 +25,7 @@
   align-items: center;
   position: relative;
 
-  height: 700px;
+  height: 820px;
 
   width: 40%;
   min-width: 600px;
@@ -67,27 +67,32 @@
   font-weight: 300;
 }
 
+.financeiro-details .container-financeiro .chart-financeiro .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+.financeiro-details .container-financeiro .chart-financeiro form {
+  display: flex;
+
+  height: 95%;
+  width: 100%;
+  border-radius: 5px;
+
+  background-color: rgba(var(--cor-roxo), 0.2);
+}
+
 .financeiro-details .container-financeiro .chart-financeiro form div {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  height: 96%;
-  width: 90%;
-  border-radius: 5px;
-}
-
-.financeiro-details .container-financeiro .chart-financeiro form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  height: 96%;
-  width: 90%;
-  border-radius: 5px;
-
-  list-style: none;
-  background-color: rgba(var(--cor-roxo), 0.2);
+  height: 100%;
+  width: 100%;
 }
 
 .financeiro-details-dark .container-financeiro .chart-financeiro form {
@@ -108,7 +113,9 @@
   font-weight: 300;
 }
 
-.financeiro-details .container-financeiro .chart-financeiro form input {
+.financeiro-details .container-financeiro .chart-financeiro form input,
+.financeiro-details .container-financeiro .chart-financeiro form select,
+.financeiro-details .container-financeiro .chart-financeiro form output {
   display: flex;
   align-items: center;
 

@@ -32,7 +32,7 @@ function RegisterProcess({ updateList }) {
   const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
   const [valor_parcelas, setValor_parcelas] = useState("");
   const [datas_parcelas, setDatas_parcelas] = useState("");
-  const [parcelas_pagas, setParcelas_pagas] = useState("")
+  const [parcelas_pagas, setParcelas_pagas] = useState("");
   const [porcentagem_final, setPorcentagem_final] = useState("");
   const [data_porcentagem_final, setData_porcentagem_final] = useState("");
   const [condenacao, setCondenacao] = useState("");
@@ -103,6 +103,7 @@ function RegisterProcess({ updateList }) {
               headers: { Authorization: `Bearer ${token}` },
             }
           );
+          
         } catch (error) {
           console.log(error);
         }
@@ -282,14 +283,15 @@ function RegisterProcess({ updateList }) {
 
       datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}`);
     }
-
+    
     setIsInputAbleParcelas(false);
 
     const ultimaParcela = datasParcelas[datasParcelas.length - 1];
 
     setUltima_parcela(ultimaParcela);
     setDatas_parcelas(datasParcelas);
-    setParcelas_pagas({})
+  
+    setParcelas_pagas("");
   };
 
   useEffect(() => {
