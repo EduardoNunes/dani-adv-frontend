@@ -3,7 +3,6 @@ import lupa from "../../assets/lupa.png";
 import MarmoreRoxo from "../../assets/marmore-preto-roxo.jpg";
 import MarmoreBranco from "../../assets/textura-marmore.jpg";
 import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
-import FinanceiroProcessDetails from "../../components/FinanceiroProcesso/FinanceiroProcesso";
 import TableComponent from "../../components/TableCompnent/TableComponent";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
@@ -16,6 +15,7 @@ import RegisterProcess from "../../modals/RegisterProcess/RegisterProcess";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./office-page.css";
+import FinanceiroProcessComponent from "../../components/FinanceiroProcessComponent/FinanceiroProcessComponent";
 
 function OfficePage() {
   const { theme } = useTheme();
@@ -173,7 +173,7 @@ function OfficePage() {
         />
       )}
       {openEditClient && <EditClient updateList={listAllClients} />}
-      {openFinanceiroProcesso && <FinanceiroProcessDetails />}
+      {openFinanceiroProcesso && <FinanceiroProcessComponent />}
       <img
         className={`background background-${theme}`}
         src={theme === "light" ? MarmoreBranco : MarmoreRoxo}

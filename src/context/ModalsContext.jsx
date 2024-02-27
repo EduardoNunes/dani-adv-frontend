@@ -82,7 +82,7 @@ export function ModalProvider({ children }) {
     setDataProcessId(processId);
   }
 
-  function handleClickOpenEditFinanceiroProcesso(openClose, dataId, mode) {
+  function handleClickOpenFinanceiroProcessComponent(openClose, dataId, mode) {
     setOpenFinanceiroProcesso(openClose);
     setDataProcessId(dataId);
     setMode(mode);
@@ -116,13 +116,11 @@ export function ModalProvider({ children }) {
         openConfirm,
         dataId,
         selectedDelete,
-        handleClickOpenEditFinanceiroProcesso,
+        handleClickOpenFinanceiroProcessComponent,
         openFinanceiroProcesso,
         dataProcessId,
         mode,
-        setStatus,
         status,
-
       }}
     >
       {children}

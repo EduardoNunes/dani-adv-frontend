@@ -6,6 +6,7 @@ import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./financeiro-processo.css";
+import Parcelas from "../../modals/Parcelas/Parcelas";
 
 function FinanceiroProcessDetails() {
   const { theme } = useTheme();
@@ -26,7 +27,11 @@ function FinanceiroProcessDetails() {
   const [error, setError] = useState("");
   const token = getItem("token");
 
-  async function handleSubmit() {}
+  async function handleSubmit(event) {
+    const jsonString = JSON.stringify(newDatasParcelas);
+    setDatas_parcelas(jsonString);
+    console.log(newDatasParcelas);
+  }
 
   useEffect(() => {
     async function chargeDataFinanceiroProcess() {
@@ -97,38 +102,19 @@ function FinanceiroProcessDetails() {
                     value={data_entrada}
                     onChange={(e) => setData_entrada(e.target.value)}
                   />
-                  <label>Quantidade de parcelas:</label>
-                  <input
-                    type="number"
-                    value={quantidade_parcelas}
-                    onChange={(e) => setQuantidade_parcelas(e.target.value)}
-                  />
-                  <label>Valor das parcelas:</label>
-                  <input
-                    type="text"
-                    value={valor_parcelas}
-                    onChange={(e) => setValor_parcelas(e.target.value)}
+
+                  <Parcelas
+                    newDatasParcelas={newDatasParcelas}
+                    setDatas_parcelas={setDatas_parcelas}
+                    setNewDatasParcelas={setNewDatasParcelas}
+                    quantidade_parcelas={quantidade_parcelas}
+                    setQuantidade_parcelas={setQuantidade_parcelas}
+                    valor_parcelas={valor_parcelas}
+                    setValor_parcelas={setValor_parcelas}
+                    parcelas_pagas={parcelas_pagas}
+                    setParcelas_pagas={setParcelas_pagas}
                   />
 
-                  <label>Datas das parcelas:</label>
-                  <select
-                    value={newDatasParcelas}
-                    onChange={(e) => setDatas_parcelas(e.target.value)}
-                  >
-                    <option>Datas</option>
-                    {newDatasParcelas &&
-                      newDatasParcelas.map((data, key) => (
-                        <option key={key} value={data}>
-                          {data}
-                        </option>
-                      ))}
-                  </select>
-                  <label>Parcelas Pagas:</label>
-                  <input
-                    type="text"
-                    value={parcelas_pagas}
-                    onChange={(e) => setParcelas_pagas(e.target.value)}
-                  />
                   <label>Porcentagem final:</label>
                   <input
                     type="number"

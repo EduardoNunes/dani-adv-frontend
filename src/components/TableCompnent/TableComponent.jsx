@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./table-component.css";
+import { useModal } from "../../context/ModalsContext";
 
 function TableComponent({
   selectedOption,
@@ -23,9 +24,9 @@ function TableComponent({
   handleClickOpenEdit,
   handleClickOpenDeleteConfirm,
   theme,
-  handleClickOpenEditFinanceiroProcesso,
 }) {
   const [processCount, setProcessCount] = useState({});
+  const { handleClickOpenFinanceiroProcessComponent } = useModal();
 
   useEffect(() => {
     if (selectedOption === "clientes") {
@@ -97,7 +98,11 @@ function TableComponent({
                   className="status-financeiro"
                   title={data.status}
                   onClick={() =>
-                    handleClickOpenEditFinanceiroProcesso(true, data.id, "view")
+                    handleClickOpenFinanceiroProcessComponent(
+                      true,
+                      data.id,
+                      "view"
+                    )
                   }
                 >
                   <p>{data.status}</p>
@@ -116,7 +121,7 @@ function TableComponent({
                     src={theme === "light" ? PaymentWhite : PaymentBlack}
                     alt="Edit Icon"
                     onClick={() =>
-                      handleClickOpenEditFinanceiroProcesso(
+                      handleClickOpenFinanceiroProcessComponent(
                         true,
                         data.id,
                         "edit"
