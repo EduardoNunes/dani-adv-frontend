@@ -103,7 +103,6 @@ function RegisterProcess({ updateList }) {
               headers: { Authorization: `Bearer ${token}` },
             }
           );
-          
         } catch (error) {
           console.log(error);
         }
@@ -283,18 +282,19 @@ function RegisterProcess({ updateList }) {
 
       datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}`);
     }
-    
+
     setIsInputAbleParcelas(false);
 
     const ultimaParcela = datasParcelas[datasParcelas.length - 1];
 
+    setQuantidade_parcelas();
     setUltima_parcela(ultimaParcela);
     setDatas_parcelas(datasParcelas);
-  
     setParcelas_pagas("");
   };
 
   useEffect(() => {
+    console.log("TESTE");
     if (quantidade_parcelas && primeira_parcela) {
       calcularDatasPagamento();
     }
