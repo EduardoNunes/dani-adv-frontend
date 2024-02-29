@@ -14,7 +14,6 @@ function FinanceiroProcessComponent({ updateList }) {
   const [entrada, setEntrada] = useState("");
   const [data_entrada, setData_entrada] = useState("");
   const [primeira_parcela, setPrimeira_parcela] = useState("");
-  const [ultimaPacela, setUltimaParcela] = useState("");
   const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
   const [valor_parcelas, setValor_parcelas] = useState("");
   const [datas_parcelas, setDatas_parcelas] = useState("");
@@ -61,6 +60,13 @@ function FinanceiroProcessComponent({ updateList }) {
       setError(`${error.response.data.mensagem}`);
     }
   }
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter" && event.target.nodeName === "INPUT") {
+      event.preventDefault();
+      return;
+    }
+  };
 
   useEffect(() => {
     async function chargeDataFinanceiroProcess() {
@@ -203,8 +209,6 @@ function FinanceiroProcessComponent({ updateList }) {
       const arrayDatas = arrayDatasString.map((data) => data.replace(/"/g, ""));
 
       setPrimeira_parcela(arrayDatas[0]);
-      setUltimaParcela(arrayDatas[arrayDatas.length - 1]);
-
       setNewDatasParcelas(arrayDatas);
     }
   }, [datas_parcelas]);
@@ -249,8 +253,6 @@ function FinanceiroProcessComponent({ updateList }) {
       setValor_parcelas("");
       setPrimeira_parcela("");
       setNewDatasParcelas("");
-      setUltimaParcela("")
-      //setUltima_parcela("");
       setIsInputAbleParcelas(true);
     } else {
       setIsInputAbleParcelas(false);
@@ -281,7 +283,7 @@ function FinanceiroProcessComponent({ updateList }) {
           />
           {mode === "edit" ? (
             <div className="content">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} onKeyDown={handleKeyPress}>
                 <h3>Financeiro:</h3>
                 <div className="financeiro">
                   <div className="entrada">
@@ -331,7 +333,7 @@ function FinanceiroProcessComponent({ updateList }) {
                           <input
                             type="date"
                             value={primeira_parcela}
-                            disabled={isInputAblePorcentagem}
+                            disabled={isInputAbleParcelas}
                             onChange={(e) =>
                               setPrimeira_parcela(e.target.value)
                             }
@@ -348,7 +350,13 @@ function FinanceiroProcessComponent({ updateList }) {
                         </div>
                         <div className="ultima">
                           <label>Última parcela:</label>
-                          <input type="date" disabled value={ultimaPacela} />
+                          <input
+                            type="date"
+                            disabled
+                            value={
+                              newDatasParcelas[newDatasParcelas.length - 1]
+                            }
+                          />
                         </div>
                       </div>
                       <div className="bot">
