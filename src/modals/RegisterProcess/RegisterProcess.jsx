@@ -23,7 +23,7 @@ function RegisterProcess({ updateList }) {
   const [comarca, setComarca] = useState("");
   const [data_entrada, setData_Entrada] = useState("");
   const [atualizado, setAtualizado] = useState("");
-  const [status, setStatus] = useState("Em dia");
+  const [status, setStatus] = useState("Pendente");
   const [infos, setInfos] = useState("");
   const [entrada, setEntrada] = useState("");
   const [data_entrada_processo, setData_entrada_processo] = useState("");
@@ -280,21 +280,20 @@ function RegisterProcess({ updateList }) {
       const mesParcela = String(dataParcela.getMonth() + 1).padStart(2, "0");
       const diaParcela = String(dataParcela.getDate()).padStart(2, "0");
 
-      datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}`);
+      datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}:Pendente`);
     }
 
     setIsInputAbleParcelas(false);
 
-    const ultimaParcela = datasParcelas[datasParcelas.length - 1];
-
-    setQuantidade_parcelas();
-    setUltima_parcela(ultimaParcela);
+    const ultimaParcela = datasParcelas[datasParcelas.length - 1].split(":");
+    
+    setUltima_parcela(ultimaParcela[0]);
     setDatas_parcelas(datasParcelas);
+    console.log(datasParcelas)
     setParcelas_pagas("");
   };
 
   useEffect(() => {
-    console.log("TESTE");
     if (quantidade_parcelas && primeira_parcela) {
       calcularDatasPagamento();
     }

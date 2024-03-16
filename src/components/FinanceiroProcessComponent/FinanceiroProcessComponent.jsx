@@ -14,6 +14,7 @@ function FinanceiroProcessComponent({ updateList }) {
   const [entrada, setEntrada] = useState("");
   const [data_entrada, setData_entrada] = useState("");
   const [primeira_parcela, setPrimeira_parcela] = useState("");
+  const [ultimaParcela, setUltimaParcela] = useState("");
   const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
   const [valor_parcelas, setValor_parcelas] = useState("");
   const [datas_parcelas, setDatas_parcelas] = useState("");
@@ -208,7 +209,8 @@ function FinanceiroProcessComponent({ updateList }) {
       const arrayDatasString = stringJSON.replace(/[{}]/g, "").split(",");
       const arrayDatas = arrayDatasString.map((data) => data.replace(/"/g, ""));
 
-      setPrimeira_parcela(arrayDatas[0]);
+      setPrimeira_parcela(arrayDatas[0].split(":")[0]);
+      setUltimaParcela(arrayDatas[arrayDatas.length - 1].split(":")[0]);
       setNewDatasParcelas(arrayDatas);
     }
   }, [datas_parcelas]);
@@ -231,19 +233,20 @@ function FinanceiroProcessComponent({ updateList }) {
       const mesParcela = String(dataParcela.getMonth() + 1).padStart(2, "0");
       const diaParcela = String(dataParcela.getDate()).padStart(2, "0");
 
-      datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}`);
+      datasParcelas.push(`${anoParcela}-${mesParcela}-${diaParcela}:Pendente`);
     }
 
     setIsInputAbleParcelas(false);
     setNewDatasParcelas(datasParcelas);
+    setUltimaParcela(datasParcelas[datasParcelas.length - 1].split(":")[0]);
     setParcelas_pagas("");
   };
 
-  const handleDataChange = (newValue, index) => {
+  const handleDataChange = (status, novoValorInput, index) => {
     setNewDatasParcelas((prevData) => {
       const newDataArray = [...prevData];
-      newDataArray[index] = newValue;
-
+      newDataArray[index] = `${status.split(":")[0]}:${novoValorInput}`;
+      console.log(newDataArray, "TESTE");
       return newDataArray;
     });
   };
@@ -350,13 +353,7 @@ function FinanceiroProcessComponent({ updateList }) {
                         </div>
                         <div className="ultima">
                           <label>Última parcela:</label>
-                          <input
-                            type="date"
-                            disabled
-                            value={
-                              newDatasParcelas[newDatasParcelas.length - 1]
-                            }
-                          />
+                          <input type="date" disabled value={ultimaParcela} />
                         </div>
                       </div>
                       <div className="bot">
@@ -368,7 +365,7 @@ function FinanceiroProcessComponent({ updateList }) {
                                 <li key={key}>
                                   <input
                                     type="text"
-                                    value={data}
+                                    value={data.split(":")[0]}
                                     onChange={(e) =>
                                       handleDataChange(e.target.value, key)
                                     }
@@ -378,18 +375,25 @@ function FinanceiroProcessComponent({ updateList }) {
                           </ul>
                         </div>
                         <div className="pagas">
-                          <label>Parcelas Pagas:</label>
+                          <label>Status das parcelas:</label>
                           <ul>
-                            {parcelas_pagas &&
-                              parcelas_pagas.map((data, key) => (
+                            {newDatasParcelas &&
+                              newDatasParcelas.map((status, key) => (
                                 <li key={key}>
-                                  <input
-                                    type="text"
-                                    value={data}
+                                  <select
+                                    value={status.split(":")[1]}
                                     onChange={(e) =>
-                                      handleDataChange(e.target.value, key)
+                                      handleDataChange(
+                                        status,
+                                        e.target.value,
+                                        key
+                                      )
                                     }
-                                  />
+                                  >
+                                    <option value="Pendente">Pendente</option>
+                                    <option value="Paga">Paga</option>
+                                    <option value="Vencida">Vencida</option>
+                                  </select>
                                 </li>
                               ))}
                           </ul>
@@ -496,7 +500,7 @@ function FinanceiroProcessComponent({ updateList }) {
                           </ul>
                         </div>
                         <div className="pagas">
-                          <label>Parcelas Pagas:</label>
+                          <label>Status das parcelas:</label>
                           <ul>
                             {newDatasParcelas &&
                               newDatasParcelas.map((data, key) => (

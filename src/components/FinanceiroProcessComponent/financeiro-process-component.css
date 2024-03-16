@@ -87,7 +87,8 @@
   font-weight: 600;
 }
 
-.financeiro-process .financeiro input {
+.financeiro-process .financeiro input,
+.financeiro-process .financeiro select {
   height: 26px;
   padding-left: 10px;
   border-radius: 10px;
@@ -164,7 +165,8 @@
 }
 
 .financeiro-process .financeiro .parcelamento .bot input,
-.financeiro-process .financeiro .parcelamento .bot output {
+.financeiro-process .financeiro .parcelamento .bot output,
+.financeiro-process .financeiro .parcelamento .bot select {
   width: 96%;
   margin-bottom: 5px;
 }
