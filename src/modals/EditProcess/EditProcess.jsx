@@ -25,7 +25,7 @@ function EditProcess({ updateList }) {
     selectedEditProcess.data_entrada
   );
   const [atualizado, setAtualizado] = useState(selectedEditProcess.atualizado);
-  const [status, setStatus] = useState(selectedEditProcess.status);
+  const status = useState(selectedEditProcess.status);
   const [infos, setInfos] = useState(selectedEditProcess.infos);
   const token = getItem("token");
   const id = selectedEditProcess.id;
@@ -75,7 +75,9 @@ function EditProcess({ updateList }) {
           <h3>Editar Processo</h3>
           <form onSubmit={handleSubmit}>
             <label>Contratante:</label>
-            <p><strong>{selectedEditProcess.contratante}</strong></p>
+            <p>
+              <strong>{selectedEditProcess.contratante}</strong>
+            </p>
             <label>Autor:</label>
             <input
               value={autor}
@@ -119,11 +121,7 @@ function EditProcess({ updateList }) {
               onChange={(e) => setAtualizado(e.target.value)}
             ></input>
             <label>Status:</label>
-            <select value={status} onChange={(e) => setStatus(e.target.value)}>
-              <option value="em-dia">Em dia</option>
-              <option value="pendente">Pendente</option>
-              <option value="quitado">Quitado</option>
-            </select>
+            <p>{status}</p>
             <label>Informações:</label>
             <textarea
               value={infos}

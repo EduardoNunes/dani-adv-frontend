@@ -27,8 +27,8 @@ function TableComponent({
   theme,
 }) {
   const { handleClickOpenFinanceiroProcessComponent } = useModal();
-  const { statusProcess } = useTipoCadastroContext();
   const [processCount, setProcessCount] = useState({});
+  const [backgroundColor, setBackgroundColor] = useState("");
 
   useEffect(() => {
     if (selectedOption === "clientes") {
@@ -56,6 +56,24 @@ function TableComponent({
       countProcessForClient();
     }
   }, [selectedOption]);
+
+  useEffect(() => {
+    if (datas) {
+      switch (datas[0].status) {
+        case "Quitado":
+          setBackgroundColor("#5555FF");
+          break;
+        case "Atrasado":
+          setBackgroundColor("#FF4444");
+          break;
+        case "Em dia":
+          setBackgroundColor("#00BB00");
+          break;
+        default:
+          setBackgroundColor("");
+      }
+    }
+  }, [datas]);
 
   return (
     <div className="table-component">
@@ -99,7 +117,7 @@ function TableComponent({
                 <li
                   className="status-financeiro"
                   title={data.status}
-                  style={{background: {statusProcess}}}
+                  style={{ background: `${backgroundColor}` }}
                   onClick={() =>
                     handleClickOpenFinanceiroProcessComponent(
                       true,
