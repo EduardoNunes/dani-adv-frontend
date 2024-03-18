@@ -10,6 +10,8 @@
   top: calc(50% - 45px);
   left: calc(50% - 150px);
 
+  padding-left: 15px;
+
   border-radius: 10px;
   background-color: rgba(var(--cor-branco), 0.9);
   border: 1px solid green;

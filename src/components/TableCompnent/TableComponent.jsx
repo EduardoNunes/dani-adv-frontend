@@ -11,6 +11,7 @@ import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./table-component.css";
 import { useModal } from "../../context/ModalsContext";
+import { useTipoCadastroContext } from "../../context/TipoCadastroContext";
 
 function TableComponent({
   selectedOption,
@@ -25,8 +26,9 @@ function TableComponent({
   handleClickOpenDeleteConfirm,
   theme,
 }) {
-  const [processCount, setProcessCount] = useState({});
   const { handleClickOpenFinanceiroProcessComponent } = useModal();
+  const { statusProcess } = useTipoCadastroContext();
+  const [processCount, setProcessCount] = useState({});
 
   useEffect(() => {
     if (selectedOption === "clientes") {
@@ -97,6 +99,7 @@ function TableComponent({
                 <li
                   className="status-financeiro"
                   title={data.status}
+                  style={{background: {statusProcess}}}
                   onClick={() =>
                     handleClickOpenFinanceiroProcessComponent(
                       true,
@@ -134,10 +137,9 @@ function TableComponent({
                     onClick={() =>
                       handleClickOpenDeleteConfirm(
                         true,
-                        "Tem certeza que deseja excluir este dados?",
+                        "Exluir um processo implica em excluir também os dados financeiros relacionados a este processo. Deseja prosseguir?",
                         data.id,
-                        selectedOption,
-                        "teste"
+                        selectedOption
                       )
                     }
                   />
@@ -184,10 +186,9 @@ function TableComponent({
                     onClick={() =>
                       handleClickOpenDeleteConfirm(
                         true,
-                        "Tem certeza que deseja excluir este dados?",
+                        "Tem certeza que deseja excluir este cliente?",
                         data.id,
-                        selectedOption,
-                        "teste"
+                        selectedOption
                       )
                     }
                   />

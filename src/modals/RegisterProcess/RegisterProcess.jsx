@@ -32,7 +32,6 @@ function RegisterProcess({ updateList }) {
   const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
   const [valor_parcelas, setValor_parcelas] = useState("");
   const [datas_parcelas, setDatas_parcelas] = useState("");
-  const [parcelas_pagas, setParcelas_pagas] = useState("");
   const [porcentagem_final, setPorcentagem_final] = useState("");
   const [data_porcentagem_final, setData_porcentagem_final] = useState("");
   const [condenacao, setCondenacao] = useState("");
@@ -91,7 +90,6 @@ function RegisterProcess({ updateList }) {
               quantidade_parcelas,
               valor_parcelas,
               datas_parcelas,
-              parcelas_pagas,
               porcentagem_final,
               data_porcentagem_final,
               condenacao,
@@ -290,7 +288,6 @@ function RegisterProcess({ updateList }) {
     setUltima_parcela(ultimaParcela[0]);
     setDatas_parcelas(datasParcelas);
     console.log(datasParcelas)
-    setParcelas_pagas("");
   };
 
   useEffect(() => {

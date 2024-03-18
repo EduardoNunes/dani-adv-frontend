@@ -9,8 +9,12 @@ import "./financeiro-process-component.css";
 
 function FinanceiroProcessComponent({ updateList }) {
   const { theme } = useTheme();
-  const { handleClickOpenFinanceiroProcessComponent, dataProcessId, mode } =
-    useModal();
+  const {
+    handleClickOpenFinanceiroProcessComponent,
+    dataProcessId,
+    mode,
+    handleClickOpenMessageToast,
+  } = useModal();
   const [entrada, setEntrada] = useState("");
   const [data_entrada, setData_entrada] = useState("");
   const [primeira_parcela, setPrimeira_parcela] = useState("");
@@ -18,7 +22,6 @@ function FinanceiroProcessComponent({ updateList }) {
   const [quantidade_parcelas, setQuantidade_parcelas] = useState("");
   const [valor_parcelas, setValor_parcelas] = useState("");
   const [datas_parcelas, setDatas_parcelas] = useState("");
-  const [parcelas_pagas, setParcelas_pagas] = useState("");
   const [newDatasParcelas, setNewDatasParcelas] = useState([]);
   const [porcentagem_final, setPorcentagem_final] = useState("");
   const [data_porcentagem_final, setData_porcentagem_final] = useState("");
@@ -30,9 +33,9 @@ function FinanceiroProcessComponent({ updateList }) {
   const [error, setError] = useState("");
   const token = getItem("token");
 
-  async function handleSubmit(event, dataProcessId) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log(newDatasParcelas);
+
     try {
       await api.put(
         `/editarFinanceiroProcessoEscritorio/${dataProcessId}`,
@@ -42,7 +45,6 @@ function FinanceiroProcessComponent({ updateList }) {
           quantidade_parcelas,
           valor_parcelas,
           datas_parcelas: newDatasParcelas,
-          parcelas_pagas,
           porcentagem_final,
           data_porcentagem_final,
           condenacao,
@@ -53,13 +55,15 @@ function FinanceiroProcessComponent({ updateList }) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      const jsonString = JSON.stringify(newDatasParcelas);
-      setDatas_parcelas(jsonString);
+      updateList();
+      handleClickOpenMessageToast(true, "Financeiro atualizado com sucesso.");
     } catch (error) {
       console.log(error);
+      handleClickOpenMessageToast(true, "Ops, algo deu errado.");
       setError(`${error.response.data.mensagem}`);
     }
+
+    handleClickOpenFinanceiroProcessComponent(false);
   }
 
   const handleKeyPress = (event) => {
@@ -73,7 +77,7 @@ function FinanceiroProcessComponent({ updateList }) {
     async function chargeDataFinanceiroProcess() {
       try {
         const response = await api.get(
-          `/editarFinanceiroProcessoEscritorio/${dataProcessId}`,
+          `/exibirFinanceiroProcessoEscritorio/${dataProcessId}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -84,7 +88,6 @@ function FinanceiroProcessComponent({ updateList }) {
         setQuantidade_parcelas(response.data[0].quantidade_parcelas);
         setValor_parcelas(response.data[0].valor_parcelas);
         setDatas_parcelas(response.data[0].datas_parcelas);
-        setParcelas_pagas(response.data[0].parcelas_pagas);
         setPorcentagem_final(response.data[0].porcentagem_final);
         setData_porcentagem_final(response.data[0].data_porcentagem_final);
         setCondenacao(response.data[0].condenacao);
@@ -239,14 +242,13 @@ function FinanceiroProcessComponent({ updateList }) {
     setIsInputAbleParcelas(false);
     setNewDatasParcelas(datasParcelas);
     setUltimaParcela(datasParcelas[datasParcelas.length - 1].split(":")[0]);
-    setParcelas_pagas("");
   };
 
   const handleDataChange = (status, novoValorInput, index) => {
     setNewDatasParcelas((prevData) => {
       const newDataArray = [...prevData];
       newDataArray[index] = `${status.split(":")[0]}:${novoValorInput}`;
-      console.log(newDataArray, "TESTE");
+      console.log(prevData);
       return newDataArray;
     });
   };
@@ -367,7 +369,11 @@ function FinanceiroProcessComponent({ updateList }) {
                                     type="text"
                                     value={data.split(":")[0]}
                                     onChange={(e) =>
-                                      handleDataChange(e.target.value, key)
+                                      handleDataChange(
+                                        e.target.value,
+                                        data.split(":")[1],
+                                        key
+                                      )
                                     }
                                   />
                                 </li>
@@ -478,12 +484,20 @@ function FinanceiroProcessComponent({ updateList }) {
                       <div className="top">
                         <div className="primeira">
                           <label>Primeira parcela:</label>
-                          <output>{newDatasParcelas[0]}</output>
+                          <output>
+                            {newDatasParcelas[0]
+                              ? newDatasParcelas[0].split(":")[0]
+                              : ""}
+                          </output>
                         </div>
                         <div className="ultima">
                           <label>Última parcela:</label>
                           <output>
-                            {newDatasParcelas[newDatasParcelas.length - 1]}
+                            {newDatasParcelas[newDatasParcelas.length - 1]
+                              ? newDatasParcelas[
+                                  newDatasParcelas.length - 1
+                                ].split(":")[0]
+                              : ""}
                           </output>
                         </div>
                       </div>
@@ -492,22 +506,62 @@ function FinanceiroProcessComponent({ updateList }) {
                           <label>Parcelas totais:</label>
                           <ul>
                             {newDatasParcelas &&
-                              newDatasParcelas.map((data, key) => (
-                                <li key={key}>
-                                  <output>{data}</output>
-                                </li>
-                              ))}
+                              newDatasParcelas.map((data, key) => {
+                                let backgroundColor;
+                                switch (data.split(":")[1]) {
+                                  case "Paga":
+                                    backgroundColor = "green";
+                                    break;
+                                  case "Vencida":
+                                    backgroundColor = "#FF5555";
+                                    break;
+                                  case "Pendente":
+                                    backgroundColor = "yellow";
+                                    break;
+                                  default:
+                                    backgroundColor = "inherit";
+                                }
+                                return (
+                                  <li key={key}>
+                                    <output
+                                      style={{ background: backgroundColor }}
+                                    >
+                                      {data.split(":")[0]}
+                                    </output>
+                                  </li>
+                                );
+                              })}
                           </ul>
                         </div>
                         <div className="pagas">
                           <label>Status das parcelas:</label>
                           <ul>
                             {newDatasParcelas &&
-                              newDatasParcelas.map((data, key) => (
-                                <li key={key}>
-                                  <output>{data}</output>
-                                </li>
-                              ))}
+                              newDatasParcelas.map((data, key) => {
+                                let backgroundColor;
+                                switch (data.split(":")[1]) {
+                                  case "Paga":
+                                    backgroundColor = "green";
+                                    break;
+                                  case "Vencida":
+                                    backgroundColor = "#FF5555";
+                                    break;
+                                  case "Pendente":
+                                    backgroundColor = "yellow";
+                                    break;
+                                  default:
+                                    backgroundColor = "inherit";
+                                }
+                                return (
+                                  <li key={key}>
+                                    <output
+                                      style={{ background: backgroundColor }}
+                                    >
+                                      {data.split(":")[1]}
+                                    </output>
+                                  </li>
+                                );
+                              })}
                           </ul>
                         </div>
                       </div>

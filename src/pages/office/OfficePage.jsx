@@ -44,7 +44,7 @@ function OfficePage() {
   const [newDataProcess, setNewDataProcess] = useState();
   const [dataClients, setDataClients] = useState();
   const [selectedOption, setSelectOption] = useState("processos");
-
+  
   const token = getItem("token");
 
   async function listAllProcess() {
@@ -56,6 +56,7 @@ function OfficePage() {
 
       setDataProcess(response.data);
       setNewDataProcess(response.data);
+      console.log(response)
     } catch (error) {
       console.error(error);
     }
@@ -128,6 +129,22 @@ function OfficePage() {
 
   async function excluirProcesso(dataId) {
     try {
+      await api.delete(`/deletarFinanceiroProcessoEscritorio/${dataId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+    } catch (error) {
+      handleClickOpenMessageToast(
+        true,
+        "Ops, algo deu errado. Os dados financeiros não podem ser excuídos.",
+        "red"
+      );
+      console.error(error);
+    }
+
+    try {
       await api.delete(`/deletarProcesso/${dataId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -135,12 +152,17 @@ function OfficePage() {
       });
 
       listAllProcess();
+      handleClickOpenMessageToast(true, "Processo excluído!");
     } catch (error) {
+      handleClickOpenMessageToast(
+        true,
+        "Ops, algo deu errado. O processo não pôde ser excluído.",
+        "red"
+      );
       console.error(error);
     }
 
     handleClickOpenDeleteConfirm(false);
-    handleClickOpenMessageToast(true, "Processo excluído!");
   }
 
   async function excluirCliente(dataId) {
@@ -150,13 +172,19 @@ function OfficePage() {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      listAllClients();
+      handleClickOpenMessageToast(true, "Cliente excluído!");
     } catch (error) {
+      handleClickOpenMessageToast(
+        true,
+        "Ops, algo deu errado. O cliente não pôde ser excluído.",
+        "red"
+      );
       console.error(error);
     }
 
-    listAllClients();
     handleClickOpenDeleteConfirm(false);
-    handleClickOpenMessageToast(true, "Cliente excluído!");
   }
 
   return (
@@ -173,7 +201,7 @@ function OfficePage() {
         />
       )}
       {openEditClient && <EditClient updateList={listAllClients} />}
-      {openFinanceiroProcesso && <FinanceiroProcessComponent />}
+      {openFinanceiroProcesso && <FinanceiroProcessComponent updateList={listAllProcess}/>}
       <img
         className={`background background-${theme}`}
         src={theme === "light" ? MarmoreBranco : MarmoreRoxo}

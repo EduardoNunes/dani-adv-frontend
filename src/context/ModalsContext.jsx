@@ -19,6 +19,8 @@ export function ModalProvider({ children }) {
   const [openToast, setOpenToast] = useState(false);
   const [openConfirm, setOpenConfirm] = useState(false);
   const [mensagem, setMensagem] = useState("");
+  const [showMensagem, setShowMensagem] = useState("");
+  const [color, setColor] = useState(""); 
   const [dataId, setDataId] = useState("");
   const [selectedDelete, setSelectedDelete] = useState();
   const [openEditClient, setOpenEditClient] = useState(false);
@@ -60,9 +62,11 @@ export function ModalProvider({ children }) {
     setSelectedEditClient(client);
   }
 
-  function handleClickOpenMessageToast(openClose, mensagem) {
+  function handleClickOpenMessageToast(openClose, showMensagem, color) {
     setOpenToast(openClose);
-    setMensagem(mensagem);
+    setShowMensagem(showMensagem);
+    setColor(color);
+
     setTimeout(() => {
       setOpenToast(false);
     }, 3000);
@@ -113,6 +117,8 @@ export function ModalProvider({ children }) {
         openToast,
         handleClickOpenDeleteConfirm,
         mensagem,
+        showMensagem,
+        color,
         openConfirm,
         dataId,
         selectedDelete,

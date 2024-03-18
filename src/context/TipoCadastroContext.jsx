@@ -8,9 +8,14 @@ export function useTipoCadastroContext() {
 
 export function TipoCadastroProvider({ children }) {
   const [selectedOption, setSelectedOption] = useState("");
+  const [statusProcess, setStatusProcess] = useState("");
+
+  function defineStatusProcess(color) {
+    setStatusProcess(color)
+  }
 
   return (
-    <TipoCadastroContext.Provider value={{ selectedOption, setSelectedOption }}>
+    <TipoCadastroContext.Provider value={{ selectedOption, setSelectedOption, defineStatusProcess, setStatusProcess, statusProcess }}>
       {children}
     </TipoCadastroContext.Provider>
   );
