@@ -25,7 +25,7 @@ function EditProcess({ updateList }) {
     selectedEditProcess.data_entrada
   );
   const [atualizado, setAtualizado] = useState(selectedEditProcess.atualizado);
-  const status = useState(selectedEditProcess.status);
+  const [status, setStatus] = useState(selectedEditProcess.status);
   const [infos, setInfos] = useState(selectedEditProcess.infos);
   const token = getItem("token");
   const id = selectedEditProcess.id;
@@ -47,7 +47,7 @@ function EditProcess({ updateList }) {
           comarca,
           data_entrada,
           atualizado,
-          status,
+          status: status,
           infos,
         },
         {

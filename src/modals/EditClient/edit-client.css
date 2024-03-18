@@ -157,7 +157,8 @@
   padding-left: 6px;
 }
 
-.edit-client .container-client .chart-client form input {
+.edit-client .container-client .chart-client form input,
+.edit-client .container-client .chart-client form p {
   display: flex;
   align-items: center;
 
@@ -169,6 +170,11 @@
   border-radius: 5px;
 
   background-color: rgba(var(--cor-branco), 0.8);
+}
+
+.edit-client .container-client .chart-client form p {
+  width: 50%;
+  min-width: 130px;
 }
 
 .edit-client .container-client .chart-client form .infos {

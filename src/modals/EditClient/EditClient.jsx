@@ -431,14 +431,7 @@ function EditClient({ updateList }) {
                   <h4>Financeiro:</h4>
                   <div className="financeiro-container">
                     <label>Status:</label>
-                    <select
-                      value={status}
-                      onChange={(e) => setStatus(e.target.value)}
-                    >
-                      <option value="em-dia">Em dia</option>
-                      <option value="pendente">Pendente</option>
-                      <option value="quitado">Quitado</option>
-                    </select>
+                    <p>{status}</p>
                   </div>
                 </div>
               </div>
