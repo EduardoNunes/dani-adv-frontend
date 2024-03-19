@@ -27,6 +27,7 @@ function EditProcess({ updateList }) {
   const [atualizado, setAtualizado] = useState(selectedEditProcess.atualizado);
   const status = selectedEditProcess.status;
   const [infos, setInfos] = useState(selectedEditProcess.infos);
+  const [error, setError] = useState("");
   const token = getItem("token");
   const id = selectedEditProcess.id;
 
@@ -58,7 +59,8 @@ function EditProcess({ updateList }) {
       updateList();
       handleClickOpenMessageToast(true, "Processo atualizado com sucesso!");
     } catch (error) {
-      console.error(error);
+      console.log(error, "ERROR")
+      setError(`${error.response.data.mensagem}`);
     }
   }
 
@@ -167,6 +169,7 @@ function EditProcess({ updateList }) {
             ></textarea>
 
             <button>Enviar</button>
+            {error && <span>{error}</span>}
           </form>
         </div>
       </div>

@@ -147,7 +147,7 @@ function EditClient({ updateList }) {
       updateList();
       handleClickOpenMessageToast(true, "Cliente editado com sucesso!");
     } catch (error) {
-      console.error(error);
+      setError(`${error.response.data.mensagem}`);
     }
   }
 

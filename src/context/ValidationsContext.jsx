@@ -109,6 +109,14 @@ export function ValidationsProvider({ children }) {
     }
   }
 
+  function validationNumberProcess(number) {
+    if (!number) {
+      return "O campo Número do processo é obrigatório";
+    } else if (number.length < 25){
+      return "O Número do processo está incompleto";
+    }
+  }
+
   return (
     <ValidationsContext.Provider
       value={{
@@ -123,7 +131,8 @@ export function ValidationsProvider({ children }) {
         validationCep,
         validationCity,
         validationUf,
-        validationPublicPlace
+        validationPublicPlace,
+        validationNumberProcess
       }}
     >
       {children}

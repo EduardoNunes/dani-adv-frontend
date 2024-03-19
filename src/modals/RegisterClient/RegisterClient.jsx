@@ -42,7 +42,7 @@ function RegisterClient({ updateList }) {
   const [profession, setProfession] = useState("");
   const [maritalStatus, setMaritalStatus] = useState("");
   const [education, setEducation] = useState("");
-  const [status, setStatus] = useState("Em dia");
+  const status = "Em dia";
   const [senha, setSenha] = useState("@Cliente01");
   const [tipoCadastro, setTipoCadastro] = useState("cliente");
   const [infos, setInfos] = useState("");
@@ -116,7 +116,7 @@ function RegisterClient({ updateList }) {
         return;
       }
 
-      const response = await api.post(
+      await api.post(
         `/cadastrarClienteEscritorio`,
         {
           nome: name,
@@ -150,9 +150,9 @@ function RegisterClient({ updateList }) {
       handleClickOpenRegisterClient(false);
       updateList();
       handleClickOpenMessageToast(true, "Cliente cadastrado com sucesso!");
-      console.log("Processo cadastrado com sucesso!", response.data);
     } catch (error) {
       console.error(error);
+      handleClickOpenMessageToast(true, "Ops, algo deu errado.");
     }
   }
 

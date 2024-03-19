@@ -6,11 +6,13 @@ import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 import "./register-process.css";
+import { useValidationsContext } from "../../context/ValidationsContext";
 
 function RegisterProcess({ updateList }) {
   const { theme } = useTheme();
   const { handleClickOpenRegisterProcess, handleClickOpenMessageToast } =
     useModal();
+  const { validationNumberProcess } = useValidationsContext();
   const [clientes, setClientes] = useState([]);
   const [selectedClient, setSelectedClient] = useState("");
   const [contratante, setContratante] = useState("");
@@ -23,7 +25,7 @@ function RegisterProcess({ updateList }) {
   const [comarca, setComarca] = useState("");
   const [data_entrada, setData_Entrada] = useState("");
   const [atualizado, setAtualizado] = useState("");
-  const [status, setStatus] = useState("Pendente");
+  const status = "Pendente";
   const [infos, setInfos] = useState("");
   const [entrada, setEntrada] = useState("");
   const [data_entrada_processo, setData_entrada_processo] = useState("");
@@ -39,6 +41,7 @@ function RegisterProcess({ updateList }) {
   const [total, setTotal] = useState("");
   const [isInputAbleParcelas, setIsInputAbleParcelas] = useState(false);
   const [isInputAblePorcentagem, setIsInputAblePorcentagem] = useState(false);
+  const [error, setError] = useState("");
   const token = getItem("token");
 
   useEffect(() => {
@@ -55,6 +58,13 @@ function RegisterProcess({ updateList }) {
     let processo_id;
 
     try {
+      let mensagemError = await validationNumberProcess(numero);
+
+      if (mensagemError) {
+        setError(mensagemError);
+        return;
+      }
+
       const response = await api.post(
         `/cadastrarProcesso`,
         {
@@ -102,7 +112,7 @@ function RegisterProcess({ updateList }) {
             }
           );
         } catch (error) {
-          console.log(error);
+          setError(`${error.response.data.mensagem}`);
         }
       }
 
@@ -110,7 +120,7 @@ function RegisterProcess({ updateList }) {
       handleClickOpenMessageToast(true, "Processo cadastrado com sucesso!");
       updateList();
     } catch (error) {
-      console.error(error);
+      setError(`${error.response.data.mensagem}`);
     }
   }
 
@@ -284,10 +294,10 @@ function RegisterProcess({ updateList }) {
     setIsInputAbleParcelas(false);
 
     const ultimaParcela = datasParcelas[datasParcelas.length - 1].split(":");
-    
+
     setUltima_parcela(ultimaParcela[0]);
     setDatas_parcelas(datasParcelas);
-    console.log(datasParcelas)
+    console.log(datasParcelas);
   };
 
   useEffect(() => {
@@ -534,6 +544,7 @@ function RegisterProcess({ updateList }) {
               ></textarea>
             </div>
             <button>Enviar</button>
+            {error && <span>{error}</span>}
           </form>
         </div>
       </div>

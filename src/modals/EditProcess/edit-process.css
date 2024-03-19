@@ -163,3 +163,7 @@
   width: 140px;
   cursor: pointer;
 }
+
+.edit-process .container-process .chart-process form span {
+  color: red;
+}
