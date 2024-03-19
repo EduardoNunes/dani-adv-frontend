@@ -44,7 +44,7 @@ function OfficePage() {
   const [newDataProcess, setNewDataProcess] = useState();
   const [dataClients, setDataClients] = useState();
   const [selectedOption, setSelectOption] = useState("processos");
-  
+
   const token = getItem("token");
 
   async function listAllProcess() {
@@ -56,7 +56,7 @@ function OfficePage() {
 
       setDataProcess(response.data);
       setNewDataProcess(response.data);
-      console.log(response)
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -98,9 +98,13 @@ function OfficePage() {
         setDataProcess(newDataProcess);
       } else {
         let newDataFilter = newDataProcess.filter((data) => {
+          const contratante = data.contratante
+            ? data.contratante.toLowerCase()
+            : "";
           const autor = data.autor ? data.autor.toLowerCase() : "";
           const reu = data.reu ? data.reu.toLowerCase() : "";
           const numero = data.numero ? data.numero.toLowerCase() : "";
+          const tipo_acao = data.tipo_acao ? data.tipo_acao.toLowerCase() : "";
           const vara = data.vara ? data.vara.toLowerCase() : "";
           const juiz = data.juiz ? data.juiz.toLowerCase() : "";
           const comarca = data.comarca ? data.comarca.toLowerCase() : "";
@@ -110,16 +114,22 @@ function OfficePage() {
           const atualizado = data.atualizado
             ? data.atualizado.toLowerCase()
             : "";
+          const status = data.status ? data.status.toLowerCase() : "";
+          const infos = data.infos ? data.infos.toLowerCase() : "";
 
           return (
+            contratante.includes(searchTerm) ||
             autor.includes(searchTerm) ||
             reu.includes(searchTerm) ||
             numero.includes(searchTerm) ||
+            tipo_acao.includes(searchTerm) ||
             vara.includes(searchTerm) ||
             juiz.includes(searchTerm) ||
             comarca.includes(searchTerm) ||
             entrada.includes(searchTerm) ||
-            atualizado.includes(searchTerm)
+            atualizado.includes(searchTerm) ||
+            status.includes(searchTerm) ||
+            infos.includes(searchTerm)
           );
         });
         setDataProcess(newDataFilter);
@@ -134,7 +144,6 @@ function OfficePage() {
           Authorization: `Bearer ${token}`,
         },
       });
-
     } catch (error) {
       handleClickOpenMessageToast(
         true,
@@ -201,7 +210,9 @@ function OfficePage() {
         />
       )}
       {openEditClient && <EditClient updateList={listAllClients} />}
-      {openFinanceiroProcesso && <FinanceiroProcessComponent updateList={listAllProcess}/>}
+      {openFinanceiroProcesso && (
+        <FinanceiroProcessComponent updateList={listAllProcess} />
+      )}
       <img
         className={`background background-${theme}`}
         src={theme === "light" ? MarmoreBranco : MarmoreRoxo}
