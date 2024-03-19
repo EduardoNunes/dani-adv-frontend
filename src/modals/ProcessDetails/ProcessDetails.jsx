@@ -22,6 +22,15 @@ function ProcessDetails({ processo }) {
     infos,
   } = processo;
 
+  function invertData(data) {
+    if (data) {
+      const dataFormat = data.split("-");
+      const newData = `${dataFormat[2]}-${dataFormat[1]}-${dataFormat[0]}`;
+
+      return newData;
+    }
+  }
+
   return (
     <div className={`process-details process-details-${theme}`}>
       <div className="container-process">
@@ -51,9 +60,9 @@ function ProcessDetails({ processo }) {
             <li>Comarca:</li>
             <p>{comarca}</p>
             <li>Data de entrada:</li>
-            <p>{data_entrada}</p>
+            <p>{invertData(data_entrada)}</p>
             <li>Atualizado em:</li>
-            <p>{atualizado}</p>
+            <p>{invertData(atualizado)}</p>
             <li>Status</li>
             <p>{status}</p>
             <li>Informações:</li>

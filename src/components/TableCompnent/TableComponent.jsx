@@ -88,6 +88,15 @@ function TableComponent({
                 break;
             }
 
+            function invertData(data) {
+              if (data) {
+                const dataFormat = data.split("-");
+                const newData = `${dataFormat[2]}-${dataFormat[1]}-${dataFormat[0]}`;
+
+                return newData;
+              }
+            }
+
             return (
               <div key={index} className="line">
                 <ul>
@@ -107,8 +116,8 @@ function TableComponent({
                   <li title={data.tipo_acao}>
                     <p>{data.tipo_acao}</p>
                   </li>
-                  <li title={data.atualizado}>
-                    <p>{data.atualizado}</p>
+                  <li title={invertData(data.atualizado)}>
+                    <p>{invertData(data.atualizado)}</p>
                   </li>
                   <li
                     className="status-financeiro"

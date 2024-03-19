@@ -3,6 +3,7 @@ import XPreto from "../../assets/x-preto.png";
 import XBranco from "../../assets/x-branco.png";
 import { useTheme } from "../../context/ThemeContext";
 import { useModal } from "../../context/ModalsContext";
+import { useEffect } from "react";
 
 function ClientDetails({ cliente }) {
   const { theme } = useTheme();
@@ -30,6 +31,15 @@ function ClientDetails({ cliente }) {
     infos,
   } = cliente;
 
+  function invertData(data) {
+    if (data) {
+      const dataFormat = data.split("-");
+      const newData = `${dataFormat[2]}-${dataFormat[1]}-${dataFormat[0]}`;
+
+      return newData;
+    }
+  }
+
   return (
     <div className={`client-details client-details-${theme}`}>
       <div className="container-client">
@@ -49,7 +59,7 @@ function ClientDetails({ cliente }) {
                   <label>Nome:</label>
                   <li>{nome}</li>
                   <label>Nascimento:</label>
-                  <li>{nascimento}</li>
+                  <li>{invertData(nascimento)}</li>
                   <label>Gênero:</label>
                   <li>{genero}</li>
                   <label>Nacionalabeldade:</label>
@@ -84,8 +94,8 @@ function ClientDetails({ cliente }) {
                 </div>
               </div>
               <div className="container3">
-              <h4>Endereço:</h4>
-              <div className="endereco">
+                <h4>Endereço:</h4>
+                <div className="endereco">
                   <label>CEP:</label>
                   <li>{cep}</li>
                   <label>Cidade:</label>

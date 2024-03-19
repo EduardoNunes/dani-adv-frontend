@@ -248,10 +248,18 @@ function FinanceiroProcessComponent({ updateList }) {
     setNewDatasParcelas((prevData) => {
       const newDataArray = [...prevData];
       newDataArray[index] = `${status.split(":")[0]}:${novoValorInput}`;
-      console.log(prevData);
       return newDataArray;
     });
   };
+
+  function invertData(data) {
+    if (data) {
+      const dataFormat = data.split("-");
+      const newData = `${dataFormat[2]}-${dataFormat[1]}-${dataFormat[0]}`;
+
+      return newData;
+    }
+  }
 
   useEffect(() => {
     if (quantidade_parcelas === "0") {
@@ -366,7 +374,7 @@ function FinanceiroProcessComponent({ updateList }) {
                               newDatasParcelas.map((data, key) => (
                                 <li key={key}>
                                   <input
-                                    type="text"
+                                    type="date"
                                     value={data.split(":")[0]}
                                     onChange={(e) =>
                                       handleDataChange(
@@ -466,7 +474,7 @@ function FinanceiroProcessComponent({ updateList }) {
                       <label>Valor de entrada:</label>
                       <output>{`R$ ${entrada}`}</output>
                       <label>Data da entrada:</label>
-                      <output>{data_entrada}</output>
+                      <output>{invertData(data_entrada)}</output>
                     </div>
                   </div>
                   <div className="parcelamento">
@@ -485,19 +493,23 @@ function FinanceiroProcessComponent({ updateList }) {
                         <div className="primeira">
                           <label>Primeira parcela:</label>
                           <output>
-                            {newDatasParcelas[0]
-                              ? newDatasParcelas[0].split(":")[0]
-                              : ""}
+                            {invertData(
+                              newDatasParcelas[0]
+                                ? newDatasParcelas[0].split(":")[0]
+                                : ""
+                            )}
                           </output>
                         </div>
                         <div className="ultima">
                           <label>Última parcela:</label>
                           <output>
-                            {newDatasParcelas[newDatasParcelas.length - 1]
-                              ? newDatasParcelas[
-                                  newDatasParcelas.length - 1
-                                ].split(":")[0]
-                              : ""}
+                            {invertData(
+                              newDatasParcelas[newDatasParcelas.length - 1]
+                                ? newDatasParcelas[
+                                    newDatasParcelas.length - 1
+                                  ].split(":")[0]
+                                : ""
+                            )}
                           </output>
                         </div>
                       </div>
@@ -526,7 +538,7 @@ function FinanceiroProcessComponent({ updateList }) {
                                     <output
                                       style={{ background: backgroundColor }}
                                     >
-                                      {data.split(":")[0]}
+                                      {invertData(data.split(":")[0])}
                                     </output>
                                   </li>
                                 );
@@ -575,7 +587,7 @@ function FinanceiroProcessComponent({ updateList }) {
                       </div>
                       <div className="segunda">
                         <label>Data % final:</label>
-                        <output>{data_porcentagem_final}</output>
+                        <output>{invertData(data_porcentagem_final)}</output>
                       </div>
                       <div className="terceira">
                         <label>Condenação:</label>

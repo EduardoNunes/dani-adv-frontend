@@ -133,6 +133,22 @@
     background-color: rgba(var(--cor-branco), 0.8);
 }
 
+.edit-process .container-process .chart-process form .datas {
+  display: flex;
+  width: 80%;
+}
+
+.edit-process .container-process .chart-process form .datas div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.edit-process .container-process .chart-process form .datas div input {
+  display: flex;
+  justify-content: center;
+}
+
 .edit-process .container-process .chart-process form button {
   display: flex;
   justify-content: center;

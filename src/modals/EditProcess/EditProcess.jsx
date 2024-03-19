@@ -25,7 +25,7 @@ function EditProcess({ updateList }) {
     selectedEditProcess.data_entrada
   );
   const [atualizado, setAtualizado] = useState(selectedEditProcess.atualizado);
-  const [status, setStatus] = useState(selectedEditProcess.status);
+  const status = selectedEditProcess.status;
   const [infos, setInfos] = useState(selectedEditProcess.infos);
   const token = getItem("token");
   const id = selectedEditProcess.id;
@@ -62,6 +62,36 @@ function EditProcess({ updateList }) {
     }
   }
 
+  function formatNumberProcess(numberProcess) {
+    let digitos = numberProcess.replace(/\D/g, "");
+    let formatted = "";
+
+    if (digitos.length > 0) {
+      formatted += digitos.substring(0, 7);
+
+      if (digitos.length > 7) {
+        formatted += `-${digitos.substring(7, 9)}`;
+
+        if (digitos.length > 9) {
+          formatted += `.${digitos.substring(9, 13)}`;
+
+          if (digitos.length > 13) {
+            formatted += `.${digitos.substring(13, 14)}`;
+
+            if (digitos.length > 14) {
+              formatted += `.${digitos.substring(14, 16)}`;
+
+              if (digitos.length > 16) {
+                formatted += `.${digitos.substring(16, 20)}`;
+              }
+            }
+          }
+        }
+      }
+    }
+    setNumero(formatted);
+  }
+
   return (
     <div className={`edit-process edit-process-${theme}`}>
       <div className="container-process">
@@ -88,7 +118,7 @@ function EditProcess({ updateList }) {
             <label>Número do processo:</label>
             <input
               value={numero}
-              onChange={(e) => setNumero(e.target.value)}
+              onChange={(e) => formatNumberProcess(e.target.value)}
             ></input>
             <label>Tipo da ação:</label>
             <input
@@ -110,16 +140,24 @@ function EditProcess({ updateList }) {
               value={comarca}
               onChange={(e) => setComarca(e.target.value)}
             ></input>
-            <label>Data de entrada:</label>
-            <input
-              value={data_entrada}
-              onChange={(e) => setData_Entrada(e.target.value)}
-            ></input>
-            <label>Atualizado em:</label>
-            <input
-              value={atualizado}
-              onChange={(e) => setAtualizado(e.target.value)}
-            ></input>
+            <div className="datas">
+              <div>
+                <label>Data de entrada:</label>
+                <input
+                  type="date"
+                  value={data_entrada}
+                  onChange={(e) => setData_Entrada(e.target.value)}
+                ></input>
+              </div>
+              <div>
+                <label>Atualizado em:</label>
+                <input
+                  type="date"
+                  value={atualizado}
+                  onChange={(e) => setAtualizado(e.target.value)}
+                ></input>
+              </div>
+            </div>
             <label>Status:</label>
             <p>{status}</p>
             <label>Informações:</label>
