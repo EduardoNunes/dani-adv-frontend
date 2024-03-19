@@ -169,27 +169,21 @@ function EditClient({ updateList }) {
     let digitos = phone.replace(/\D/g, "");
     let formatted = "";
 
-    if (phone.length > 16) {
-      digitos = digitos.substring(0, 11);
-      setError("Quantidade máxima de dígitos atingida.");
-    }
-
-    if (digitos.length > 2) {
+    if (digitos.length > 0) {
       formatted += `(${digitos.substring(0, 2)})`;
 
-      if (digitos.length > 6) {
-        formatted += ` ${digitos.substring(2, 3)} ${digitos.substring(3, 7)}`;
+      if (digitos.length > 2) {
+        formatted += ` ${digitos.substring(2, 3)}`;
 
-        if (digitos.length > 7) {
-          formatted += `-${digitos.substring(7)}`;
+        if (digitos.length > 3) {
+          formatted += ` ${digitos.substring(3, 7)}`;
+
+          if (digitos.length > 7) {
+            formatted += `-${digitos.substring(7, 11)}`;
+          }
         }
-      } else {
-        formatted += ` ${digitos.substring(2)}`;
       }
-    } else {
-      formatted = digitos;
     }
-
     setPhone(formatted);
   }
 
@@ -197,25 +191,20 @@ function EditClient({ updateList }) {
     let digitos = rg.replace(/\D/g, "");
     let formatted = "";
 
-    if (rg.length > 13) {
-      digitos = digitos.substring(0, 10);
-      setError("Quantidade máxima de dígitos atingida.");
-    }
+    if (digitos.length > 0) {
+      formatted += `${digitos.substring(0, 2)}`;
 
-    if (digitos.length > 2) {
-      formatted += `${digitos.substring(0, 2)}.`;
+      if (digitos.length > 2) {
+        formatted += `.${digitos.substring(2, 5)}`;
 
-      if (digitos.length > 5) {
-        formatted += `${digitos.substring(2, 5)}.${digitos.substring(5, 8)}`;
+        if (digitos.length > 5) {
+          formatted += `.${digitos.substring(5, 8)}`;
 
-        if (digitos.length > 7) {
-          formatted += `-${digitos.substring(8)}`;
+          if (digitos.length > 8) {
+            formatted += `-${digitos.substring(8, 10)}`;
+          }
         }
-      } else {
-        formatted += `${digitos.substring(2)}`;
       }
-    } else {
-      formatted = digitos;
     }
     setRg(formatted);
   }
@@ -224,25 +213,20 @@ function EditClient({ updateList }) {
     let digitos = Cpf.replace(/\D/g, "");
     let formatted = "";
 
-    if (Cpf.length > 14) {
-      digitos = digitos.substring(0, 11);
-      setError("Quantidade máxima de dígitos atingida.");
-    }
+    if (digitos.length > 0) {
+      formatted += `${digitos.substring(0, 3)}`;
 
-    if (digitos.length > 3) {
-      formatted += `${digitos.substring(0, 3)}.`;
+      if (digitos.length > 3) {
+        formatted += `.${digitos.substring(3, 6)}`;
 
-      if (digitos.length > 6) {
-        formatted += `${digitos.substring(3, 6)}.${digitos.substring(6, 9)}`;
+        if (digitos.length > 6) {
+          formatted += `.${digitos.substring(6, 9)}`;
 
-        if (digitos.length > 9) {
-          formatted += `-${digitos.substring(9)}`;
+          if (digitos.length > 9) {
+            formatted += `-${digitos.substring(9, 11)}`;
+          }
         }
-      } else {
-        formatted += `${digitos.substring(3)}`;
       }
-    } else {
-      formatted = digitos;
     }
     setCpf(formatted);
   }

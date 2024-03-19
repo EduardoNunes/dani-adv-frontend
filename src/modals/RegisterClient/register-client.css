@@ -259,18 +259,27 @@
   .formulario
   .financeiro
   .financeiro-container
-  select {
+  p {
+  display: flex;
+  align-items: center;
   width: 100px;
   height: 26px;
+  margin-top: 5px;
   border-radius: 10px;
   padding-left: 6px;
+  background-color: rgba(var(--cor-branco), 0.8);
 }
 
 .register-client .container-client .chart-client form .credenciais {
   width: 90%;
 }
 
-.register-client .container-client .chart-client form .credenciais .creden-content {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .credenciais
+  .creden-content {
   display: flex;
   align-items: center;
   margin-top: -10px;
@@ -278,7 +287,12 @@
 }
 
 .register-client .container-client .chart-client form .credenciais .senha,
-.register-client .container-client .chart-client form .credenciais .tipo-cadastro {
+.register-client
+  .container-client
+  .chart-client
+  form
+  .credenciais
+  .tipo-cadastro {
   width: 50%;
 }
 
@@ -287,7 +301,8 @@
 }
 
 .register-client .container-client .chart-client form .credenciais input,
-.register-client .container-client .chart-client form .credenciais select {
+.register-client .container-client .chart-client form .credenciais select,
+.register-client .container-client .chart-client form .credenciais p {
   width: 100%;
 }
 
