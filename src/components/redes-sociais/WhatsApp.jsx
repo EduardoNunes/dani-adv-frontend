@@ -1,5 +1,5 @@
-import IconeWhatsAppBranco from "../../assets/whats-branco.png";
-import IconeWhatsAppPreto from "../../assets/whats-preto.png";
+import IconWhatsAppWhite from "../../assets/whats-branco.png";
+import IconWhatsAppBlack from "../../assets/whats-preto.png";
 import { useTheme } from "../../context/ThemeContext";
 import "./styles.css";
 
@@ -7,7 +7,7 @@ function WhatsApp({ numWhatsApp, icone }) {
   const { theme } = useTheme();
 
   if (!icone) {
-    icone = theme === "light" ? IconeWhatsAppPreto : IconeWhatsAppBranco;
+    icone = theme === "light" ? IconWhatsAppBlack : IconWhatsAppWhite;
   }
 
   return (

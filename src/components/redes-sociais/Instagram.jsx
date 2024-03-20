@@ -1,5 +1,5 @@
-import IconeInstagramBranco from '../../assets/instagram-branco.png';
-import IconeInstagramPreto from '../../assets/instagram-preto.png';
+import IconInstagramWhite from '../../assets/instagram-branco.png';
+import IconInstagramBlack from '../../assets/instagram-preto.png';
 import { useTheme } from '../../context/ThemeContext';
 import './styles.css';
 
@@ -10,7 +10,7 @@ function Instagram({ instagram }) {
         <div className='instagram'>
             <a href="https://www.instagram.com/danielalordelloadv/" target="_blank" rel="noopener noreferrer" alt="instagram">
                 <p>{instagram}</p>
-                <img src={theme === 'light' ? IconeInstagramPreto : IconeInstagramBranco} alt='Icone Instagram' />
+                <img src={theme === 'light' ? IconInstagramBlack : IconInstagramWhite} alt='Icone Instagram' />
             </a>
         </div>
     )

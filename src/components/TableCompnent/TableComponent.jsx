@@ -73,16 +73,16 @@ function TableComponent({
         ) : selectedOption === "processos" ? (
           datas &&
           datas.map((data, index) => {
-            let backgroundColor;
+            let color;
             switch (data.status) {
               case "Quitado":
-                backgroundColor = "#00BB00";
+                color = "green";
                 break;
               case "Atrasado":
-                backgroundColor = "#FF4444";
+                color = "red";
                 break;
               case "Em dia":
-                backgroundColor = "#5555FF";
+                color = "blue";
                 break;
               default:
                 break;
@@ -122,7 +122,7 @@ function TableComponent({
                   <li
                     className="status-financeiro"
                     title={data.status}
-                    style={{ background: `${backgroundColor}` }}
+                    style={{ color: `${color}` }}
                     onClick={() =>
                       handleClickOpenFinanceiroProcessComponent(
                         true,
@@ -174,16 +174,16 @@ function TableComponent({
         ) : (
           datas &&
           datas.map((data, index) => {
-            let backgroundColor;
+            let color;
             switch (data.status) {
               case "Quitado":
-                backgroundColor = "#00BB00";
+                color = "green";
                 break;
               case "Atrasado":
-                backgroundColor = "#FF4444";
+                color = "red";
                 break;
               case "Em dia":
-                backgroundColor = "#5555FF";
+                color = "blue";
                 break;
               default:
                 break;
@@ -211,8 +211,9 @@ function TableComponent({
                     <p>{processCount[data.id]}</p>
                   </li>
                   <li
+                    className="status-financeiro"
                     title={data.status}
-                    style={{ background: `${backgroundColor}` }}
+                    style={{ color: `${color}` }}
                   >
                     <p>{data.status}</p>
                   </li>

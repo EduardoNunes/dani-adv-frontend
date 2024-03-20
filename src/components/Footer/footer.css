@@ -10,16 +10,9 @@
 }
 
 .footer-light {
-    background-color: rgba(var(--cor-branco), .8);
-    border-top: 1px solid rgba(var(--cor-roxo), 1);
-    border-bottom: 1px solid rgba(var(--cor-roxo), 1);
-}
-
-.footer-dark {
-    background-color: rgba(var(--cor-preto), .8);
-    border-top: 1px solid rgba(var(--cor-rosa), 1);
-    border-bottom: 1px solid rgba(var(--cor-rosa), 1);
-    transition: ease-in-out .2s;
+    background-color: rgba(var(--cor-white), .8);
+    border-top: 1px solid rgba(var(--cor-purple), 1);
+    border-bottom: 1px solid rgba(var(--cor-purple), 1);
 }
 
 .footer .footer-top {
@@ -39,10 +32,6 @@
 
 .footer .logo-completa img {
     width: 180px;
-}
-
-.footer-dark .logo-completa img {
-    opacity: .8;
 }
 
 .footer .logo-completa img:hover {
@@ -79,7 +68,7 @@
 }
 
 .footer-light .redes-sociais ul li {
-    color: rgba(var(--cor-preto), 1);    
+    color: rgba(var(--cor-black), 1);    
 }
 
 .footer .redes-sociais ul li:hover {
@@ -89,15 +78,7 @@
 }
 
 .footer-light .redes-sociais ul li:hover {
-    background-color: rgba(var(--cor-roxo), .3);
-}
-
-.footer-dark .redes-sociais ul li:hover {
-    background-color: rgba(var(--cor-rosa), .3);  
-}
-
-.footer-dark .redes-sociais ul li {
-    color: rgba(var(--cor-branco), .8);
+    background-color: rgba(var(--cor-purple), .3);
 }
 
 .footer .redes-sociais ul li a {
@@ -123,10 +104,6 @@
     border: 2px solid black;
 }
 
-.footer-dark .redes-sociais ul li:last-child img {
-    border: 2px solid white;
-}
-
 .footer .footer-bot {
     display: flex;
     justify-content: center;
@@ -147,11 +124,7 @@
 }
 
 .footer-light .footer-bot .container {
-    border-top: 1px solid rgba(var(--cor-roxo), .6);
-}
-
-.footer-dark .footer-bot .container {
-    border-top: 1px solid rgba(var(--cor-rosa), .6);
+    border-top: 1px solid rgba(var(--cor-purple), .6);
 }
 
 .footer .footer-bot .container p {
@@ -160,9 +133,5 @@
 }
 
 .footer-light .footer-bot .container p {
-    color: rgba(var(--cor-preto), .8);
-}
-
-.footer-dark .footer-bot .container p {
-    color: rgba(var(--cor-branco), .6);
+    color: rgba(var(--cor-black), .8);
 }

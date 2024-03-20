@@ -1,5 +1,5 @@
-import LogoCompletoBranco from "../../assets/logo-completo-branco.png";
-import LogoCompletoColor from "../../assets/logo-completo.png";
+import LogoCompleteWhite from "../../assets/logo-completo-branco.png";
+import LogoCompleteColor from "../../assets/logo-completo.png";
 import { useTheme } from '../../context/ThemeContext';
 import { useFontSize } from "../../context/FontSizeContext";
 import Instagram from "../redes-sociais/Instagram";
@@ -21,7 +21,7 @@ function Footer() {
     <div className={`footer footer-${theme}`} >
       <div className="footer-top">
         <div className="logo-completa">
-          <img src={theme === 'light' ? LogoCompletoColor : LogoCompletoBranco} alt="Logo" />
+          <img src={theme === 'light' ? LogoCompleteColor : LogoCompleteWhite} alt="Logo" />
         </div>
         <div className="center"></div>
         <div className="redes-sociais" style={{ fontSize: `calc(16px + ${fontSizeModify}px)` }}>

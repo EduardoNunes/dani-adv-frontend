@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import MarmoreRoxo from "../../assets/marmore-preto-roxo.jpg";
-import MarmoreBranco from "../../assets/textura-marmore.jpg";
+import MammorePurple from "../../assets/marmore-preto-roxo.jpg";
+import MammoreWhite from "../../assets/textura-marmore.jpg";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import ProcessDetails from "../../modals/ProcessDetails/ProcessDetails";
@@ -36,7 +36,7 @@ function ClientPage() {
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
       <img
         className={`background background-${theme}`}
-        src={theme === "light" ? MarmoreBranco : MarmoreRoxo}
+        src={theme === "light" ? MammoreWhite : MammorePurple}
         alt={`Banner-${theme}`}
       />
       <div className="container">

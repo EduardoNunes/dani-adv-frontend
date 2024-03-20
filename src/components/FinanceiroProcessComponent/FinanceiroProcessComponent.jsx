@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import XBranco from "../../assets/x-branco.png";
-import XPreto from "../../assets/x-preto.png";
+import Xwhite from "../../assets/x-branco.png";
+import Xblack from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
@@ -58,7 +58,6 @@ function FinanceiroProcessComponent({ updateList }) {
       updateList();
       handleClickOpenMessageToast(true, "Financeiro atualizado com sucesso.");
     } catch (error) {
-      console.log(error);
       handleClickOpenMessageToast(true, "Ops, algo deu errado.");
       setError(`${error.response.data.mensagem}`);
     }
@@ -94,7 +93,6 @@ function FinanceiroProcessComponent({ updateList }) {
         setResultadoPorcentagem(response.data[0].resultado_porcentagem);
         setTotal(response.data[0].total);
       } catch (error) {
-        console.log(error);
         setError(`${error.response.data.mensagem}`);
       }
     }
@@ -289,7 +287,7 @@ function FinanceiroProcessComponent({ updateList }) {
       <div className="container-process">
         <div className="chart-process">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? Xblack : Xwhite}
             title="Sair"
             alt="Sair"
             onClick={() => handleClickOpenFinanceiroProcessComponent(false)}
@@ -519,24 +517,24 @@ function FinanceiroProcessComponent({ updateList }) {
                           <ul>
                             {newDatasParcelas &&
                               newDatasParcelas.map((data, key) => {
-                                let backgroundColor;
+                                let color;
                                 switch (data.split(":")[1]) {
                                   case "Paga":
-                                    backgroundColor = "green";
+                                    color = "green";
                                     break;
                                   case "Vencida":
-                                    backgroundColor = "#FF5555";
+                                    color = "#FF5555";
                                     break;
                                   case "Pendente":
-                                    backgroundColor = "yellow";
+                                    color = "White";
                                     break;
                                   default:
-                                    backgroundColor = "inherit";
+                                    color = "inherit";
                                 }
                                 return (
                                   <li key={key}>
                                     <output
-                                      style={{ background: backgroundColor }}
+                                      style={{ background: color }}
                                     >
                                       {invertData(data.split(":")[0])}
                                     </output>
@@ -550,24 +548,24 @@ function FinanceiroProcessComponent({ updateList }) {
                           <ul>
                             {newDatasParcelas &&
                               newDatasParcelas.map((data, key) => {
-                                let backgroundColor;
+                                let color;
                                 switch (data.split(":")[1]) {
                                   case "Paga":
-                                    backgroundColor = "green";
+                                    color = "green";
                                     break;
                                   case "Vencida":
-                                    backgroundColor = "#FF5555";
+                                    color = "#FF5555";
                                     break;
                                   case "Pendente":
-                                    backgroundColor = "yellow";
+                                    color = "White";
                                     break;
                                   default:
-                                    backgroundColor = "inherit";
+                                    color = "inherit";
                                 }
                                 return (
                                   <li key={key}>
                                     <output
-                                      style={{ background: backgroundColor }}
+                                      style={{ background: color }}
                                     >
                                       {data.split(":")[1]}
                                     </output>

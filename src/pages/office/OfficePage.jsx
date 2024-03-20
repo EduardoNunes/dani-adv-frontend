@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import lupa from "../../assets/lupa.png";
 import MarmoreRoxo from "../../assets/marmore-preto-roxo.jpg";
-import MarmoreBranco from "../../assets/textura-marmore.jpg";
+import Marmorewhite from "../../assets/textura-marmore.jpg";
 import ConfirmComponent from "../../components/ConfirmComponent/ConfirmModal";
 import TableComponent from "../../components/TableCompnent/TableComponent";
 import { useModal } from "../../context/ModalsContext";
@@ -56,7 +56,6 @@ function OfficePage() {
 
       setDataProcess(response.data);
       setNewDataProcess(response.data);
-      console.log(response);
     } catch (error) {
       console.error(error);
     }
@@ -215,7 +214,7 @@ function OfficePage() {
       )}
       <img
         className={`background background-${theme}`}
-        src={theme === "light" ? MarmoreBranco : MarmoreRoxo}
+        src={theme === "light" ? Marmorewhite : MarmoreRoxo}
         alt={`Banner-${theme}`}
       />
       <div className="container">

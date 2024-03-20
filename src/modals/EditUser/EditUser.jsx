@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import olhoAberto from "../../assets/olho-aberto.png";
 import olhoFechado from "../../assets/olho-fechado.png";
-import XBranco from "../../assets/x-branco.png";
-import XPreto from "../../assets/x-preto.png";
+import XWhite from "../../assets/x-branco.png";
+import XBlack from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import { useValidationsContext } from "../../context/ValidationsContext";
@@ -116,7 +116,7 @@ function EditUser() {
       <div className="container-edit-user">
         <div className="chart-edit-user">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? XBlack : XWhite}
             title="Sair"
             alt=""
             onClick={() => handleClickOpenSettings(false)}

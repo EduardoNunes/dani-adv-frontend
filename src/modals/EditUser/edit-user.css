@@ -5,7 +5,7 @@
     width: 100vw;
     height: calc(100vh - 40px);
 
-    background-color: rgba(var(--cor-preto), 0.8);
+    background-color: rgba(var(--cor-black), 0.8);
   
     z-index: 2;
   }
@@ -35,7 +35,7 @@
     padding: 40px;
     border-radius: 10px;
   
-    background-color: white;
+    background-color: rgba(var(--cor-white), 1);
   }
   
   .edit-user .container-edit-user .chart-edit-user img {
@@ -55,7 +55,7 @@
     width: 100%;
     border-radius: 5px;
   
-    background-color: rgba(var(--cor-roxo), 0.6);
+    background-color: rgba(var(--cor-purple), 0.6);
   }
   
   .edit-user .container-edit-user .chart-edit-user form {
@@ -68,7 +68,7 @@
     border-radius: 5px;
   
     list-style: none;
-    background-color: rgba(var(--cor-roxo), 0.2);
+    background-color: rgba(var(--cor-purple), 0.2);
   }
   
   .edit-user .container-edit-user .chart-edit-user form label {
@@ -91,7 +91,7 @@
     padding-left: 10px;
     border-radius: 5px;
   
-    background-color: rgba(var(--cor-branco), 0.8);
+    background-color: rgba(var(--cor-white), 0.8);
   }
 
   .edit-user .container-edit-user .chart-edit-user form .input-senha {
@@ -115,7 +115,7 @@
 
   .edit-user .container-edit-user .chart-edit-user form span {
     margin-top: 8px;
-    color: red;
+    color: rgba(var(--cor-red), 1);
   }
 
   .edit-user .container-edit-user .chart-edit-user form .edit-buttons {

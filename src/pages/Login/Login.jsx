@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import BalancaRosaFoto from "../../assets/balanca-rosa.jpg";
-import JusticaRoxoFoto from "../../assets/martelo-ouro.jpg";
+import BalancePinkImg from "../../assets/balanca-rosa.jpg";
+import JusticePurpleImg from "../../assets/martelo-ouro.jpg";
 import olhoAberto from "../../assets/olho-aberto.png";
 import olhoFechado from "../../assets/olho-fechado.png";
 import TipoCadastro from "../../components/TipoCadastro/TipoCadastro";
@@ -97,7 +97,7 @@ function Login() {
     <div className={`login login-${theme}`}>
       <img
         className={`background background-${theme}`}
-        src={theme === "light" ? JusticaRoxoFoto : BalancaRosaFoto}
+        src={theme === "light" ? JusticePurpleImg : BalancePinkImg}
         alt={`Banner-${theme}`}
       />
       <div className="formulario">

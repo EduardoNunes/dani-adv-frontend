@@ -1,9 +1,8 @@
-import "./client-details.css";
-import XPreto from "../../assets/x-preto.png";
-import XBranco from "../../assets/x-branco.png";
-import { useTheme } from "../../context/ThemeContext";
+import Xblack from "../../assets/x-preto.png";
+import XWhite from "../../assets/x-branco.png";
 import { useModal } from "../../context/ModalsContext";
-import { useEffect } from "react";
+import { useTheme } from "../../context/ThemeContext";
+import "./client-details.css";
 
 function ClientDetails({ cliente }) {
   const { theme } = useTheme();
@@ -45,7 +44,7 @@ function ClientDetails({ cliente }) {
       <div className="container-client">
         <div className="chart-client">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? Xblack : XWhite}
             title="Sair"
             alt=""
             onClick={() => handleOpenClientDetails(false)}

@@ -41,11 +41,7 @@
 }
 
 .home .banner-light {
-    border-bottom: 1px solid rgba(var(--cor-roxo), .4);
-}
-
-.home .banner-dark {
-    border-bottom: 1px solid rgba(var(--cor-rosa), .6);
+    border-bottom: 1px solid rgba(var(--cor-purple), .4);
 }
 
 .home .banner .frase {
@@ -73,14 +69,7 @@
 }
 
 .home .banner .frase-light {
-    color: rgba(var(--cor-preto), .9);
-    background-color: rgba(var(--cor-branco), .3);
-    text-shadow: 2px 2px 1px rgba(var(--cor-branco), 1);
-}
-
-.home .banner .frase-dark {
-    color: rgba(var(--cor-branco), .7);
-    background-color: rgba(var(--cor-branco), .1);
-    text-shadow: 3px 3px 1px black;
-    
+    color: rgba(var(--cor-black), .9);
+    background-color: rgba(var(--cor-white), .3);
+    text-shadow: 2px 2px 1px rgba(var(--cor-white), 1);
 }

@@ -1,6 +1,6 @@
 import "./process-details.css";
-import XPreto from "../../assets/x-preto.png";
-import XBranco from "../../assets/x-branco.png";
+import XBlack from "../../assets/x-preto.png";
+import XWhite from "../../assets/x-branco.png";
 import { useTheme } from "../../context/ThemeContext";
 import { useModal } from "../../context/ModalsContext";
 
@@ -36,7 +36,7 @@ function ProcessDetails({ processo }) {
       <div className="container-process">
         <div className="chart-process">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? XBlack : XWhite}
             title="Sair"
             alt=""
             onClick={() => handleOpenProcessDetails(false)}

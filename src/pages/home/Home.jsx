@@ -1,7 +1,7 @@
-import BalancaRosaFoto from "../../assets/balanca-rosa.jpg";
-import CompanheirismoFoto from "../../assets/companheiro.jpg";
-import DaniFoto from "../../assets/dani-foto1.png";
-import JusticaRoxoFoto from "../../assets/martelo-ouro.jpg";
+import BalancePinkImg from "../../assets/balanca-rosa.jpg";
+import FriendlyImg from "../../assets/companheiro.jpg";
+import DaniImg from "../../assets/dani-foto1.png";
+import JusticePurpleImg from "../../assets/martelo-ouro.jpg";
 import IconeWhatsAppVerdeVerde from "../../assets/whats-verde.png";
 import { useTheme } from "../../context/ThemeContext";
 import Container1 from "../../components/Containers/Container1Pages/Container1Pages";
@@ -53,7 +53,7 @@ function Home() {
       </div>
       <div className={`banner banner-theme-${theme}`}>
         <img
-          src={theme === "light" ? JusticaRoxoFoto : BalancaRosaFoto}
+          src={theme === "light" ? JusticePurpleImg : BalancePinkImg}
           alt={`Banner-${theme}`}
         />
         <div className={`frase frase-${theme}`}>
@@ -62,10 +62,10 @@ function Home() {
         </div>
       </div>
       <div id="sobre">
-        <Container1 {...container1} image={DaniFoto} />
+        <Container1 {...container1} image={DaniImg} />
       </div>
       <div id="missao">
-        <Container2 {...container2} imagem={CompanheirismoFoto} />
+        <Container2 {...container2} imagem={FriendlyImg} />
       </div>
     </div>
   );

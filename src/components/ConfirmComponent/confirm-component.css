@@ -5,7 +5,7 @@
     align-items: center;
     width: 100vw;
     height: calc(100vh - 40px);
-    background-color: rgba(var(--cor-preto), 0.4);
+    background-color: rgba(var(--cor-black), 0.4);
     z-index: 1;
 }
 
@@ -18,13 +18,8 @@
   padding: 20px;
 
   border-radius: 10px;
-  background-color: rgba(var(--cor-preto), 0.8);
-  border: 1px solid rgba(var(--cor-preto), 0.8);
-}
-
-.full-screen .confirm-dark {
-  background-color: rgba(var(--cor-preto), 0.8);
-  color: rgb(128, 207, 128);
+  background-color: rgba(var(--cor-black), 0.8);
+  border: 1px solid rgba(var(--cor-black), 0.8);
 }
 
 .full-screen .confirm img {
@@ -37,7 +32,7 @@
   font-family: "fonte";
   font-size: 18px;
   color: rgb(238, 238, 112);
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 1px rgba(var(--cor-black), 1);
 }
 
 .full-screen .confirm .buttons {
@@ -53,7 +48,7 @@
     width: 110px;
 
     border-radius: 10px;
-    border: 1px solid rgba(var(--cor-preto), 0.8);
+    border: 1px solid rgba(var(--cor-black), 0.8);
 
     font-family: "fonte";
     font-size: 16px;
@@ -61,5 +56,5 @@
 }
 
 .full-screen .confirm .buttons button:hover {
-    background-color: rgba(var(--cor-branco), .5);
+    background-color: rgba(var(--cor-white), .5);
 }

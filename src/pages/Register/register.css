@@ -18,11 +18,7 @@
 }
 
 .register .background-light {
-  border-top: 1px solid rgba(var(--cor-roxo), 1);
-}
-
-.register .background-dark {
-  border-top: 1px solid rgba(var(--cor-rosa), 1);
+  border-top: 1px solid rgba(var(--cor-purple), 1);
 }
 
 .register .formulario {
@@ -34,7 +30,7 @@
   height: calc(100vh - 40px);
   width: 100vw;
 
-  background-color: rgba(var(--cor-preto), 0.6);
+  background-color: rgba(var(--cor-black), 0.6);
 }
 
 .register form {
@@ -46,13 +42,8 @@
   width: 30%;
   min-width: 400px;
   border-radius: 10px;
-  border: 1px solid rgba(var(--cor-roxo), 1);
-  background-color: rgba(var(--cor-branco), 0.9);
-}
-
-.register-dark form {
-  border: 1px solid rgba(var(--cor-rosa), 1);
-  background-color: rgba(var(--cor-preto), 0.95);
+  border: 1px solid rgba(var(--cor-purple), 1);
+  background-color: rgba(var(--cor-white), 0.9);
 }
 
 .register form h2 {
@@ -60,11 +51,7 @@
   margin-bottom: 20px;
 
   font-family: "fonte";
-  color: rgba(var(--cor-preto), 1);
-}
-
-.register-dark form h2 {
-  color: rgba(var(--cor-branco), 0.8);
+  color: rgba(var(--cor-black), 1);
 }
 
 .register form .chart {
@@ -76,10 +63,6 @@
 .register form .chart label {
   margin-bottom: 5px;
   font-family: "fonte";
-}
-
-.register-dark form .chart label {
-  color: rgba(var(--cor-branco), 0.8);
 }
 
 .register form .chart input {
@@ -104,11 +87,7 @@
 }
 
 .register form span {
-  color: red;
-}
-
-.register-dark form span {
-  color: yellow;
+  color: rgba(var(--cor-red), 1);
 }
 
 .register form button {
@@ -123,13 +102,9 @@
   cursor: pointer;
 }
 
-.register-dark form button {
-  border: 2px solid rgba(var(--cor-rosa), 1);
-}
-
 .register form button:hover {
-  background-color: rgba(var(--cor-branco), 1);
-  border: 2px solid rgba(var(--cor-preto), 0.6);
+  background-color: rgba(var(--cor-white), 1);
+  border: 2px solid rgba(var(--cor-black), 0.6);
 }
 
 .register form .bottom {
@@ -141,12 +116,4 @@
   height: 30px;
 
   font-family: "fonte";
-}
-
-.register-dark form .bottom {
-  color: rgba(var(--cor-branco), 0.8);
-}
-
-.register-dark form a {
-  color: rgba(var(--cor-rosa), 1);
 }

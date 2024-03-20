@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import XBranco from "../../assets/x-branco.png";
-import XPreto from "../../assets/x-preto.png";
+import XWhite from "../../assets/x-branco.png";
+import XBlack from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
@@ -297,7 +297,7 @@ function RegisterProcess({ updateList }) {
 
     setUltima_parcela(ultimaParcela[0]);
     setDatas_parcelas(datasParcelas);
-    console.log(datasParcelas);
+
   };
 
   useEffect(() => {
@@ -336,7 +336,7 @@ function RegisterProcess({ updateList }) {
       <div className="container-process">
         <div className="chart-process">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? XBlack : XWhite}
             title="Sair"
             alt="Sair"
             onClick={() => handleClickOpenRegisterProcess(false)}

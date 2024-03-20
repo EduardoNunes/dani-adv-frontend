@@ -27,15 +27,8 @@
 }
 
 .geral .container .left-light {
-    border: 20px solid rgba(var(--cor-roxo), .3);
-    background-color: rgba(var(--cor-branco), .8);
-}
-
-.geral .container .left-dark {
-    border: 20px solid rgba(var(--cor-rosa), .5);
-    background-color: rgba(var(--cor-preto), 1);
-    color: rgba(var(--cor-branco), 1);
-    font-weight: 300;
+    border: 20px solid rgba(var(--cor-purple), .3);
+    background-color: rgba(var(--cor-white), .8);
 }
 
 .geral .container .left h2 {
@@ -52,17 +45,9 @@
 }
 
 .geral .container .right-light {
-    background-color: rgba(var(--cor-roxo), .6);
-}
-
-.geral .container .right-dark {
-    background-color: rgba(var(--cor-rosa), .6);
+    background-color: rgba(var(--cor-purple), .6);
 }
 
 .geral .container .right .moldura-light {
-    background-color: rgba(var(--cor-preto), .6);
-}
-
-.geral .container .right .moldura-dark {
-    background-color: rgba(var(--cor-preto), .96);
+    background-color: rgba(var(--cor-black), .6);
 }

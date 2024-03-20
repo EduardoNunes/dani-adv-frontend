@@ -13,16 +13,11 @@
   padding-left: 15px;
 
   border-radius: 10px;
-  background-color: rgba(var(--cor-branco), 0.9);
-  border: 1px solid green;
-  color: green;
+  background-color: rgba(var(--cor-white), 0.9);
+  border: 1px solid rgba(var(--cor-white), 1);
+  color: rgba(var(--cor-white), 1);
 
   z-index: 1;
-}
-
-.toast-dark {
-  background-color: rgba(var(--cor-preto), 0.8);
-  color: rgb(128, 207, 128);
 }
 
 .toast p {

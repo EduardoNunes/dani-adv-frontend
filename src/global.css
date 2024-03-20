@@ -6,8 +6,18 @@
 }
 
 :root {
-    --cor-roxo: 102, 36, 131;
-    --cor-preto: 28, 28, 27;
-    --cor-rosa: 231, 29, 115;
-    --cor-branco: 254, 254, 254;
+    --cor-purple: 102, 36, 131;
+    --cor-black: 28, 28, 27;
+    --cor-pink: 231, 29, 115;
+    --cor-white: 254, 254, 254;
+    --cor-White: 255, 255, 0;
+    --cor-green: 0, 128, 0;
+    --cor-red: 255, 0, 0;
+
+    --font-size-small: 1rem;
+    --font-size-medium: 1.3rem;
+    --font-size-large: 2rem;
+    --font-size-biggest: 3rem;
+
+    --font-type1: "fonte", sans-serif;
 }

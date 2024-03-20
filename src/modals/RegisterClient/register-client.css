@@ -4,7 +4,7 @@
 
   width: 100vw;
   height: calc(100vh - 40px);
-  background-color: rgba(var(--cor-preto), 0.8);
+  background-color: rgba(var(--cor-black), 0.8);
 
   z-index: 1;
 }
@@ -32,12 +32,7 @@
   padding: 40px;
   border-radius: 10px;
 
-  background-color: rgba(var(--cor-branco), 0.9);
-}
-
-.register-client-dark .container-client .chart-client {
-  background-color: rgba(var(--cor-preto), 1);
-  border: 1px solid rgba(var(--cor-roxo), 0.5);
+  background-color: rgba(var(--cor-white), 0.9);
 }
 
 .register-client .container-client .chart-client img {
@@ -57,13 +52,7 @@
   width: 100%;
   border-radius: 5px;
 
-  background-color: rgba(var(--cor-roxo), 0.6);
-}
-
-.register-client-dark .container-client .chart-client h3 {
-  background-color: rgba(var(--cor-rosa), 0.6);
-  color: rgba(var(--cor-branco), 0.9);
-  font-weight: 300;
+  background-color: rgba(var(--cor-purple), 0.6);
 }
 
 .register-client .container-client .chart-client form {
@@ -76,11 +65,7 @@
   border-radius: 5px;
 
   list-style: none;
-  background-color: rgba(var(--cor-roxo), 0.2);
-}
-
-.register-client-dark .container-client .chart-client form {
-  background-color: rgba(var(--cor-rosa), 0.2);
+  background-color: rgba(var(--cor-purple), 0.2);
 }
 
 .register-client .container-client .chart-client form .formulario {
@@ -267,7 +252,7 @@
   margin-top: 5px;
   border-radius: 10px;
   padding-left: 6px;
-  background-color: rgba(var(--cor-branco), 0.8);
+  background-color: rgba(var(--cor-white), 0.8);
 }
 
 .register-client .container-client .chart-client form .credenciais {
@@ -324,7 +309,7 @@
   padding-left: 10px;
   border-radius: 5px;
 
-  background-color: rgba(var(--cor-branco), 0.8);
+  background-color: rgba(var(--cor-white), 0.8);
 }
 
 .register-client .container-client .chart-client form .infos {
@@ -348,16 +333,16 @@
   width: 80%;
   height: 100%;
 
-  border: 1px solid rgba(var(--cor-preto), 1);
+  border: 1px solid rgba(var(--cor-black), 1);
   padding: 4px 14px;
   border-radius: 5px;
 
-  background-color: rgba(var(--cor-branco), 0.8);
+  background-color: rgba(var(--cor-white), 0.8);
 }
 
 .register-client .container-client .chart-client form span {
   margin-bottom: 5px;
-  color: red;
+  color: rgba(var(--cor-red), 1);
 }
 
 .register-client .container-client .chart-client form button {
@@ -374,5 +359,5 @@
 }
 
 .register-client .container-client .chart-client form button:hover {
-  background-color: rgba(var(--cor-preto), 0.16);
+  background-color: rgba(var(--cor-black), 0.16);
 }

@@ -1,8 +1,8 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import LogoReduzidaBranco from "../../assets/logo-reduzida-branco.png";
-import LogoReduzidaColor from "../../assets/logo-reduzida-color-120px.png";
-import sairBranco from "../../assets/sair-branco.png";
-import sairPreto from "../../assets/sair-preto.png";
+import LogoReductWhite from "../../assets/logo-reduzida-branco.png";
+import LogoReductColor from "../../assets/logo-reduzida-color-120px.png";
+import exitWhite from "../../assets/sair-branco.png";
+import exitBlack from "../../assets/sair-preto.png";
 import settingsBlack from "../../assets/settings-black.png";
 import settingsWhite from "../../assets/settings-white.png";
 import { useFontSize } from "../../context/FontSizeContext";
@@ -62,7 +62,7 @@ function Header() {
           <div className={`logo ${logoSmall}`}>
             <Link to="/home">
               <img
-                src={theme === "light" ? LogoReduzidaColor : LogoReduzidaBranco}
+                src={theme === "light" ? LogoReductColor : LogoReductWhite}
                 alt="Logo Daniela Lordello"
               />
             </Link>
@@ -122,7 +122,7 @@ function Header() {
                     onClick={() => handleClickLogOut()}
                   >
                     <img
-                      src={theme === "dark" ? sairBranco : sairPreto}
+                      src={theme === "dark" ? exitWhite : exitBlack}
                       alt="exit icon"
                     />
                   </button>

@@ -18,11 +18,7 @@
 }
 
 .login .background-light {
-  border-top: 1px solid rgba(var(--cor-roxo), 1);
-}
-
-.login .background-dark {
-  border-top: 1px solid rgba(var(--cor-rosa), 1);
+  border-top: 1px solid rgba(var(--cor-purple), 1);
 }
 
 .login .formulario {
@@ -34,7 +30,7 @@
   height: calc(100vh - 40px);
   width: 100vw;
 
-  background-color: rgba(var(--cor-preto), 0.6);
+  background-color: rgba(var(--cor-black), 0.6);
 }
 
 .login form {
@@ -46,13 +42,8 @@
   width: 30%;
   min-width: 400px;
   border-radius: 10px;
-  border: 1px solid rgba(var(--cor-roxo), 1);
-  background-color: rgba(var(--cor-branco), 0.9);
-}
-
-.login-dark form {
-  border: 1px solid rgba(var(--cor-rosa), 1);
-  background-color: rgba(var(--cor-preto), 0.95);
+  border: 1px solid rgba(var(--cor-purple), 1);
+  background-color: rgba(var(--cor-white), 0.9);
 }
 
 .login form h2 {
@@ -60,11 +51,7 @@
   margin-bottom: 20px;
 
   font-family: "fonte";
-  color: rgba(var(--cor-preto), 1);
-}
-
-.login-dark form h2 {
-  color: rgba(var(--cor-branco), 0.8);
+  color: rgba(var(--cor-black), 1);
 }
 
 .login form .chart {
@@ -76,10 +63,6 @@
 .login form .chart label {
   margin-bottom: 5px;
   font-family: "fonte";
-}
-
-.login-dark form .chart label {
-  color: rgba(var(--cor-branco), 0.8);
 }
 
 .login form .chart input {
@@ -104,11 +87,7 @@
 }
 
 .login form span {
-  color: red;
-}
-
-.login-dark form span {
-  color: yellow;
+  color: rgba(var(--cor-red), 1);
 }
 
 .login form button {
@@ -124,7 +103,7 @@
 }
 
 .login form button:hover {
-  background-color: rgba(var(--cor-branco), 0.7);
+  background-color: rgba(var(--cor-white), 0.7);
 }
 
 .login form .bottom {
@@ -142,13 +121,4 @@
   margin: 22px 0 2px;
   font-size: 18px;
   font-weight: 600;
-}
-
-.login-dark form .bottom {
-  color: rgba(var(--cor-branco), 0.8);
-
-}
-
-.login-dark form a {
-  color: rgba(var(--cor-rosa), 1);
 }

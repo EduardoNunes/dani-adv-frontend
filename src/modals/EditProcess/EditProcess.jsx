@@ -1,6 +1,6 @@
 import { useState } from "react";
-import XBranco from "../../assets/x-branco.png";
-import XPreto from "../../assets/x-preto.png";
+import Xwhite from "../../assets/x-branco.png";
+import Xblack from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
@@ -59,7 +59,6 @@ function EditProcess({ updateList }) {
       updateList();
       handleClickOpenMessageToast(true, "Processo atualizado com sucesso!");
     } catch (error) {
-      console.log(error, "ERROR")
       setError(`${error.response.data.mensagem}`);
     }
   }
@@ -99,7 +98,7 @@ function EditProcess({ updateList }) {
       <div className="container-process">
         <div className="chart-process">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? Xblack : Xwhite}
             title="Sair"
             alt=""
             onClick={() => handleClickOpenEditProcess(false)}

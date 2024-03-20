@@ -17,25 +17,13 @@
 }
 
 .header-light {
-  background-color: rgba(var(--cor-branco), 0.8);
-  border-top: 1px solid rgba(var(--cor-roxo), 1);
-  border-bottom: 1px solid rgba(var(--cor-roxo), 1);
+  background-color: rgba(var(--cor-white), 0.8);
+  border-top: 1px solid rgba(var(--cor-purple), 1);
+  border-bottom: 1px solid rgba(var(--cor-purple), 1);
 }
 
 .header-move-light {
-  background-color: rgba(var(--cor-branco), 0.95);
-  height: 100px;
-}
-
-.header-dark {
-  background-color: rgba(var(--cor-preto), 1);
-  border-top: 1px solid rgba(var(--cor-rosa), 1);
-  border-bottom: 1px solid rgba(var(--cor-rosa), 1);
-  transition: ease-in-out 0.2s;
-}
-
-.header-move-dark {
-  background-color: rgba(var(--cor-preto), 0.98);
+  background-color: rgba(var(--cor-white), 0.95);
   height: 100px;
 }
 
@@ -90,11 +78,7 @@
 }
 
 .header-light .container .menu-lista li:not(:last-child)::after {
-  color: rgba(var(--cor-roxo), 1);
-}
-
-.header-dark .container .menu-lista li:not(:last-child)::after {
-  color: rgba(var(--cor-rosa), 1);
+  color: rgba(var(--cor-purple), 1);
 }
 
 .header .container .menu-lista li a {
@@ -102,11 +86,7 @@
 }
 
 .header-light .container .menu-lista li a {
-  color: rgba(var(--cor-preto), 1);
-}
-
-.header-dark .container .menu-lista li a {
-  color: rgba(var(--cor-branco), 0.8);
+  color: rgba(var(--cor-black), 1);
 }
 
 .header .container .menu-lista li a:hover {
@@ -118,11 +98,7 @@
 }
 
 .header-light .container .menu-lista li a:hover {
-  color: rgba(var(--cor-roxo), 1);
-}
-
-.header-dark .container .menu-lista li a:hover {
-  color: rgba(var(--cor-rosa), 1);
+  color: rgba(var(--cor-purple), 1);
 }
 
 .header .container .link {
@@ -132,11 +108,6 @@
 .header .container .infos-client {
   display: flex;
   margin-right: 40px;
-}
-
-.header-dark .container .infos-client {
-  display: flex;
-  margin-right: 44px;
 }
 
 .header .container .infos-client .area-cliente {
@@ -150,42 +121,23 @@
 
   border-radius: 10px;
 
-  background-color: rgba(var(--cor-roxo), 0.1);
-  border: 1px solid rgba(var(--cor-roxo), 1);
+  background-color: rgba(var(--cor-purple), 0.1);
+  border: 1px solid rgba(var(--cor-purple), 1);
 
   font-family: "fonte";
-  color: rgba(var(--cor-preto), 1);
+  color: rgba(var(--cor-black), 1);
 
   transition: ease-in-out 0.2s;
   cursor: pointer;
 }
 
-.header-dark .container .infos-client .area-cliente {
-  background-color: rgba(var(--cor-rosa), 0.02);
-  border: 1px solid rgba(var(--cor-rosa), 1);
-}
-
 .header .container .infos-client .area-cliente:hover {
-  background-color: rgba(var(--cor-roxo), 0.2);
-  border: 1px solid rgba(var(--cor-roxo), 1);
-}
-
-.header-dark .container .infos-client .area-cliente:hover {
-  background-color: rgba(var(--cor-branco), 0.03);
-  border: 1px solid rgba(var(--cor-rosa), 1);
+  background-color: rgba(var(--cor-purple), 0.2);
+  border: 1px solid rgba(var(--cor-purple), 1);
 }
 
 .header .container .infos-client .area-cliente:hover p {
-  color: rgba(var(--cor-roxo), 1);
-}
-
-.header-dark .container .infos-client .area-cliente p {
-  color: rgba(var(--cor-branco), 1);
-  transition: ease-in-out 0.2s;
-}
-
-.header-dark .container .infos-client .area-cliente:hover p {
-  color: rgba(var(--cor-rosa), 1);
+  color: rgba(var(--cor-purple), 1);
 }
 
 .header .container .infos-client .buttons-settings-exit {
@@ -201,27 +153,16 @@
   align-items: center;
 
   padding: 4px;
-  border: 1px solid rgba(var(--cor-roxo), 1);
+  border: 1px solid rgba(var(--cor-purple), 1);
 
   border-radius: 10px;
   cursor: pointer;
   transition: ease-in-out .2s;
 }
 
-.header-dark .container .infos-client .button-1,
-.header-dark .container .infos-client .button-2 {
-  border: 1px solid rgba(var(--cor-rosa), 1);
-  background-color: rgba(var(--cor-roxo), 0.1);
-}
-
 .header .container .infos-client .button-1:hover,
 .header .container .infos-client .button-2:hover {
-  background-color: rgba(var(--cor-roxo), 0.2);
-}
-
-.header-dark .container .infos-client .button-1:hover,
-.header-dark .container .infos-client .button-2:hover {
-  background-color: rgba(var(--cor-rosa), 0.2);
+  background-color: rgba(var(--cor-purple), 0.2);
 }
 
 .header .container .infos-client .button-1 img,

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import XBranco from "../../assets/x-branco.png";
-import XPreto from "../../assets/x-preto.png";
+import XWhite from "../../assets/x-branco.png";
+import XBlack from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
@@ -41,7 +41,7 @@ function EditClient({ updateList }) {
   const [profession, setProfession] = useState(selectedEditClient.profissao);
   const [maritalStatus, setMaritalStatus] = useState(selectedEditClient.estado_civil);
   const [education, setEducation] = useState(selectedEditClient.formacao_academica);
-  const [status, setStatus] = useState(selectedEditClient.status);
+  const status = selectedEditClient.status;
   const [infos, setInfos] = useState(selectedEditClient.infos);
   const [error, setError] = useState("");
   const token = getItem("token");
@@ -253,7 +253,7 @@ function EditClient({ updateList }) {
       <div className="container-client">
         <div className="chart-client">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? XBlack : XWhite}
             title="Sair"
             alt="Sair"
             onClick={() => handleClickOpenEditClient(false)}

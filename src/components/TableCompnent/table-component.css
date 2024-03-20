@@ -13,16 +13,11 @@
   justify-content: center;
 
   height: 100%;
-  border: 1px solid rgba(var(--cor-preto), 0.9);
+  border: 1px solid rgba(var(--cor-black), 0.9);
   border-radius: 10px;
 
   list-style: none;
-  background-color: rgba(var(--cor-roxo), 0.5);
-}
-
-.office-page-dark .container .table .table-component .title ul {
-  border: 1px solid rgba(var(--cor-rosa), 1);
-  background-color: rgba(var(--cor-rosa), 0.3);
+  background-color: rgba(var(--cor-purple), 0.5);
 }
 
 .office-page .container .table .table-component .title ul li {
@@ -36,11 +31,6 @@
   font-weight: 600;
 }
 
-.office-page-dark .container .table .table-component .title ul li {
-  color: rgba(var(--cor-branco), 0.9);
-  font-weight: 300;
-}
-
 .office-page .container .table .table-component .body {
   height: 90%;
   border-radius: 10px;
@@ -49,11 +39,6 @@
 
 .office-page .container .table .table-component .body .line {
   height: 10%;
-}
-
-.office-page-dark .container .table .table-component .body .line {
-  background-color: rgba(var(--cor-rosa), 0.05);
-  color: rgba(var(--cor-branco), 1);
 }
 
 .office-page .container .table .table-component .body .line ul {
@@ -71,8 +56,8 @@
   height: 100%;
   padding-left: 10px;
 
-  border-right: 1px solid rgba(var(--cor-preto), 0.8);
-  border-bottom: 1px solid rgba(var(--cor-roxo), 0.5);
+  border-right: 1px solid rgba(var(--cor-black), 0.8);
+  border-bottom: 1px solid rgba(var(--cor-purple), 0.5);
 }
 
 .office-page .container .table .table-component .body ul li:nth-child(1),
@@ -94,19 +79,8 @@
   .line
   ul
   li:first-child:hover {
-  background-color: rgba(var(--cor-roxo), 0.2);
-  border: 1px solid rgba(var(--cor-preto), 0.5);
-}
-
-.office-page-dark
-  .container
-  .table
-  .table-component
-  .body
-  .line
-  ul
-  li:first-child:hover {
-  background-color: rgba(var(--cor-rosa), 0.2);
+  background-color: rgba(var(--cor-purple), 0.2);
+  border: 1px solid rgba(var(--cor-black), 0.5);
 }
 
 .office-page .container .table .table-component .body .line ul li:last-child {
@@ -115,11 +89,6 @@
 
 .office-page .container .table .table-component .body .line ul li:last-child {
   justify-content: center;
-}
-
-.office-page-dark .container .table .table-component .body .line ul li {
-  border-right: 1px solid rgba(var(--cor-rosa), 0.7);
-  border-bottom: 1px solid rgba(var(--cor-rosa), 0.3);
 }
 
 .office-page
@@ -131,6 +100,7 @@
   ul
   .status-financeiro {
   cursor: pointer;
+  font-weight: 900;
 }
 
 .office-page
@@ -141,18 +111,14 @@
   .line
   ul
   .status-financeiro:hover {
-  background-color: rgba(var(--cor-roxo), 0.2);
-  border: 1px solid rgba(var(--cor-preto), 0.5);
+  background-color: rgba(var(--cor-purple), 0.2);
+  border: 1px solid rgba(var(--cor-black), 0.5);
 }
 
 .office-page .container .table .table-component .body .line ul li p {
-  white-space: nowrap;
+  White-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.office-page-dark .container .table .table-component .body .line ul li p {
-  color: rgba(var(--cor-branco), 0.9);
 }
 
 .office-page .container .table .table-component .body .line ul li:last-child {

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import XBranco from "../../assets/x-branco.png";
-import XPreto from "../../assets/x-preto.png";
+import XWhite from "../../assets/x-branco.png";
+import XBlack from "../../assets/x-preto.png";
 import { useModal } from "../../context/ModalsContext";
 import { useTheme } from "../../context/ThemeContext";
 import api from "../../services/api";
@@ -258,7 +258,7 @@ function RegisterClient({ updateList }) {
       <div className="container-client">
         <div className="chart-client">
           <img
-            src={theme === "light" ? XPreto : XBranco}
+            src={theme === "light" ? XBlack : XWhite}
             title="Sair"
             alt="Sair"
             onClick={() => handleClickOpenRegisterClient(false)}
