@@ -1,11 +1,10 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import LogoReductWhite from "../../assets/logo-reduzida-branco.png";
-import LogoReductColor from "../../assets/logo-reduzida-color-120px.png";
+import LogoReductColorful from "../../assets/logo-reduzida-color-120px.png";
 import exitWhite from "../../assets/sair-branco.png";
 import exitBlack from "../../assets/sair-preto.png";
 import settingsBlack from "../../assets/settings-black.png";
 import settingsWhite from "../../assets/settings-white.png";
-import { useFontSize } from "../../context/FontSizeContext";
 import { useModal } from "../../context/ModalsContext";
 import { useScroll } from "../../context/ScrollContext";
 import { useTheme } from "../../context/ThemeContext";
@@ -18,11 +17,8 @@ function Header() {
   const { handleClickOpenSettings, openUserEdit, openToast } = useModal();
   const { theme } = useTheme();
   const { scroll } = useScroll();
-  const { fontSizeModify } = useFontSize();
   const navigate = useNavigate();
   let rotaDestino = "";
-  let headerMove = "";
-  let logoSmall = "";
 
   if (getItem("tipo cadastro")) {
     if (getItem("tipo cadastro") === "cliente") {
@@ -36,13 +32,8 @@ function Header() {
     rotaDestino = "/login";
   }
 
-  if (theme === "light") {
-    headerMove = scroll === 0 ? "" : "header-move-light";
-    logoSmall = scroll === 0 ? "" : "logo-small";
-  } else {
-    headerMove = scroll === 0 ? "" : "header-move-dark";
-    logoSmall = scroll === 0 ? "" : "logo-small";
-  }
+  const headerMove = scroll === 0 ? "" : "header-move";
+  const logoSmall = scroll === 0 ? "" : "logo-small";
 
   function handleClickLogOut() {
     removeItem("usuario");
@@ -57,22 +48,19 @@ function Header() {
     <div className="container-header" id="inicio">
       {openToast && <Toast />}
       {openUserEdit && <EditUser />}
-      <div className={`header header-${theme} ${headerMove}`}>
+      <div className={`header  ${headerMove}`}>
         <div className="container">
           <div className={`logo ${logoSmall}`}>
             <Link to="/home">
               <img
-                src={theme === "light" ? LogoReductColor : LogoReductWhite}
+                src={theme === "light" ? LogoReductColorful : LogoReductWhite}
                 alt="Logo Daniela Lordello"
               />
             </Link>
           </div>
 
           <nav>
-            <ul
-              className="menu-lista"
-              style={{ fontSize: `calc(17px + ${fontSizeModify}px)` }}
-            >
+            <ul className="menu-lista">
               <li>
                 <Link to="/home">Início </Link>
               </li>
@@ -89,10 +77,7 @@ function Header() {
           </nav>
           <div className="infos-client">
             <Link to={rotaDestino} className="link">
-              <button
-                className={`area-cliente area-cliente-${theme}`}
-                style={{ fontSize: `calc(20px + ${fontSizeModify}px)` }}
-              >
+              <button className={`area-cliente`}>
                 <p>
                   {getItem("id") !== null
                     ? getItem("usuario").split(" ")[0]
@@ -104,7 +89,7 @@ function Header() {
               <div className="buttons-settings-exit">
                 {
                   <button
-                    className="button-1"
+                    className="button"
                     title="configurações"
                     onClick={() => handleClickOpenSettings(true)}
                   >
@@ -117,7 +102,7 @@ function Header() {
 
                 {
                   <button
-                    className="button-2"
+                    className="button"
                     title="Sair"
                     onClick={() => handleClickLogOut()}
                   >

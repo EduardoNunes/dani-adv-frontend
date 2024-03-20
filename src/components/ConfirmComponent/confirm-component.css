@@ -31,7 +31,7 @@
 
   font-family: "fonte";
   font-size: 18px;
-  color: rgb(238, 238, 112);
+  color: rgba(var(--cor-yellow), 1);
   text-shadow: 1px 1px 1px rgba(var(--cor-black), 1);
 }
 

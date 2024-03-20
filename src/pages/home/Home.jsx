@@ -47,16 +47,16 @@ function Home() {
   };
 
   return (
-    <div className={`home home-${theme}`}>
+    <div className={"home"}>
       <div className="whatsApp">
         <WhatsApp icone={IconeWhatsAppVerdeVerde} />
       </div>
-      <div className={`banner banner-theme-${theme}`}>
+      <div className={"banner"}>
         <img
           src={theme === "light" ? JusticePurpleImg : BalancePinkImg}
           alt={`Banner-${theme}`}
         />
-        <div className={`frase frase-${theme}`}>
+        <div className={"frase"}>
           <h1>"Quem não luta pelos seus direitos não é digno deles."</h1>
           <h1>Ruy Barbosa</h1>
         </div>

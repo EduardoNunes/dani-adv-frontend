@@ -94,7 +94,7 @@
   height: 30px;
 
   margin: 10px 8px 12px;
-  border: 1px solid black;
+  border: 1px solid rgba(var(--cor-black), 1);
   border-radius: 4px;
 
   font-family: "fonte";

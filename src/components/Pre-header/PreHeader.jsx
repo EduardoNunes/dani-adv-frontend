@@ -18,7 +18,7 @@ function PreHeader() {
 
   return (
     <div className="container-pre-header">
-      <div className={`pre-header pre-header-${theme} ${preHeaderMove}`}>
+      <div className={`pre-header ${preHeaderMove}`}>
         <div className="container">
           <div className="icones-theme">
             <img
@@ -27,13 +27,13 @@ function PreHeader() {
               alt={theme === "light" ? "light" : "dark"}
             />
           </div>
-          <div className={`icones-font-size icones-font-size-${theme}`}>
+          <div className={"icones-font-size"}>
             <h5>Acessibilidade</h5>
             <img
               src={theme === "light" ? IconFontSizepurple : IconFontSizepink}
               alt={theme === "light" ? "light" : "dark"}
             />
-            <div className={`change-font change-font-${theme}`}>
+            <div className={"change-font"}>
               <p onClick={decrementFontSize}>-</p>
               <p>{fontSizeModify}</p>
               <p onClick={incrementFontSize}>+</p>

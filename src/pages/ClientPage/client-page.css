@@ -34,7 +34,7 @@
   height: 80%;
   width: 76%;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid rgba(var(--cor-black), 1);
 }
 
 .client-page .container .table .content {
@@ -52,7 +52,7 @@
   justify-content: center;
 
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid rgba(var(--cor-black), 1);
   border-radius: 10px;
 
   list-style: none;

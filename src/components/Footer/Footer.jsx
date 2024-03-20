@@ -1,7 +1,6 @@
 import LogoCompleteWhite from "../../assets/logo-completo-branco.png";
 import LogoCompleteColor from "../../assets/logo-completo.png";
 import { useTheme } from '../../context/ThemeContext';
-import { useFontSize } from "../../context/FontSizeContext";
 import Instagram from "../redes-sociais/Instagram";
 import Linkedin from "../redes-sociais/Linkedin";
 import WhatsApp from "../redes-sociais/WhatsApp";
@@ -9,8 +8,7 @@ import Email from "../redes-sociais/email";
 import './footer.css';
 
 function Footer() {
-  const { theme } = useTheme()
-  const { fontSizeModify } = useFontSize()
+  const { theme } = useTheme();
   
   const instagram = '@danielalordelloadv'
   const nomeLinkedin = 'Daniela Lordello'
@@ -18,13 +16,13 @@ function Footer() {
   const email = 'danielalordelloadv@gmail.com'
 
   return (
-    <div className={`footer footer-${theme}`} >
+    <div className={"footer"} >
       <div className="footer-top">
         <div className="logo-completa">
           <img src={theme === 'light' ? LogoCompleteColor : LogoCompleteWhite} alt="Logo" />
         </div>
         <div className="center"></div>
-        <div className="redes-sociais" style={{ fontSize: `calc(16px + ${fontSizeModify}px)` }}>
+        <div className="redes-sociais">
           <ul>
             <li>
               <WhatsApp numWhatsApp={numWhatsApp} />
@@ -43,7 +41,7 @@ function Footer() {
       </div>
       <div className="footer-bot" id="contato">
         <div className="container">
-          <p style={{ fontSize: `calc(16px + ${fontSizeModify}px)` }} >© 2023 copiryght by Lakke_Dev</p>
+          <p>© 2023 copiryght by Lakke_Dev</p>
         </div>
       </div>
     </div>
