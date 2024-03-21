@@ -197,8 +197,6 @@
   margin: 2px 0 6px;
   padding-left: 10px;
   border-radius: 5px;
-
-  background-color: rgba(244, 244, 244, 0.8);
 }
 
 .register-client .container-client .chart-client form .infos {
@@ -228,7 +226,7 @@
   padding: 4px 14px;
   border-radius: 5px;
 
-  background-color: rgba(244, 244, 244, 0.8);
+  background-color: rgba(244, 244, 244, 1);
 }
 
 .register-client .container-client .chart-client form span {
