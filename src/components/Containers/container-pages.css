@@ -19,7 +19,7 @@
     padding: 30px 50px;
 
     border: 20px solid rgba(var(--cor-purple), .3);
-    background-color: rgba(var(--cor-white), .8);
+    background-color: rgba(var(--cor-white), 1);
 
     font-family: 'fonte';
     text-align: justify;
@@ -49,5 +49,5 @@
 }
 
 .geral .container .right .moldura {
-    background-color: rgba(var(--cor-black), .6);
+    background-color: rgba(var(--cor-black), .8);
 }

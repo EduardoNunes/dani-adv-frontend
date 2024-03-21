@@ -30,7 +30,7 @@
   height: calc(100vh - 40px);
   width: 100vw;
 
-  background-color: rgba(var(--cor-black), 0.6);
+  background-color: rgba(var(--cor-white), 0.6);
 }
 
 .register form {
@@ -63,6 +63,7 @@
 .register form .chart label {
   margin-bottom: 5px;
   font-family: "fonte";
+  color: rgba(var(--cor-black), 1);
 }
 
 .register form .chart input {
@@ -115,5 +116,20 @@
 
   height: 30px;
 
+  font-size: 18px;
   font-family: "fonte";
+  color: rgba(var(--cor-black), 1);
+}
+
+.register form .bottom p {
+  margin-top: 14px;
+  font-size: 18px;
+  font-family: "fonte";
+  color: rgba(var(--cor-black), 1);
+}
+
+.register form .bottom a {
+  font-size: 20px;
+  font-family: "fonte";
+  color: rgba(var(--cor-green), 1);
 }

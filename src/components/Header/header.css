@@ -1,8 +1,8 @@
 .container-header {
   display: flex;
   flex-direction: column;
- /*  height: calc(100vh - 40px); */
   width: 100%;
+  height: calc(100vh - 40px);
 }
 
 .header {
@@ -67,8 +67,7 @@
 
 .header .container .menu-lista li {
   font-family: "fonte";
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 18px;
 }
 
 .header .container .menu-lista li:not(:last-child)::after {
@@ -158,8 +157,4 @@
 
 .header .container .infos-client .button img {
   width: 28px;
-}
-
-.header .contet-page {
-  height: calc(100vh - 40px);
 }

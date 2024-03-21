@@ -543,8 +543,8 @@ function RegisterProcess({ updateList }) {
                 onChange={(e) => setInfos(e.target.value)}
               ></textarea>
             </div>
-            <button>Enviar</button>
             {error && <span>{error}</span>}
+            <button>Enviar</button>
           </form>
         </div>
       </div>

@@ -31,6 +31,15 @@ function ClientPage() {
     clientProcess();
   }, []);
 
+  function invertData(data) {
+    if (data) {
+      const dataFormat = data.split("-");
+      const newData = `${dataFormat[2]}-${dataFormat[1]}-${dataFormat[0]}`;
+
+      return newData;
+    }
+  }
+
   return (
     <div className={`client-page client-page-${theme}`}>
       {openProcessDetails && <ProcessDetails processo={selectedProcess} />}
@@ -77,12 +86,12 @@ function ClientPage() {
                         <p title={processo.vara}>{processo.vara}</p>
                       </li>
                       <li>
-                        <p title={processo.data_entrada}>
-                          {processo.data_entrada}
+                        <p title={invertData(processo.data_entrada)}>
+                          {invertData(processo.data_entrada)}
                         </p>
                       </li>
                       <li>
-                        <p title={processo.atualizado}>{processo.atualizado}</p>
+                        <p title={invertData(processo.atualizado)}>{invertData(processo.atualizado)}</p>
                       </li>
                     </ul>
                   </div>

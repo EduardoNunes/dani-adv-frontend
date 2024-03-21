@@ -4,7 +4,7 @@
 
   width: 100vw;
   height: calc(100vh - 40px);
-  background-color: rgba(var(--cor-black), 0.8);
+  background-color: rgba(28, 28, 27, 0.8);
 
   z-index: 1;
 }
@@ -30,8 +30,8 @@
 
   padding: 40px;
   border-radius: 10px;
-
-  background-color: rgba(var(--cor-white), 0.9);
+  border: 1px solid rgba(var(--cor-purple), 1);
+  background-color: rgba(var(--cor-white), 1);
 }
 
 .register-process .container-process .chart-process img {
@@ -51,6 +51,7 @@
   width: 100%;
   border-radius: 5px;
 
+  color: rgba(var(--cor-black), 1);
   background-color: rgba(var(--cor-purple), 0.6);
 }
 
@@ -69,6 +70,7 @@
 .register-process .container-process .chart-process form label {
   margin: 10px 0 5px;
   font-weight: 600;
+  color: rgba(var(--cor-black), 1);
 }
 
 .register-process .container-process .chart-process form .container1 {
@@ -154,37 +156,18 @@
   width: calc(100% / 3);
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .financeiro
-  .entrada
-  .valor {
+.register-process form .financeiro .entrada .valor {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 60%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .financeiro
-  .entrada
-  div
-  input {
+.register-process form .financeiro .entrada div input {
   width: 100%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .financeiro
-  .entrada
-  div {
+.register-process form .financeiro .entrada div {
   padding-right: 10px;
 }
 
@@ -194,58 +177,30 @@
   width: calc(100% / 3);
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .parcelamento
-  .container1 {
+.register-process form .parcelamento .container1 {
   display: flex;
   width: 100%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .parcelamento
-  .container1
-  div {
+.register-process form .parcelamento .container1 div {
   display: flex;
   flex-direction: column;
   width: 50%;
   padding-right: 10px;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .parcelamento
-  .container2 {
+.register-process form .parcelamento .container2 {
   display: flex;
   width: 100%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .parcelamento
-  .container2
-  div {
+.register-process form .parcelamento .container2 div {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .parcelamento
-  .container2
-  div {
+.register-process form .parcelamento .container2 div {
   padding-right: 10px;
 }
 
@@ -260,80 +215,47 @@
   width: 100%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .final
-  .container0
-  .porcentagem {
+.register-process form .final .container0 .porcentagem {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .final
-  .container0
-  .porcentagem
-  div {
+.register-process form .final .container0 .porcentagem div {
   display: flex;
   flex-direction: column;
   width: 100%;
   padding-right: 10px;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .final
-  .container0
-  .total {
+.register-process form .final .container0 .total {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   width: 50%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .final
-  .container0
-  .total
-  div {
+.register-process form .final .container0 .total div {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.register-process
-  .container-process
-  .chart-process
-  form
-  .final
-  .container0
-  .total
-  div
-  output {
+.register-process form .final .container0 .total div output {
   display: flex;
   align-items: center;
   padding-left: 10px;
   height: 26px;
   width: 100%;
   border-radius: 10px;
-  background-color: rgba(var(--cor-white), 0.8);
+  background-color: rgba(254, 254, 254, 1);
 }
 
 .register-process .container-process .chart-process form .infos {
   display: flex;
   flex-direction: column;
   width: 90%;
+  color: rgba(var(--cor-black), 1);
 }
 
 .register-process .container-process .chart-process form .infos textarea {
@@ -344,19 +266,23 @@
   padding: 4px 10px;
   border-radius: 5px;
 
-  background-color: rgba(var(--cor-white), 0.8);
+  background-color: rgba(254, 254, 254, 1);
 }
 
 .register-process .container-process .chart-process form button {
   display: flex;
   justify-content: center;
   align-items: center;
+
   height: 30px;
   width: 140px;
-  margin-top: 10px;
+
+  margin: 10px 0;
+
   cursor: pointer;
 }
 
 .register-process .container-process .chart-process form span {
+  margin-top: 10px;
   color: rgba(var(--cor-red), 1);
 }

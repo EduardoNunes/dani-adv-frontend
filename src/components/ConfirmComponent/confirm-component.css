@@ -5,7 +5,7 @@
     align-items: center;
     width: 100vw;
     height: calc(100vh - 40px);
-    background-color: rgba(var(--cor-black), 0.4);
+    background-color: rgba(25, 25, 24, 0.8);
     z-index: 1;
 }
 
@@ -18,8 +18,8 @@
   padding: 20px;
 
   border-radius: 10px;
-  background-color: rgba(var(--cor-black), 0.8);
-  border: 1px solid rgba(var(--cor-black), 0.8);
+  background-color: rgba(var(--cor-white), 1);
+  border: 1px solid rgba(255, 255, 0, 0.8);
 }
 
 .full-screen .confirm img {

@@ -5,7 +5,7 @@
     width: 100vw;
     height: calc(100vh - 40px);
 
-    background-color: rgba(var(--cor-black), 0.8);
+    background-color: rgba(28, 28, 27, 0.8);
   
     z-index: 2;
   }
@@ -28,12 +28,12 @@
     align-items: center;
     position: relative;
   
-    height: 400px;
     width: 40%;
     min-width: 600px;
   
     padding: 40px;
     border-radius: 10px;
+    border: 1px solid rgba(var(--cor-purple), 1);
   
     background-color: rgba(var(--cor-white), 1);
   }
@@ -54,7 +54,8 @@
     height: 30px;
     width: 100%;
     border-radius: 5px;
-  
+    
+    color: rgba(var(--cor-black), 1);
     background-color: rgba(var(--cor-purple), 0.6);
   }
   
@@ -76,8 +77,8 @@
     height: 20px;
     margin-top: 10px;
   
-    font-weight: 600;
     font-family: "fonte";
+    color: rgba(var(--cor-black), 1);
   }
   
   .edit-user .container-edit-user .chart-edit-user form input,
@@ -91,7 +92,7 @@
     padding-left: 10px;
     border-radius: 5px;
   
-    background-color: rgba(var(--cor-white), 0.8);
+    background-color: rgba(254, 254, 254, 0.8);
   }
 
   .edit-user .container-edit-user .chart-edit-user form .input-senha {
@@ -115,7 +116,7 @@
 
   .edit-user .container-edit-user .chart-edit-user form span {
     margin-top: 8px;
-    color: rgba(var(--cor-red), 1);
+    color: rgba(var(--cor-green), 1);
   }
 
   .edit-user .container-edit-user .chart-edit-user form .edit-buttons {

@@ -112,7 +112,7 @@ function Login() {
 
             <label>Senha:</label>
             <div className="input2">
-              <input
+              <input  
                 type={showPassword ? "text" : "password"}
                 value={password}
                 placeholder="Digite sua senha."
@@ -131,7 +131,7 @@ function Login() {
           <TipoCadastro titulo="Quero acessar como:" page="login" />
 
           {error && <span>{error}</span>}
-          <div>
+          <div className="top">
             <button type="submit">Login</button>
             <button type="button" onClick={() => handleClearForm()}>
               Limpar

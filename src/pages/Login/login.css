@@ -27,7 +27,7 @@
   height: calc(100vh - 40px);
   width: 100vw;
 
-  background-color: rgba(var(--cor-black), 0.6);
+  background-color: rgba(28, 28, 27, 0.6);
 }
 
 .login form {
@@ -60,6 +60,7 @@
 .login form .chart label {
   margin-bottom: 5px;
   font-family: "fonte";
+  color: rgba(var(--cor-black), 1);
 }
 
 .login form .chart input {
@@ -75,12 +76,13 @@
 
 .login form .chart .olho-password {
   position: absolute;
-  top: 3px;
+  top: 1px;
   right: 4%;
 }
 
 .login form .chart .olho-password img {  
   cursor: pointer;
+  width: 24px;
 }
 
 .login form span {
@@ -89,18 +91,20 @@
 
 .login form button {
   height: 30px;
+  width: 80px;
 
   margin: 10px 8px 12px;
   border: 1px solid rgba(var(--cor-black), 1);
   border-radius: 4px;
 
   font-family: "fonte";
+  font-size: 16px;
   transition: ease-in-out 0.1s;
   cursor: pointer;
 }
 
 .login form button:hover {
-  background-color: rgba(var(--cor-white), 0.7);
+  background-color: rgba(var(--cor-white), 0.5);
 }
 
 .login form .bottom {
@@ -116,6 +120,10 @@
 
 .login form .bottom p {
   margin: 22px 0 2px;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+}
+
+.login form .bottom a {
+  font-size: 20px;
+  color: rgba(var(--cor-green), 1);
 }

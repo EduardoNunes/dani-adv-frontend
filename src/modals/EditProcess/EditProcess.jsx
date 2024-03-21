@@ -167,8 +167,8 @@ function EditProcess({ updateList }) {
               onChange={(e) => setInfos(e.target.value)}
             ></textarea>
 
-            <button>Enviar</button>
             {error && <span>{error}</span>}
+            <button>Enviar</button>
           </form>
         </div>
       </div>

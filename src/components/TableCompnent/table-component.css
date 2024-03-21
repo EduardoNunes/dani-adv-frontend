@@ -26,9 +26,9 @@
 
   width: 16.66%;
 
+  color: rgba(var(--cor-black), 1);
   font-family: "fonte";
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
 }
 
 .office-page .container .table .table-component .body {
@@ -56,6 +56,7 @@
   height: 100%;
   padding-left: 10px;
 
+  color: rgba(var(--cor-black), 1);
   border-right: 1px solid rgba(var(--cor-black), 0.8);
   border-bottom: 1px solid rgba(var(--cor-purple), 0.5);
 }

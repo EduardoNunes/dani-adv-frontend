@@ -7,7 +7,10 @@
 .tipo-cadastro h4 {
   display: flex;
   justify-content: center;
+
   margin-bottom: 10px;
+  font-weight: 300;
+  color: rgba(var(--cor-black), 1);
 }
 
 .tipo-cadastro input {
@@ -19,10 +22,16 @@
 .tipo-cadastro label {
   display: flex;
   align-items: center;
+  color: rgba(var(--cor-black), 1);
 }
 
 .tipo-cadastro .cliente,
 .tipo-cadastro .estudante,
 .tipo-cadastro .escritorio {
   display: flex;
+}
+
+.login form .bottom {
+  color: rgba(var(--cor-black), 1);
+  text-shadow: 1px 1px 1px rgba(var(--cor-white), 1);
 }
