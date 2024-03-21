@@ -4,9 +4,12 @@
 
   width: 100vw;
   height: calc(100vh - 40px);
-  background-color: rgba(var(--cor-black), 0.8);
+  background-color: rgba(25, 25, 24, 0.8);
 
   z-index: 1;
+}
+.edit-client {
+  color: rgba(var(--cor-black), 1);
 }
 
 .edit-client .container-client {
@@ -31,8 +34,8 @@
 
   padding: 40px;
   border-radius: 10px;
-
-  background-color: rgba(var(--cor-white), 0.9);
+  border: 1px solid rgba(var(--cor-purple), 1);
+  background-color: rgba(var(--cor-white), 1);
 }
 
 .edit-client .container-client .chart-client img {
@@ -52,6 +55,7 @@
   width: 100%;
   border-radius: 5px;
 
+  color: rgba(var(--cor-black), 1);
   background-color: rgba(var(--cor-purple), 0.6);
 }
 
@@ -133,6 +137,7 @@
 
 .edit-client .container-client .chart-client form .formulario .financeiro .financeiro-container label {
   margin-right: 8px;
+  color: rgba(var(--cor-black), 1);
 }
 
 .edit-client .container-client .chart-client form .formulario .financeiro .financeiro-container select {
@@ -154,7 +159,7 @@
   padding-left: 10px;
   border-radius: 5px;
 
-  background-color: rgba(var(--cor-white), 0.8);
+  background-color: rgba(254, 254, 254, 1);
 }
 
 .edit-client .container-client .chart-client form p {
@@ -175,7 +180,9 @@
 .edit-client .container-client .chart-client form .infos label {
   font-size: 17px;
   margin-bottom: 3px;
+  color: rgba(var(--cor-black), 1);
 }
+
 .edit-client .container-client .chart-client form .infos textarea {
   display: flex;
   align-items: center;
@@ -187,7 +194,7 @@
   padding: 4px 14px;
   border-radius: 5px;
 
-  background-color: rgba(var(--cor-white), 0.8);
+  background-color: rgba(254, 254, 254, 1);
 }
 
 .edit-client .container-client .chart-client form span {

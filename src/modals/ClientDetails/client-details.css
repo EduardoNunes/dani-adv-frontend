@@ -4,7 +4,7 @@
 
   width: 100vw;
   height: calc(100vh - 40px);
-  background-color: rgba(var(--cor-black), 0.8);
+  background-color: rgba(25, 25, 24, 0.8);
 
   z-index: 1;
 }
@@ -29,7 +29,8 @@
   padding: 40px;
   border-radius: 10px;
 
-  background-color: rgba(var(--cor-white), 0.9);
+  border: 1px solid rgba(var(--cor-purple), 1);
+  background-color: rgba(var(--cor-white), 1);
 }
 
 .client-details .container-client .chart-client img {
@@ -49,6 +50,7 @@
   width: 100%;
   border-radius: 5px;
 
+  color: rgba(var(--cor-black), 1);
   background-color: rgba(var(--cor-purple), 0.6);
 }
 
@@ -76,6 +78,7 @@
     display: flex;
     justify-content: center;
     margin: 10px 0 0;
+    color: rgba(var(--cor-black), 1);
 }
 
 .client-details .container-client .chart-client .section1 div {
@@ -90,6 +93,7 @@
 .client-details .container-client .chart-client .adicionais label {
     width: 100%;
     margin: 6px 0 4px;
+    color: rgba(var(--cor-black), 1);
 }
 
 .client-details .container-client .chart-client .section1 div li {
@@ -100,7 +104,7 @@
     border-radius: 10px;
     padding-left: 10px;
     list-style: none;
-    background-color: rgba(var(--cor-white), 0.9);
+    background-color: rgba(254, 254, 254, 1);
 }
 
 .client-details .container-client .chart-client .adicionais {
@@ -116,7 +120,7 @@
     border-radius: 10px;
 
     list-style: none;
-    background-color: rgba(var(--cor-white), 0.9);
+    background-color: rgba(254, 254, 254, 1);
 }
 
 
