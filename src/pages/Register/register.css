@@ -30,7 +30,7 @@
   height: calc(100vh - 40px);
   width: 100vw;
 
-  background-color: rgba(var(--cor-white), 0.6);
+  background-color: rgba(25, 25, 25, 0.6);
 }
 
 .register form {
