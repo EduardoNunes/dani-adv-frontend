@@ -1,40 +1,15 @@
 @font-face {
-    font-family: "fonte";
-    src: url(./fonts/AbhayaLibre-Medium.ttf) format("truetype"),
-        url(./fonts/AbhayaLibre-Regular.ttf) format("truetype"),
-        url(./fonts/AbhayaLibre-SemiBold.ttf) format("truetype");
+  font-family: "fonte";
+  src: url(./fonts/AbhayaLibre-Medium.ttf) format("truetype"),
+    url(./fonts/AbhayaLibre-Regular.ttf) format("truetype"),
+    url(./fonts/AbhayaLibre-SemiBold.ttf) format("truetype");
 }
 
 :root {
-    --cor-purple: 102, 36, 131;
-    --cor-black: 28, 28, 27;
-    --cor-pink: 231, 29, 115;
-    --cor-white: 254, 254, 254;
-    --cor-yellow: 255, 255, 0;
-    --cor-green: 0, 128, 0;
-    --cor-red: 255, 0, 0;
+  --font-size-small: 1rem;
+  --font-size-medium: 1.3rem;
+  --font-size-large: 2rem;
+  --font-size-biggest: 3rem;
 
-    --font-size-small: 1rem;
-    --font-size-medium: 1.3rem;
-    --font-size-large: 2rem;
-    --font-size-biggest: 3rem;
-
-    --font-type1: "fonte", sans-serif;
-}
-
-:root.dark {
-    --cor-purple: 231, 29, 115; /* pink */
-    --cor-black: 254, 254, 254; /* white */
-    --cor-pink: 102, 36, 131; /* purple */
-    --cor-white: 28, 28, 27; /* black */
-    --cor-yellow: 255, 255, 0;
-    --cor-green: 0, 128, 0;
-    --cor-red: 255, 0, 0;
-
-    --font-size-small: 1rem;
-    --font-size-medium: 1.3rem;
-    --font-size-large: 2rem;
-    --font-size-biggest: 3rem;
-
-    --font-type1: "fonte", sans-serif;
+  --font-type1: "fonte", sans-serif;
 }

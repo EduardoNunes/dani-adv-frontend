@@ -13,12 +13,9 @@
   height: calc(100vh - 40px);
   width: 100%;
 
+  border-top: 1px solid rgba(var(--cor-purple), 1);
   object-fit: cover;
   object-position: center 25%;
-}
-
-.login .background-light {
-  border-top: 1px solid rgba(var(--cor-purple), 1);
 }
 
 .login .formulario {

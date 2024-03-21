@@ -87,9 +87,9 @@
 
     font-size: 25px;
     font-family: 'fonte';
-    font-weight: 600;
-    
+    font-weight: 600;    
     color: rgba(var(--cor-purple), 1);
+    
     transition: ease-in-out .3s;
 }
 

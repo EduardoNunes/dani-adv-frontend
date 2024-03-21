@@ -5,7 +5,6 @@ import JusticePurpleImg from "../../assets/martelo-ouro.jpg";
 import olhoAberto from "../../assets/olho-aberto.png";
 import olhoFechado from "../../assets/olho-fechado.png";
 import TipoCadastro from "../../components/TipoCadastro/TipoCadastro";
-import { useFontSize } from "../../context/FontSizeContext";
 import { useTheme } from "../../context/ThemeContext";
 import { useTipoCadastroContext } from "../../context/TipoCadastroContext";
 import { useValidationsContext } from "../../context/ValidationsContext";
@@ -17,9 +16,8 @@ import "./login.css";
 function Login() {
   const { theme } = useTheme();
   const { selectedOption } = useTipoCadastroContext();
-  const { fontSizeModify } = useFontSize();
   const { handleClickShowPassword, showPassword } = useShowPassword();
-  const { validationEmail, validationPassword} = useValidationsContext();
+  const { validationEmail, validationPassword } = useValidationsContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -55,11 +53,11 @@ function Login() {
         senha: password,
         tipoCadastro: selectedOption,
       });
-      
+
       if (response.status > 204) {
         return;
       }
-      
+
       setItem("token", response.data.token);
       setItem("usuario", response.data.usuario.nome);
       setItem("id", response.data.usuario.id);
@@ -94,35 +92,21 @@ function Login() {
   }, [navigate]);
 
   return (
-    <div className={`login login-${theme}`}>
+    <div className={"login"}>
       <img
-        className={`background background-${theme}`}
+        className={"background"}
         src={theme === "light" ? JusticePurpleImg : BalancePinkImg}
         alt={`Banner-${theme}`}
       />
       <div className="formulario">
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            height: `calc(450px + ${fontSizeModify * 10}px)`,
-          }}
-        >
-          <h2 style={{ fontSize: `calc(26px + ${fontSizeModify}px)` }}>
-            Login
-          </h2>
-          <div
-            className="chart"
-            style={{ fontSize: `calc(18px + ${fontSizeModify}px)` }}
-          >
+        <form onSubmit={handleSubmit}>
+          <h2>Login</h2>
+          <div className="chart">
             <label>E-mail:</label>
             <input
               type="email"
               value={email}
               placeholder="Digite seu email."
-              style={{
-                height: `calc(26px + ${fontSizeModify * 2}px)`,
-                fontSize: `calc(14px + ${fontSizeModify}px)`,
-              }}
               onChange={(e) => setEmail(e.target.value)}
             />
 
@@ -132,56 +116,29 @@ function Login() {
                 type={showPassword ? "text" : "password"}
                 value={password}
                 placeholder="Digite sua senha."
-                style={{
-                  height: `calc(26px + ${fontSizeModify * 2}px)`,
-                  fontSize: `calc(14px + ${fontSizeModify}px)`,
-                }}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <div className="olho-password">
                 <img
                   src={showPassword ? olhoAberto : olhoFechado}
                   alt="Mostrar senha"
-                  style={{
-                    width: `calc(20px + ${fontSizeModify * 2}px)`,
-                  }}
                   onClick={() => handleClickShowPassword()}
                 />
               </div>
             </div>
           </div>
 
-          <TipoCadastro titulo="Quero acessar como:" page="login"/>
+          <TipoCadastro titulo="Quero acessar como:" page="login" />
 
           {error && <span>{error}</span>}
           <div>
-            <button
-              type="submit"
-              style={{
-                width: `calc(70px + ${fontSizeModify * 2}px)`,
-                fontSize: `calc(16px + ${fontSizeModify}px)`,
-              }}
-            >
-              Login
-            </button>
-            <button
-              type="button"
-              style={{
-                width: `calc(70px + ${fontSizeModify * 2}px)`,
-                fontSize: `calc(16px + ${fontSizeModify}px)`,
-              }}
-              onClick={() => handleClearForm()}
-            >
+            <button type="submit">Login</button>
+            <button type="button" onClick={() => handleClearForm()}>
               Limpar
             </button>
           </div>
 
-          <div
-            className="bottom"
-            style={{
-              fontSize: `calc(18px + ${fontSizeModify}px)`,
-            }}
-          >
+          <div className="bottom">
             <p>Ainda não tem cadastro?</p>
             <Link to="/register">Cadastre-se</Link>
           </div>

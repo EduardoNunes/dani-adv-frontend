@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import OfficePage from "./pages/office/OfficePage";
 import { getItem } from "./utils/storage";
+import { useTheme } from "./context/ThemeContext";
 
 function ProtectedRoutes({ redirectTo, allowedTypes }) {
   const isAuthenticated = getItem("token");
@@ -14,66 +15,21 @@ function ProtectedRoutes({ redirectTo, allowedTypes }) {
 
   const cadastradoComo = allowedTypes.includes(tipoCadastro);
 
-  return isAuthenticated && cadastradoComo ? <Outlet /> : <Navigate to={redirectTo} />;
+  return isAuthenticated && cadastradoComo ? (
+    <Outlet />
+  ) : (
+    <Navigate to={redirectTo} />
+  );
 }
 
 function MainRoutes() {
+  const { theme } = useTheme();
+
   return (
-    <Routes>
-      <Route
-        path="/home"
-        element={
-          <>
-            <PreHeader />
-            <Header />
-          </>
-        }
-      >
-        <Route path="" element={<App />} />
-      </Route>
-
-      <Route
-        path="/"
-        element={
-          <>
-            <PreHeader />
-            <Header />
-          </>
-        }
-      >
-        <Route path="" element={<App />} />
-      </Route>
-
-      <Route
-        path="/login"
-        element={
-          <>
-            <PreHeader />
-            <Header />
-          </>
-        }
-      >
-        <Route path="" element={<Login />} />
-      </Route>
-
-      <Route
-        path="/register"
-        element={
-          <>
-            <PreHeader />
-            <Header />
-          </>
-        }
-      >
-        <Route path="" element={<Register />} />
-      </Route>
-      <Route
-        element={
-          <ProtectedRoutes redirectTo="/home" allowedTypes={"cliente"} />
-        }
-      >
+    <div className={`body-geral body-geral-${theme}`}>
+      <Routes>
         <Route
-          path="/client"
+          path="/home"
           element={
             <>
               <PreHeader />
@@ -81,16 +37,11 @@ function MainRoutes() {
             </>
           }
         >
-          <Route path="" element={<ClientPage />} />
+          <Route path="" element={<App />} />
         </Route>
-      </Route>
-      <Route
-        element={
-          <ProtectedRoutes redirectTo="/home" allowedTypes={"escritorio"} />
-        }
-      >
+
         <Route
-          path="/office"
+          path="/"
           element={
             <>
               <PreHeader />
@@ -98,10 +49,68 @@ function MainRoutes() {
             </>
           }
         >
-          <Route path="" element={<OfficePage />} />
+          <Route path="" element={<App />} />
         </Route>
-      </Route>
-    </Routes>
+
+        <Route
+          path="/login"
+          element={
+            <>
+              <PreHeader />
+              <Header />
+            </>
+          }
+        >
+          <Route path="" element={<Login />} />
+        </Route>
+
+        <Route
+          path="/register"
+          element={
+            <>
+              <PreHeader />
+              <Header />
+            </>
+          }
+        >
+          <Route path="" element={<Register />} />
+        </Route>
+        <Route
+          element={
+            <ProtectedRoutes redirectTo="/home" allowedTypes={"cliente"} />
+          }
+        >
+          <Route
+            path="/client"
+            element={
+              <>
+                <PreHeader />
+                <Header />
+              </>
+            }
+          >
+            <Route path="" element={<ClientPage />} />
+          </Route>
+        </Route>
+        <Route
+          element={
+            <ProtectedRoutes redirectTo="/home" allowedTypes={"escritorio"} />
+          }
+        >
+          <Route
+            path="/office"
+            element={
+              <>
+                <PreHeader />
+                <Header />
+              </>
+            }
+          >
+            <Route path="" element={<OfficePage />} />
+          </Route>
+        </Route>
+      </Routes>
+    </div>
   );
 }
 

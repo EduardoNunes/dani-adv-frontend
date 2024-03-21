@@ -10,7 +10,7 @@ import MainRoutes from "./routes";
 import { ShowPasswordProvider } from "./context/showPasswordContext";
 import { ValidationsProvider } from "./context/ValidationsContext";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById(`root`));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
